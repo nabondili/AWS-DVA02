@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Quiz</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  :root{
+    --ok:#1f7a1f;
+    --okbg:#eaffea;
+    --bad:#b00020;
+    --badbg:#ffecec;
+    --muted:#666;
+    --card:#fff;
+    --border:#ddd;
+    --link:#0366d6;
+  }
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;line-height:1.45;margin:0;background:#f6f8fa;color:#111;}
+  .wrap{max-width:1000px;margin:24px auto;padding:0 16px;}
+  h1{font-weight:600;font-size:20px;margin:8px 0 16px;}
+  .meta{color:var(--muted);font-size:13px;margin-bottom:16px;}
+  .question{background:var(--card);border:1px solid var(--border);border-radius:8px;margin:12px 0;padding:14px;}
+  .qhead{display:flex;gap:10px;align-items:baseline;margin-bottom:8px;}
+  .qnum{font-weight:700;color:var(--muted);min-width:64px}
+  .qtext{margin:6px 0 8px;}
+  .controls{display:flex;gap:8px;align-items:center;margin:8px 0 8px;}
+  .btn{appearance:none;border:1px solid var(--border);background:#fff;border-radius:6px;padding:6px 10px;cursor:pointer;font-size:13px}
+  .btn:hover{border-color:#bbb}
+  .choices{margin-top:4px}
+  .choice{display:flex;gap:8px;align-items:flex-start;border:1px solid transparent;border-radius:6px;padding:8px;margin:6px 0;transition:background .15s,border-color .15s}
+  .choice .letter{font-weight:700;min-width:18px}
+  .choice input{margin-top:3px}
+  .answer{display:none;border-left:3px solid var(--ok);background:#f7fbf7;padding:8px 10px;margin-top:10px;border-radius:4px}
+  .answer .ans-label{font-weight:700;color:var(--ok)}
+  .question.show-answer .answer{display:block}
+  .question.show-answer .choice.correct{background:var(--okbg);border-color:var(--ok)}
+  .question.show-answer .choice.selected:not(.correct){background:var(--badbg);border-color:var(--bad)}
+  .foot{color:var(--muted);font-size:12px;margin-top:6px}
+  a{color:var(--link);text-decoration:none}
+  a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Interactive Quiz</h1>
+  <div class="meta">0 question(s) parsed</div>
+  <div id="quiz">
+  </div>
+</div>
+<script>
+  const quiz = document.getElementById('quiz');
+
+  quiz.addEventListener('change', (e) => {
+    if (!e.target.classList.contains('choice-input')) return;
+    const q = e.target.closest('.question');
+    const label = e.target.closest('.choice');
+    if (e.target.checked) label.classList.add('selected');
+    else label.classList.remove('selected');
+    q.classList.add('show-answer'); // reveal on first click
+  });
+
+  quiz.addEventListener('click', (e) => {
+    const q = e.target.closest('.question');
+    if (!q) return;
+
+    if (e.target.classList.contains('reveal')) {
+      q.classList.add('show-answer');
+    }
+
+    if (e.target.classList.contains('reset')) {
+      q.classList.remove('show-answer');
+      q.querySelectorAll('input.choice-input').forEach(cb => {
+        cb.checked = false;
+        cb.closest('label.choice').classList.remove('selected');
+      });
+    }
+  });
+</script>
+</body>
+</html>

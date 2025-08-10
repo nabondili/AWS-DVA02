@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Questions</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .question-container {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .question-container h3 {
+            margin-top: 0;
+            color: #0056b3;
+        }
+        .options .option {
+            margin-bottom: 10px;
+        }
+        .options label {
+            margin-left: 8px;
+            cursor: pointer;
+        }
+        .answer-content {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #e9f5ff;
+            border-left: 4px solid #0056b3;
+            border-radius: 4px;
+        }
+        .answer-content strong {
+            color: #004085;
+        }
+        .reveal-toggle {
+            display: none;
+        }
+        .reveal-toggle:checked ~ .answer-content {
+            display: block;
+        }
+        .reveal-label {
+            display: inline-block;
+            cursor: pointer;
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .reveal-label:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="question-container">
+        <h3>Question: 121</h3>
+        <p>A company is migrating its PostgreSQL database into the AWS Cloud. The company wants to use a database that will secure and regularly rotate database credentials. The company wants a solution that does not require additional programming overhead. Which solution will meet these requirements?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Use AmazonAurora PostgreSQL tor the database. Store the database credentials in AWS Systems Manager Parameter Store Turn on rotation.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Use Amazon Aurora PostgreSQL for the database. Store the database credentials in AWS Secrets Manager Turn on rotation.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Use Amazon DynamoDBforthe database. Store the database credentials in AWS Systems Manager Parameter Store Turn on rotation.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Use AmazonDynamoDBforthe database. Store the database credentials in AWS Secrets Manager Turn on rotation.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-121" class="reveal-toggle">
+        <label for="reveal-121" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: B</strong></p>
+            <p><strong>Explanation:</strong> This solution meets the requirements because it uses a PostgreSQL-compatible database that can secure and regularly rotate database credentials without requiring additional programming overhead. Amazon Aurora PostgreSQL is a relational database service that is compatible with PostgreSQL and offers high performance, availability, and scalability. AWS Secrets Manager is a service that helps you protect secrets needed to access your applications, services, and IT resources. You can store database credentials in AWS Secrets Manager and use them to access your Aurora PostgreSQL database. You can also enable automatic rotation of your secrets according to a schedule or an event. AWS Secrets Manager handles the complexity of rotating secrets for you, such as generating new passwords and updating your database with the new credentials. Using Amazon DynamoDBfor the database will not meet the requirements because it is a NoSQL database that is not compatible with PostgreSQL. Using AWS Systems Manager Parameter Store for storing and rotating database credentials will require additional programming overhead to integrate with your database.</p>
+            <p><strong>Reference:</strong> [What Is Amazon Aurora?], [What Is AWS Secrets Manager?]</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 122</h3>
+        <p>A developer is creating a mobile application that will not require users to log in. Whatis the MOSTefficient method to grant users access to AWS resources'?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Use an identity provider to securely authenticate with the application.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Create an AWS Lambda function to create an 1AM user when a user accesses the application.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Create credentials using AWS KMS and apply these credentials to users when using the application.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Use AmazonCognito to associate unauthenticated users with an IAM role that has limited access to resources.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-122" class="reveal-toggle">
+        <label for="reveal-122" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: D</strong></p>
+            <p><strong>Explanation:</strong> This solution is the most efficient method to grant users access to AWS resources without requiring them to log in. Amazon Cognito is a service that provides user sign-up, sign-in, and access control for webandmobile applications. Amazon Cognito identity pools support both authenticated and unauthenticated users. Unauthenticated users receive access to your AWS resources even if they aren’t logged in with any of your identity providers (IdPs). You can use Amazon Cognito to associate unauthenticated users with an IAM role that has limited access to resources, such as Amazon S3 buckets or DynamoDB tables. This degree of access is useful to display content to users before they log in or to allow them to perform certain actions without signing up. Using an identity provider to securely authenticate with the application will require users to log in, which does not meet the requirement. Creating an AWS Lambda function to create an IAM user when a user accesses the application will incur unnecessary costs and complexity, and may pose security risks if not implemented properly. Creating credentials using AWS KMS and applying them to users when using the application will also incur unnecessary costs and complexity, and may not provide fine-grained access control for resources.</p>
+            <p><strong>Reference:</strong> Switching unauthenticated users to authenticated users (identity pools), Allow user access to your API without authentication (Anonymous user access)</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 123</h3>
+        <p>A company has developed a new serverless application using AWS Lambda functions that will be deployed using the AWS Serverless Application Model (AWS SAM) CLI. Which step should the developer complete prior to deploying the application?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Compress the application to a zip file and upload it into AWS Lambda.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Test the new AWS Lambda function by firsttracing it m AWS X-Ray.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Bundle the serverless application using a SAM package.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Create the application environment using the eb create my-env command.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-123" class="reveal-toggle">
+        <label for="reveal-123" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: C</strong></p>
+            <p><strong>Explanation:</strong> This step should be completed prior to deploying the application because it prepares the application artifacts for deployment. The AWS Serverless Application Model (AWS SAM) is a framework that simplifies building and deploying serverless applications on AWS. The AWS SAM CLI is a command line tool that helps you create, test, and deploy serverless applications using AWS SAM templates. The sam package commandbundles the application artifacts, such as Lambda function code and API definitions, and uploads them to an Amazon S3 bucket. The command also returns a CloudFormation template that is ready to be deployed with the sam deploy command. Compressing the application to a zip file and uploading it to AWS Lambda will not work because it does not use AWS SAM templates or CloudFormation. Testing the new Lambda function by first tracing it in AWS X-Ray will not prepare the application for deployment, but only monitor its performance and errors. Creating the application environment using the eb create my-env command will not work because it is a commandfor AWSElasticBeanstalk, not AWS SAM.</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 124</h3>
+        <p>A company wants to automate part of its deployment process. A developer needs to automate the process of checking for and deleting unused resources that supported previously deployed stacks but that are no longer used. The company has a central application that uses the AWS Cloud Development Kit (AWS CDK) to manage all deployment stacks. The stacks are spread out across multiple accounts. The developer’s solution must integrate as seamlessly as possible within the current deployment process. Which solution will meet these requirements with the LEAST amount of configuration?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. In the central AWS CDK application, write a handler function in the code that uses AWS SDK calls to check for and delete unused resources. Create an AWS CloudPormation template from a JSON file. Use the template to attach the function code to an AWS Lambda function and lo invoke the Lambda function when the deployment slack runs.</label></div>
+            <div class="option"><input type="checkbox"><label>B. In the central AWS CDK application. write a handler function in the code that uses AWS SDK calls to check for and delete unused resources. Create an AWS CDK custom resource Use the custom resource to attach the function code to an AWS Lambda function and to invoke the Lambda function whenthe deployment stack runs.</label></div>
+            <div class="option"><input type="checkbox"><label>C. In the central AWS CDK, write a handler function m the code that uses AWS SDK calls to check for and delete unused resources. Create an API in AWS Amplify Use the API to attach the function code to an AWSLambdafunctionandtoinvoke the Lambda function when the deployment stack runs.</label></div>
+            <div class="option"><input type="checkbox"><label>D. In the AWS Lambda console write a handler function in the code that uses AWS SDK calls to check for and delete unused resources. Create an AWS CDK custom resource. Use the custom resource to import the Lambda function into the stack and to Invoke the Lambda function when the deployment stack runs.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-124" class="reveal-toggle">
+        <label for="reveal-124" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: B</strong></p>
+            <p><strong>Explanation:</strong> This solution meets the requirements with the least amount of configuration because it uses a feature of AWS CDK that allows custom logic to be executed during stack deployment or deletion. The AWSCloudDevelopment Kit (AWS CDK) is a software development framework that allows you to define cloud infrastructure as code and provision it through CloudFormation. An AWS CDK custom resource is a construct that enables you to create resources that are not natively supported by CloudFormation or perform tasks that are not supported by CloudFormation during stack deployment or deletion. The developer can write a handler function in the code that uses AWS SDK calls to check for and delete unused resources, and create an AWS CDK custom resource that attaches the function code to a Lambda function and invokes it when the deployment stack runs. This way, the developer can automate the cleanup process without requiring additional configuration or integration. Creating a CloudFormation template from a JSON file will require additional configuration and integration with the central AWS CDK application. Creating an API in AWS Amplify will require additional configuration and integration with the central AWS CDK application and may not provide optimal performance or availability. Writing a handler function in the AWS Lambda console will require additional configuration and integration with the central AWS CDK application.</p>
+            <p><strong>Reference:</strong> [AWS Cloud Development Kit (CDK)], [Custom Resources]</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 125</h3>
+        <p>A company built a new application in the AWS Cloud. The company automated the bootstrapping of newresources with an Auto Scaling group by using AWS Cloudf-ormation templates. The bootstrap scripts contain sensitive data. The company needs a solution that is integrated with CloudFormation to manage the sensitive data in the bootstrap scripts. Which solution will meet these requirements in the MOST secure way?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Put the sensitive data into a CloudFormation parameter. Encrypt the CloudFormation templates by using an AWS Key ManagementService (AWS KMS) key.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Put the sensitive data into an Amazon S3 bucket Update the CloudFormation templates to download the object from Amazon S3 during bootslrap.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Put the sensitive data into AWS Systems Manager Parameter Store as a secure string parameter. Update the CloudFormation templates to use dynamic references to specify template values.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Put the sensitive data into Amazon Elastic File System (Amazon EPS) Enforce EFS encryption after f ile system creation. Update the CloudFormation templates to retrieve data from Amazon EFS.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-125" class="reveal-toggle">
+        <label for="reveal-125" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: C</strong></p>
+            <p><strong>Explanation:</strong> This solution meets the requirements in the most secure way because it uses a service that is integrated with CloudFormation to manage sensitive data in encrypted form. AWS Systems Manager Parameter Store provides secure, hierarchical storage for configuration data management and secrets management. You can store sensitive data as secure string parameters, which are encrypted using an AWS Key ManagementService (AWS KMS) key of your choice. You can also use dynamic references in your CloudFormation templates to specify template values that are stored in Parameter Store or Secrets Manager without having to include them in your templates. Dynamic references are resolved only during stack creation or update operations, which reduces exposure risks for sensitive data. Putting sensitive data into a CloudFormation parameter will not encrypt them or protect them from unauthorized access. Putting sensitive data into an Amazon S3 bucket or Amazon Elastic File System (Amazon EFS) will require additional configuration and integration with CloudFormation and may notprovide fine-grained access control or encryption for sensitive data.</p>
+            <p><strong>Reference:</strong> [What Is AWS Systems Manager Parameter Store?], [Using Dynamic Reference to Specify Template Values]</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 126</h3>
+        <p>A company needs tosetup secure database credentials for all its AWS Cloud resources. The company's resources include Amazon RDS DB instances Amazon DocumentDB clusters and Amazon Aurora DB instances. The company's security policy mandates that database credentials be encrypted at rest and rotated at a regular interval. Which solution will meet these requirements MOST securely?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Set up IAM database authentication for token-based access. Generate user tokens to provide centralized access to RDS DB instances. Amazon DocumentDB clusters and Aurora DB instances.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Create parameters for the database credentials in AWS Systems Manager Parameter Store Set the Type parameter to Secure Sting. Set up automatic rotation on the parameters.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Store the database access credentials as an encrypted Amazon S3 object in an S3 bucket Block all public access on the S3 bucket. Use S3 server-side encryption to set up automatic rotation on the encryption key.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Create an AWS Lambda function by using the SecretsManagerRotationTemplate template in the AWSSecrets Manager console. Create secrets for the database credentials in Secrets Manager Set up secrets rotation on a schedule.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-126" class="reveal-toggle">
+        <label for="reveal-126" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: D</strong></p>
+            <p><strong>Explanation:</strong> This solution will meet the requirements by using AWS Secrets Manager, which is a service that helps protect secrets such as database credentials by encrypting them with AWS Key Management Service (AWS KMS) and enabling automatic rotation of secrets. The developer can create an AWS Lambda function by using the SecretsManagerRotationTemplate template in the AWS Secrets Manager console, which provides a sample code for rotating secrets for RDS DB instances, Amazon DocumentDB clusters, and Amazon Aurora DB instances. The developer can also create secrets for the database credentials in Secrets Manager, which encrypts them at rest and provides secure access to them. The developer can set up secrets rotation on a schedule, which changes the database credentials periodically according to a specified interval or event. Option A is not optimal because it will set up IAM database authentication for token-based access, which may not be compatible with all database engines and may require additional configuration and management of IAM roles or users. Option B is not optimal because it will create parameters for the database credentials in AWS Systems Manager Parameter Store, which does not support automatic rotation of secrets. Option C is not optimal because it will store the database access credentials as an encrypted Amazon S3 object in an S3 bucket, which may introduce additional costs and complexity for accessing and securing the data.</p>
+            <p><strong>Reference:</strong> [AWS Secrets Manager], [Rotating Your AWS Secrets Manager Secrets]</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 127</h3>
+        <p>A developer has created an AWS Lambda function that makes queries to an Amazon Aurora MySQL DBinstance. When the developer performs a test the OB instance shows an error for too many connections. Which solution will meet these requirements with the LEAST operational effort?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Create a read replica for the DB instance Query the replica DB instance instead of the primary DB instance.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Migrate the data lo an Amazon DynamoDB database.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Configure the Amazon Aurora MySQL DB instance tor Multi-AZ deployment.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Create a proxy in Amazon RDS Proxy Query the proxy instead of the DB instance.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-127" class="reveal-toggle">
+        <label for="reveal-127" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: D</strong></p>
+            <p><strong>Explanation:</strong> This solution will meet the requirements by using Amazon RDS Proxy, which is a fully managed, highly available database proxy for Amazon RDS that makes applications more scalable, more resilient to database failures, and more secure. The developer can create a proxy in Amazon RDS Proxy, which sits between the application and the DB instance and handles connection management, pooling, and routing. The developer can query the proxy instead of the DB instance, which reduces the number of open connections to the DB instance and avoids errors for too many connections. OptionAis notoptimal because it will create a read replica for the DB instance, which may not solve the problem of too many connections as read replicas also have connection limits and may incur additional costs. Option B is not optimal because it will migrate the data to an Amazon DynamoDB database, which may introduce additional complexity and overhead for migrating and accessing data from a different database service. Option C is not optimal because it will configure the Amazon Aurora MySQL DB instance for Multi-AZ deployment, which may improve availability and durability of the DB instance but not reduce the number of connections.</p>
+            <p><strong>Reference:</strong> [Amazon RDS Proxy], [Working with Amazon RDS Proxy]</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 128</h3>
+        <p>A company uses AmazonAPI Gateway toexpose a setof APIs to customers. The APIs have caching enabled in API Gateway. Customers need a way to invalidate the cache for each API when they test the API. Whatshould a developer do to give customers the ability to invalidate the API cache?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Ask the customers to use AWS credentials to call the InvalidateCache API operation.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Attach an InvalidateCache policy to the IAM execution role that the customers use to invoke the API. Ask the customers to send a request that contains the HTTP header when they make anAPI call.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Ask the customers to use the AWS SDK API Gateway class to invoke the InvalidateCache API operation.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Attach an InvalidateCache policy to the IAM execution role that the customers use to invoke the API. Ask the customers to add the INVALIDATE_CACHE query string parameter when they make an API call.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-128" class="reveal-toggle">
+        <label for="reveal-128" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: D</strong></p>
+            <p><strong>Explanation:</strong> No explanation was provided for this question.</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 129</h3>
+        <p>A developer is building a serverless application by using AWS Serverless Application Model (AWS SAM) onmultiple AWSLambdafunctions. Whenthe application is deployed, the developer wants to shift 10% of the traffic to the new deployment of the application for the first 10 minutes after deployment. If there are no issues, all traffic must switch over to the new version. Which change to the AWS SAMtemplate will meetthese requirements?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Set the Deployment Preference Type to Canaryl OPercent10Minutes. Set the AutoPublishAlias property to the Lambda alias.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Set the Deployment Preference Type to Linearl OPercentEveryIOMinutes. Set AutoPubIishAIias property to the Lambda alias.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Set the Deployment Preference Type to Canaryl OPercentIOMinutes. Set the PreTraffic and PostTraffic properties to the Lambda alias.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Set the Deployment Preference Type to Linearl OPercentEvery10Minutes. Set PreTraffic and PostTraffic properties to the Lambda alias.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-129" class="reveal-toggle">
+        <label for="reveal-129" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: A</strong></p>
+            <p><strong>Explanation:</strong> The Deployment Preference Type property specifies how traffic should be shifted between versions of a Lambda function1. The Canary10Percent10Minutes option means that 10% of the traffic is immediately shifted to the new version, and after 10 minutes, the remaining 90% of the traffic is shifted1. This matches the requirement of shifting 10% of the traffic for the first 10 minutes, and then switching all traffic to the new version. The AutoPublishAlias property enables AWS SAM to automatically create and update a Lambda alias that points to the latest version of the function1. This is required to use the Deployment Preference Type property1. The alias name can be specified by the developer, and it can be used to invoke the function with the latest code.</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 130</h3>
+        <p>A developer is preparing to begin development of a new version of an application. The previous version of the application is deployed in a production environment. The developer needs to deploy f ixes and updates to the current version during the development of the new version of the application. The code for the new version of the application is stored in AWS CodeCommit. Which solution will meet these requirements?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. From the main branch, create a feature branch for production bug fixes. Create a second feature branch from the main branch for development of the new version.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Create a Git tag of the code that is currently deployed in production. Create a Git tag for the development of the new version. Push the two tags to the CodeCommit repository.</label></div>
+            <div class="option"><input type="checkbox"><label>C. From the main branch, create a branch of the code that is currently deployed in production. Apply an IAMpolicy that ensures no other other users can push or merge to the branch.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Create a new CodeCommit repository for development of the new version of the application. Create a Git tag for the development of the new version.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-130" class="reveal-toggle">
+        <label for="reveal-130" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: A</strong></p>
+            <p><strong>Explanation:</strong> A feature branch is a branch that is created from the main branch to work on a specific feature or task1. Feature branches allow developers to isolate their work from the main branch and avoid conflicts with other changes1. Feature branches can be merged back to the main branch when the feature or task is completed and tested1. In this scenario, the developer needs to maintain two parallel streams of work: one for fixing and updating the current version of the application that is deployed in production, and another for developing the new version of the application. The developer can use feature branches to achieve this goal. The developer can create a feature branch from the main branch for production bug fixes. This branch will contain the code that is currently deployed in production, and any fixes or updates that need to be applied to it. The developer can push this branch to the CodeCommit repository and use it to deploy changes to the production environment. The developer can also create a second feature branch from the main branch for development of the newversion of the application. This branch will contain the code that is under development for the newversion, and any changes or enhancements that are part of it. The developer can push this branch to the CodeCommit repository and use it to test and deploy the new version of the application in a separate environment. By using feature branches, the developer can keep the main branch stable and clean, and avoid mixing code from different versions of the application. The developer can also easily switch between branches and merge them when needed.</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 131</h3>
+        <p>A developer is writing an application that will retrieve sensitive data from a third-party system. The application will format the data into a PDF file. The PDF file could be more than 1 MB. The application will encrypt the data to disk by using AWS Key Management Service (AWS KMS). The application will decrypt the file when a user requests to download it. The retrieval and formatting portions of the application are complete. The developer needs to use the GenerateDataKey API to encrypt the PDF file so that the PDF file can be decrypted later. The developer needs to use an AWS KMS symmetric customer managed key for encryption. Which solutions will meet these requirements?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Write the encrypted key from the GenerateDataKey API to disk for later use. Use the plaintext key from the GenerateDataKey API and a symmetric encryption algorithm to encrypt the file.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Write the plain text key from the GenerateDataKey API to disk for later use. Use the encrypted key from the GenerateDataKey API and a symmetric encryption algorithm to encrypt the file.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Write the encrypted key from the GenerateDataKey API to disk for later use. Use the plaintext key from the GenerateDataKey API to encrypt the file by using the KMS Encrypt API</label></div>
+            <div class="option"><input type="checkbox"><label>D. Write the plain text key from the GenerateDataKey API to disk for later use. Use the encrypted key from the GenerateDataKey API to encrypt the file by using the KMS Encrypt API</label></div>
+        </div>
+        <input type="checkbox" id="reveal-131" class="reveal-toggle">
+        <label for="reveal-131" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: A</strong></p>
+            <p><strong>Explanation:</strong> The GenerateDataKey API returns a data key that is encrypted under a symmetric encryption KMS key that you specify, and a plaintext copy of the same data key1. The data key is a random byte string that can be used with any standard encryption algorithm, such as AES or SM42. The plaintext data key can be used to encrypt or decrypt data outside of AWS KMS, while the encrypted data key can be stored with the encrypted data and later decrypted by AWS KMS1. In this scenario, the developer needs to use the GenerateDataKey API to encrypt the PDF file so that it can be decrypted later. The developer also needs to use an AWS KMS symmetric customer managed key for encryption. To achieve this, the developer can follow these steps: Call the GenerateDataKey API with the symmetric customer managed key ID and the desired length or specification of the data key. The API will return an encrypted data key and a plaintext data key. Write the encrypted data key to disk for later use. This will allow the developer to decrypt the data key and the PDF file later by using AWS KMS. Use the plaintext data key and a symmetric encryption algorithm to encrypt the PDF file. The developer can use any standard encryption library or tool to perform this operation, such as OpenSSL or AWSEncryption SDK. Discard the plaintext data key from memory as soon as possible after using it. This will prevent unauthorized access or leakage of the data key.</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 132</h3>
+        <p>A developer is optimizing an AWS Lambda function and wants to test the changes in production on a small percentage of all traffic. The Lambda function serves requests to a REST API in Amazon API Gateway. The developer needs to deploy their changes and perform a test in production without changing the API Gateway URL. Which solution will meet these requirements?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Define a function version for the currently deployed production Lambda function. Update the API Gateway endpoint to reference the new Lambda function version. Upload and publish the optimized Lambda function code. On the production API Gateway stage, define a canary release and set the percentage of traffic to direct to the canary release. Update the API Gateway endpoint to use the $LATEST version of the Lambda function. Publish the API to the canary stage.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Define a function version for the currently deployed production Lambda function. Update the API Gateway endpoint to reference the new Lambda function version. Upload and publish the optimized Lambda function code. Update the API Gateway endpoint to use the $LATEST version of the Lambda function. Deploy a new API Gateway stage.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Define an alias on the $LATEST version of the Lambda function. Update the API Gateway endpoint to reference the new Lambda function alias. Upload and publish the optimized Lambda function code. On the production API Gateway stage, define a canary release and set the percentage of traffic to direct to the canary release. Update the API Gateway endpoint to use the SLAT EST version of the Lambda function. Publish to the canary stage.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Define a function version for the currently deployed production Lambda function. Update the API Gateway endpoint to reference the new Lambda function version. Upload and publish the optimized Lambda function code. Update the API Gateway endpoint to use the $LATEST version of the Lambda function. Deploy the API to the production API Gateway stage.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-132" class="reveal-toggle">
+        <label for="reveal-132" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: C</strong></p>
+            <p><strong>Explanation:</strong> A Lambdaalias is a pointer to a specific Lambda function version or another alias1. A Lambda alias allows you to invoke different versions of a function using the same name1. You can also split traffic between two aliases by assigning weights to them1. In this scenario, the developer needs to test their changes in production on a small percentage of all traffic without changing the API Gateway URL. To achieve this, the developer can follow these steps: Define analias on the $LATEST version of the Lambda function. This will create a new alias that points to the latest code of the function. Update the API Gateway endpoint to reference the new Lambda function alias. This will make the API Gateway invoke the alias instead of a specific version of the function. Upload and publish the optimized Lambda function code. This will update the $LATEST version of the function with the new code. Onthe production API Gateway stage, define a canary release and set the percentage of traffic to direct to the canary release. This will enable API Gateway to perform a canary deployment on a new API2. A canary deployment is a software development strategy in which a new version of an API is deployed for testing purposes, and the base version remains deployed as a production release for normal operations on the same stage2. The canary release receives a small percentage of API traffic and the production release takes up the rest2. Update the API Gateway endpoint to use the $LATEST version of the Lambda function. This will make the canary release invoke the latest code of the function, which contains the optimized changes. Publish to the canary stage. This will deploy the changes to a subset of users for testing. By using this solution, the developer can test their changes in production on a small percentage of all traffic without changing the API Gateway URL. The developer can also monitor and compare metrics between the canary and production releases, and promote or disable the canary as needed2.</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 133</h3>
+        <p>A company has anapplication that stores data in Amazon RDS instances. The application periodically experiences surges of high traffic that cause performance problems. During periods of peak traffic, a developer notices a reduction in query speed in all database queries. The team's technical lead determines that a multi-threaded and scalable caching solution should be used to offload the heavy read traffic. The solution needs to improve performance. Which solution will meet these requirements with the LEAST complexity?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Use AmazonElastiCache for Memcached to offload read requests from the main database.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Replicate the data to Amazon DynamoDB. Set up a DynamoDB Accelerator (DAX) cluster.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Configure the Amazon RDS instances to use Multi-AZ deployment with one standby instance. Offloadreadrequests from the main database to the standby instance.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Use AmazonElastiCache for Redis to offload read requests from the main database.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-133" class="reveal-toggle">
+        <label for="reveal-133" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: D</strong></p>
+            <p><strong>Explanation:</strong> Amazon ElastiCache for Memcached is a fully managed, multithreaded, and scalable in-memory key value store that can be used to cache frequently accessed data and improve application performance1. By using Amazon ElastiCache for Memcached, the developer can reduce the load on the main database and handle high traffic surges more efficiently. To use Amazon ElastiCache for Memcached, the developer needs to create a cache cluster with one or more nodes, and configure the application to store and retrieve data from the cache cluster2. The developer can use any of the supported Memcached clients to interact with the cache cluster3. The developer can also use Auto Discovery to dynamically discover and connect to all cache nodes in a cluster4. Amazon ElastiCache for Memcached is compatible with the Memcached protocol, which means that the developer can use existing tools and libraries that work with Memcached1. Amazon ElastiCache for Memcached also supports data partitioning, which allows the developer to distribute data among multiple nodes and scale out the cache cluster as needed. Using Amazon ElastiCache for Memcached is a simple and effective solution that meets the requirements with the least complexity. The developer does not need to change the database schema, migrate data to a different service, or use a different caching model. The developer can leverage the existing Memcached ecosystem and easily integrate it with the application.</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 134</h3>
+        <p>Anapplication that runs on AWS receives messages from an Amazon Simple Queue Service (Amazon SQS) queue and processes the messages in batches. The application sends the data to another SQS queue to be consumed by another legacy application. The legacy system can take up to 5 minutes to process some transaction dat a. A developer wants to ensure that there are no out-of-order updates in the legacy system. The developer cannot alter the behavior of the legacy system. Which solution will meet these requirements?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Use an SQSFIFOqueue. Configure the visibility timeout value.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Use an SQSstandard queue with a SendMessageBatchRequestEntry data type. Configure the DelaySeconds values.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Use an SQSstandard queue with a SendMessageBatchRequestEntry data type. Configure the visibility timeout value.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Use an SQSFIFOqueue. Configure the DelaySeconds value.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-134" class="reveal-toggle">
+        <label for="reveal-134" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: A</strong></p>
+            <p><strong>Explanation:</strong> AnSQSFIFOqueue is a type of queue that preserves the order of messages and ensures that each message is delivered and processed only once1. This is suitable for the scenario where the developer wants to ensure that there are no out-of-order updates in the legacy system. The visibility timeout value is the amount of time that a message is invisible in the queue after a consumer receives it2. This prevents other consumers from processing the same message simultaneously. If the consumer does not delete the message before the visibility timeout expires, the message becomes visible again and another consumer can receive it2. In this scenario, the developer needs to configure the visibility timeout value to be longer than the maximum processing time of the legacy system, which is 5 minutes. This will ensure that the message remains invisible in the queue until the legacy system finishes processing it and deletes it. This will prevent duplicate or out-of-order processing of messages by the legacy system.</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 135</h3>
+        <p>A developer is troubleshooting an application in an integration environment. In the application, an Amazon Simple Queue Service (Amazon SQS) queue consumes messages and then an AWS Lambda function processes the messages. The Lambda function transforms the messages and makes an API call to a third-party service. There has been an increase in application usage. The third-party API frequently returns an HTTP 429 Too Many Requests error message. The error message prevents a significant number of messages from being processed successfully. Howcanthe developer resolve this issue?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Increase the SQS event source's batch size setting.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Configure provisioned concurrency for the Lambda function based on the third-party API's documented rate limits.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Increase the retry attempts and maximum event age in the Lambda function's asynchronous configuration.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Configure maximum concurrency on the SQS event source based on the third-party service's documented rate limits.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-135" class="reveal-toggle">
+        <label for="reveal-135" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: D</strong></p>
+            <p><strong>Explanation:</strong> Maximum concurrency for SQS as an event source allows customers to control the maximum concurrent invokes by the SQS event source1. When multiple SQS event sources are configured to a function, customers can control the maximum concurrent invokes of individual SQS event source1. In this scenario, the developer needs to resolve the issue of the third-party API frequently returning an HTTP 429TooManyRequests error message, which prevents a significant number of messages from being processed successfully. To achieve this, the developer can follow these steps: Find out the documented rate limits of the third-party API, which specify how many requests can be madein agiven time period. Configure maximum concurrency on the SQS event source based on the rate limits of the third-party API. This will limit the number of concurrent invokes by the SQS event source and prevent exceeding the rate limits of the third-party API. Test and monitor the application performance and adjust the maximum concurrency value as needed. By using this solution, the developer can reduce the frequency of HTTP 429 errors and improve the message processing success rate. The developer can also avoid throttling or blocking by the third party API.</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 136</h3>
+        <p>Anonline sales company is developing a serverless application that runs on AWS. The application uses an AWSLambdafunction thatcalculates order success rates and stores the data in an Amazon DynamoDBtable. A developer wants an efficient way to invoke the Lambda function every 15 minutes. Which solution will meet this requirement with the LEAST development effort?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Create an Amazon EventBridge rule that has a rate expression that will run the rule every 15 minutes. Add the Lambda function as the target of the EventBridge rule.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Create an AWS Systems Manager document that has a script that will invoke the Lambda function on AmazonEC2. Use aSystems Manager Run Command task to run the shell script every 15 minutes.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Create an AWS Step Functions state machine. Configure the state machine to invoke the Lambda function execution role at a specified interval by using a Wait state. Set the interval to 15 minutes.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Provision a small Amazon EC2 instance. Set up a cron job that invokes the Lambda function every 15 minutes.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-136" class="reveal-toggle">
+        <label for="reveal-136" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: A</strong></p>
+            <p><strong>Explanation:</strong> The best solution for this requirement is option A . Creating an Amazon EventBridge rule that has a rate expression that will run the rule every 15 minutes and adding the Lambda function as the target of the EventBridge rule is the most efficient way to invoke the Lambda function periodically. This solution does not require any additional resources or development effort, and it leverages the built-in scheduling capabilities of EventBridge1.</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 137</h3>
+        <p>A developer is migrating an application to Amazon Elastic Kubernetes Service (Amazon EKS). The developer migrates the application to Amazon Elastic Container Registry (Amazon ECR) with an EKS cluster. As part of the application migration to a new backend, the developer creates a new AWS account. The developer makes configuration changes to the application to point the application to the new AWSaccount and to use new backend resources. The developer successfully tests the changes within the application by deploying the pipeline. The Docker image build and the pipeline deployment are successful, but the application is still connecting to the old backend. The developer finds that the application's configuration is still referencing the original EKS cluster and not referencing the new backend resources. Which reason can explain why the application is not connecting to the new resources?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. The developer did not successfully create the new AWS account.</label></div>
+            <div class="option"><input type="checkbox"><label>B. The developer added a new tag to the Docker image.</label></div>
+            <div class="option"><input type="checkbox"><label>C. The developer did not update the Docker image tag to a new version.</label></div>
+            <div class="option"><input type="checkbox"><label>D. The developer pushed the changes to a new Docker image tag.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-137" class="reveal-toggle">
+        <label for="reveal-137" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: C</strong></p>
+            <p><strong>Explanation:</strong> The correct answer is C. The developer did not update the Docker image tag to a new version. C . The developer did not update the Docker image tag to a new version. This is correct. When deploying an application to Amazon EKS, the developer needs to specify the Docker image tag that contains the application code and configuration. If the developer does not update the Docker image tag to a new version after making changes to the application, the EKS cluster will continue to use the old Docker image tag that references the original backend resources. To fix this issue, the developer should update the Docker image tag to a new version and redeploy the application to the EKS cluster. A . The developer did not successfully create the new AWS account. This is incorrect. The creation of a newAWSaccountis notrelated to the application’s connection to the backend resources. The developer can use any AWS account to host the EKS cluster and the backend resources, as long as they have the proper permissions and configurations. B . The developer added a new tag to the Docker image. This is incorrect. Adding a new tag to the Docker image is not enough to deploy the changes to the application. The developer also needs to update the Docker image tag in the EKS cluster configuration, so that the EKS cluster can pull and run the new Docker image. D. The developer pushed the changes to a new Docker image tag. This is incorrect. Pushing the changes to a new Docker image tag is not enough to deploy the changes to the application. The developer also needs to update the Docker image tag in the EKS cluster configuration, so that the EKS cluster can pull and run the new Docker image.</p>
+            <p><strong>Reference:</strong> 1: Amazon EKS User Guide, “Deploying applications to your Amazon EKS cluster”, https://docs.aws.amazon.com/eks/latest/userguide/deploying-applications.html 2: Amazon ECR User Guide, “Pushing an image”, https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html 3: Amazon EKS User Guide, “Updating an Amazon EKS cluster”, https://docs.aws.amazon.com/eks/latest/userguide/update-cluster.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 138</h3>
+        <p>A developer at a company needs to create a small application that makes the same API call once each day at a designated time. The company does not have infrastructure in the AWS Cloud yet, but the company wants to implement this functionality on AWS. Which solution meets these requirements in the MOST operationally efficient manner?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Use a Kubernetes cron job that runs on Amazon Elastic Kubernetes Service (Amazon EKS).</label></div>
+            <div class="option"><input type="checkbox"><label>B. Use an AmazonLinux crontab scheduled job that runs on Amazon EC2.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Use an AWSLambdafunctionthatis invoked by an Amazon EventBridge scheduled event.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Use an AWSBatchjob that is submitted to an AWS Batch job queue.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-138" class="reveal-toggle">
+        <label for="reveal-138" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: C</strong></p>
+            <p><strong>Explanation:</strong> The correct answer is C. Use an AWS Lambda function that is invoked by an Amazon EventBridge scheduled event. C . Use anAWSLambdafunctionthatis invoked by an Amazon EventBridge scheduled event. This is correct. AWS Lambda is a serverless compute service that lets you run code without provisioning ormanagingservers.Lambdarunsyourcodeonahigh-availabilitycomputeinfrastructureandperforms alloftheadministrationofthecomputeresources,includingserverandoperatingsystem maintenance,capacityprovisioningandautomaticscaling,andlogging1.AmazonEventBridgeisa serverlesseventbusservicethatenablesyoutoconnectyourapplicationswithdatafromavarietyof sources2.EventBridgecancreaterulesthatrunonaschedule,eitheratregularintervalsorat specifictimesanddates,andinvoketargetssuchasLambdafunctions3.Thissolutionmeetsthe requirementsofcreatingasmallapplicationthatmakesthesameAPIcallonceeachdayata designatedtime,withoutrequiringanyinfrastructureintheAWSCloudoranyoperationaloverhead. A.UseaKubernetescronjobthatrunsonAmazonElasticKubernetesService(AmazonEKS).Thisis incorrect.AmazonEKSisafullymanagedKubernetesservicethatallowsyoutoruncontainerized applicationsonAWS4.Kubernetescronjobsaretasksthatrunperiodicallyonagivenschedule5.This solutioncouldmeetthefunctionalrequirementsofcreatingasmallapplicationthatmakesthesame APIcallonceeachdayatadesignatedtime,butitwouldnotbethemostoperationallyefficient manner.ThecompanywouldneedtoprovisionandmanageanEKScluster,whichwouldincur additionalcostsandcomplexity. B.UseanAmazonLinuxcrontabscheduledjobthatrunsonAmazonEC2.Thisisincorrect.Amazon EC2isawebservicethatprovidessecure,resizablecomputecapacityinthecloud6.Crontabisa Linuxutilitythatallowsyoutoschedulecommandsorscriptstorunautomaticallyataspecifiedtime ordate7.Thissolutioncouldmeetthefunctionalrequirementsofcreatingasmallapplicationthat makesthesameAPIcallonceeachdayatadesignatedtime,butitwouldnotbethemost operationallyefficientmanner.ThecompanywouldneedtoprovisionandmanageanEC2instance, whichwouldincuradditionalcostsandcomplexity. D.UseanAWSBatchjobthatissubmittedtoanAWSBatchjobqueue.Thisisincorrect.AWSBatch enablesyoutorunbatchcomputingworkloadsontheAWSCloud8.Batchjobsareunitsofworkthat canbesubmittedtojobqueues,wheretheyareexecutedinparallelorsequentiallyoncompute environments9.Thissolutioncouldmeetthefunctionalrequirementsofcreatingasmallapplication thatmakesthesameAPIcallonceeachdayatadesignatedtime,butitwouldnotbethemost operationallyefficientmanner.ThecompanywouldneedtoconfigureandmanageanAWSBatch environment,whichwouldincuradditionalcostsandcomplexity.</p>
+            <p><strong>Reference:</strong> 1:WhatisAWSLambda?-AWSLambda 2:WhatisAmazonEventBridge?-AmazonEventBridge 3:CreatinganAmazonEventBridgerulethatrunsonaschedule-AmazonEventBridge 4:WhatisAmazonEKS?-AmazonEKS 5:CronJob-Kubernetes 6:WhatisAmazonEC2?-AmazonEC2 7:CrontabinLinuxwith20UsefulExamplestoScheduleJobs-Tecmint 8:WhatisAWSBatch?-AWSBatch 9:Jobs-AWSBatch</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 139</h3>
+        <p>AndeveloperisbuildingaserverlessapplicationbyusingtheAWSServerlessApplicationModel (AWSSAM).Thedeveloperiscurrentlytestingtheapplicationinadevelopmentenvironment.When theapplicationisnearlyfinsihed,thedeveloperwillneedtosetupadditionaltestingandstaging environmentsforaqualityassuranceteam. ThedeveloperwantstouseafeatureoftheAWSSAMtosetupdeploymentstomultiple environments. Which solution will meet these requirements with the LEAST development effort?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Add aconfiguration file in TOML format to group configuration entries to every environment. Add a table for each testing and staging environment. Deploy updates to the environments by using the sam deploy commandandthe--config-env flag that corresponds to the each environment.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Create additional AWS SAM templates for each testing and staging environment. Write a custom shell script that uses the sam deploy command and the--template-file flag to deploy updates to the environments.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Create one AWS SAMconfiguration file that has default parameters. Perform updates to the testing and staging environments by using the —parameter-overrides flag in the AWS SAM CLI and the parameters that the updates will override.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Use the existing AWS SAMtemplate. Add additional parameters to configure specific attributes for the serverless function and database table resources that are in each environment. Deploy updates to the testing and staging environments by using the sam deploy command.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-139" class="reveal-toggle">
+        <label for="reveal-139" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: A</strong></p>
+            <p><strong>Explanation:</strong> The correct answer is A. Add a configuration file in TOML format to group configuration entries to every environment. Add a table for each testing and staging environment. Deploy updates to the environments by using the sam deploy command and the--config-env flag that corresponds to the each environment. A . Addaconfiguration file in TOMLformatto group configuration entries to every environment. Add a table for each testing and staging environment. Deploy updates to the environments by using the sam deploy commandandthe--config-env flag that corresponds to the each environment. This is correct. This solution will meet the requirements with the least development effort, because it uses a feature of the AWS SAM CLI that supports a project-level configuration file that can be used to configure AWS SAMCLI commandparameter values1. The configuration file can have multiple environments, each with its own set of parameter values, such as stack name, region, capabilities, and more2. The developer can use the--config-env option to specify which environment to use when deploying the application3. This way, the developer can avoid creating multiple templates or scripts, or manually overriding parameters for each environment. B . Create additional AWS SAM templates for each testing and staging environment. Write a custom shell script that uses the sam deploy command and the--template-file flag to deploy updates to the environments. This is incorrect. This solution will not meet the requirements with the least development effort, because it requires creating and maintaining multiple templates and scripts for each environment. This can introduce duplication, inconsistency, and complexity in the deployment process. C . Create one AWSSAMconfiguration file thathas default parameters. Perform updates to the testing and staging environments by using the —parameter-overrides flag in the AWS SAM CLI and the parameters that the updates will override. This is incorrect. This solution will not meet the requirements with the least development effort, because it requires manually specifying and overriding parameters for each environment every time the developer deploys the application. This can be error-prone, tedious, and inefficient. D. Usethe existing AWS SAMtemplate. Add additional parameters to configure specific attributes for the serverless function and database table resources that are in each environment. Deploy updates to the testing and staging environments by using the sam deploy command. This is incorrect. This solution will not meet the requirements with the least development effort, because it requires modifying the existing template and adding complexity to the resource definitions for each environment. This can also make it difficult to manage and track changes across different environments.</p>
+            <p><strong>Reference:</strong> 1: AWSSAMCLIconfiguration file- AWSServerless Application Model 2: Configuration file basics- AWS Serverless Application Model 3: Specify a configuration file- AWS Serverless Application Model</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 140</h3>
+        <p>A company notices that credentials that the company uses to connect to an external software as a service (SaaS) vendor are stored in a configuration file as plaintext. The developer needs to secure the API credentials and enforce automatic credentials rotation on a quarterly basis. Which solution will meet these requirements MOST securely?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Use AWSKeyManagementService (AWS KMS) toencrypt the configuration file. Decrypt the configuration file when users make API calls to the SaaS vendor. Enable rotation.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Retrieve temporary credentials from AWS Security Token Service (AWS STS) every 15 minutes. Use the temporary credentials when users make API calls to the SaaS vendor.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Store the credentials in AWS Secrets Manager and enable rotation. Configure the API to have Secrets Manager access.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Store the credentials in AWS Systems Manager Parameter Store and enable rotation. Retrieve the credentials when users make API calls to the SaaS vendor.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-140" class="reveal-toggle">
+        <label for="reveal-140" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: C</strong></p>
+            <p><strong>Explanation:</strong> Store the credentials in AWS Secrets Manager and enable rotation. Configure the API to have Secrets Manager access. This is correct. This solution will meet the requirements most securely, because it uses a service that is designed to store and manage secrets such as API credentials. AWS Secrets Manager helps you protect access to your applications, services, and IT resources by enabling you to rotate, manage, and retrieve secrets throughout their lifecycle1. You can store secrets such as passwords, database strings, API keys, and license codes as encrypted values2. You can also configure automatic rotation of your secrets on a schedule that you specify3. You can use the AWS SDK or CLI to retrieve secrets from Secrets Manager when you need them4. This way, you can avoid storing credentials in plaintext files or hardcoding them in your code.</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 141</h3>
+        <p>A developer wants to deploy a new version of an AWS Elastic Beanstalk application. During deployment, the application must maintain full capacity and avoid service interruption. Additionally, the developer must minimize the cost of additional resources that support the deployment. Which deployment method should the developer use to meet these requirements?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. All at once</label></div>
+            <div class="option"><input type="checkbox"><label>B. Rolling with additional batch</label></div>
+            <div class="option"><input type="checkbox"><label>C. Blue/green</label></div>
+            <div class="option"><input type="checkbox"><label>D. Immutable</label></div>
+        </div>
+        <input type="checkbox" id="reveal-141" class="reveal-toggle">
+        <label for="reveal-141" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: D</strong></p>
+            <p><strong>Explanation:</strong> The immutable deployment method is the best option for this scenario, because it meets the requirements of maintaining full capacity, avoiding service interruption, and minimizing the cost of additional resources. The immutable deployment method creates a new set of instances in a separate Auto Scaling group and deploys the new version of the application to them. Then, it swaps the new instances with the old ones and terminates the old instances. This way, the application maintains full capacity during the deployment and avoids any downtime. The cost of additional resources is also minimized, because the new instances are only created for a short time and then replaced by the old ones. The other deployment methods do not meet all the requirements: The all at once method deploys the new version to all instances simultaneously, which causes a short period of downtime and reduced capacity. The rolling with additional batch method deploys the new version in batches, but for the first batch it creates new instances instead of using the existing ones. This increases the cost of additional resources and reduces the capacity of the original environment. The blue/green method creates a new environment with a new set of instances and deploys the new version to them. Then, it swaps the URLs between the old and new environments. This method maintains full capacity and avoids service interruption, but it also increases the cost of additional resources significantly, because it duplicates the entire environment.</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 142</h3>
+        <p>A developer is building a serverless application by using AWS Serverless Application Model (AWS SAM) onmultiple AWSLambdafunctions. Whentheapplication is deployed, the developer wants to shift 10% of the traffic to the new deployment of the application for the first 10 minutes after deployment. If there are no issues, all traffic must switch over to the new version. Which change to the AWS SAMtemplate will meetthese requirements?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Set the Deployment Preference Type to Canary10Percent10Minutes. Set the AutoPublishAlias property to the Lambda alias.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Set the Deployment Preference Type to LinearlOPercentEvery10Minutes. Set AutoPubIishAIias property to the Lambda alias.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Set the Deployment Preference Type to CanaryIOPercentIOMinutes. Set the PreTraffic and PostTraffic properties to the Lambda alias.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Set the Deployment Preference Type to LinearlOPercentEveryIOMinutes. Set PreTraffic and Post Traffic properties to the Lambda alias.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-142" class="reveal-toggle">
+        <label for="reveal-142" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: A</strong></p>
+            <p><strong>Explanation:</strong> The AWSServerless Application Model (AWS SAM) comes built-in with CodeDeploy to provide gradual AWS Lambda deployments1. The DeploymentPreference property in AWS SAM allows you to specify the type of deployment that you want. The Canary10Percent10Minutes option means that 10 percent of your customer traffic is immediately shifted to your new version. After 10 minutes, all traffic is shifted to the new version1. The AutoPublishAlias property in AWS SAM allows AWS SAM to automatically create an alias that points to the updated version of the Lambda function1. Therefore, option A is correct.</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 143</h3>
+        <p>A company developed an API application on AWS by using Amazon CloudFront, Amazon API Gateway, and AWS Lambd a. The API has a minimum offour requests every second. A developer notices that many API users run the same query by using the POST method. The developer wants to cache the POST request to optimize the API resources. Which solution will meet these requirements?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Configure the CloudFront cache. Update the application to return cached content based upon the default request headers.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Override the cache method in the selected stage of API Gateway. Select the POST method.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Save the latest request response in Lambda /tmp directory. Update the Lambda function to check the /tmp directory.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Save the latest request in AWS Systems Manager Parameter Store. Modify the Lambda function to take the latest request response from Parameter Store.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-143" class="reveal-toggle">
+        <label for="reveal-143" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: B</strong></p>
+            <p><strong>Explanation:</strong> Amazon API Gateway provides tools for creating and documenting web APIs that route HTTP requests to Lambda functions2. You can secure access to your API with authentication and authorization controls. Your APIs can serve traffic over the internet or can be accessible only within your VPC2. You can override the cache method in the selected stage of API Gateway2. Therefore, option Bis correct.</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 144</h3>
+        <p>A company is building a compute-intensive application that will run on a fleet of Amazon EC2 instances. The application uses attached Amazon Elastic Block Store (Amazon EBS) volumes for storing dat a. The Amazon EBS volumes will be created at time of initial deployment. The application will process sensitive information. All of the data must be encrypted. The solution should not impact the application's performance. Which solution will meet these requirements?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Configure the fleet of EC2 instances to use encrypted EBS volumes to store data.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Configure the application to write all data to an encrypted Amazon S3 bucket.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Configure a custom encryption algorithm for the application that will encrypt and decrypt all data.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Configure an Amazon Machine Image (AMI) that has an encrypted root volume and store the data to ephemeral disks.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-144" class="reveal-toggle">
+        <label for="reveal-144" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: A</strong></p>
+            <p><strong>Explanation:</strong> Amazon Elastic Block Store (Amazon EBS) provides block level storage volumes for use with Amazon EC2 instances1. Amazon EBS encryption offers a straight-forward encryption solution for your EBS resources associated with your EC2 instances1. When you create an encrypted EBS volume and attach it to a supported instance type, the following types of data are encrypted: Data at rest inside the volume, all data moving between the volume and the instance, all snapshots created from the volume, and all volumes created from those snapshots1. Therefore, option A is correct.</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 145</h3>
+        <p>A developer is creating a new REST API by using Amazon API Gateway and AWS Lambd a. The development team tests the API and validates responses for the known use cases before deploying the API to the production environment. The developer wants to make the REST API available for testing by using API Gateway locally. Which AWSServerless Application Model Command Line Interface (AWS SAM CLI) subcommand will meet these requirements?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Sam local invoke</label></div>
+            <div class="option"><input type="checkbox"><label>B. Sam local generate-event</label></div>
+            <div class="option"><input type="checkbox"><label>C. Sam local start-lambda</label></div>
+            <div class="option"><input type="checkbox"><label>D. Sam local start-api</label></div>
+        </div>
+        <input type="checkbox" id="reveal-145" class="reveal-toggle">
+        <label for="reveal-145" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: D</strong></p>
+            <p><strong>Explanation:</strong> The AWSServerless Application Model Command Line Interface (AWS SAM CLI) is a command-line tool for local development and testing of Serverless applications2. The sam local start api subcommand of AWSSAMCLI isusedtosimulate a RESTAPI by starting a new local endpoint3. Therefore, option D is correct.</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 146</h3>
+        <p>A developer is creating an AWS Lambda function that consumes messages from an Amazon Simple Queue Service (Amazon SQS) standard queue. The developer notices that the Lambda function processes some messages multiple times. Howshould developer resolve this issue MOST cost-effectively?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Change the Amazon SQS standard queue to an Amazon SQS FIFOqueue by using the Amazon SQS message deduplication ID.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Set up a dead-letter queue.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Set the maximum concurrency limit of the AWS Lambda function to 1</label></div>
+            <div class="option"><input type="checkbox"><label>D. Change the message processing to use Amazon Kinesis Data Streams instead of Amazon SQS.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-146" class="reveal-toggle">
+        <label for="reveal-146" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: A</strong></p>
+            <p><strong>Explanation:</strong> Amazon Simple Queue Service (Amazon SQS) is a fully managed queue service that allows you to de couple and scale for applications1. Amazon SQS offers two types of queues: Standard and FIFO (First In First Out) queues1. The FIFO queue uses the messageDeduplicationId property to treat messages with the same value as duplicate2. Therefore, changing the Amazon SQS standard queue to an Amazon SQSFIFOqueue using the Amazon SQS message deduplication ID can help resolve the issue of the Lambda function processing some messages multiple times. Therefore, option A is correct.</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 147</h3>
+        <p>A developer has observed an increase in bugs in the AWS Lambda functions that a development team has deployed in its Node.js application. To minimize these bugs, the developer wants to implement automated testing of Lambda functions in an environment that closely simulates the Lambda environment. The developer needs to give other developers the ability to run the tests locally. The developer also needs to integrate the tests into the team's continuous integration and continuous delivery (CI/CD) pipeline before the AWS Cloud Development Kit (AWS CDK) deployment. Which solution will meet these requirements?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Create sample events based on the Lambda documentation. Create automated test scripts that use the cdk local invoke command to invoke the Lambda functions. Check the response. Document the test scripts for the other developers on the team. Update the CI/CD pipeline to run the test scripts.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Install a unit testing framework that reproduces the Lambda execution environment. Create sample events based on the Lambda documentation. Invoke the handler function by using a unit testing framework. Check the response. Document how to run the unit testing framework for the other developers on the team. Update the CI/CD pipeline to run the unit testing framework.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Install the AWS Serverless Application Model (AWS SAM) CLI tool. Use the sam local generate event command to generate sample events for the automated tests. Create automated test scripts that use the sam local invoke command to invoke the Lambda functions. Check the response. Document the test scripts for the other developers on the team. Update the CI/CD pipeline to run the test scripts.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Create sample events based on the Lambda documentation. Create a Docker container from the Node.js base image to invoke the Lambda functions. Check the response. Document how to run the Docker container for the other developers on the team. Update the CllCD pipeline to run the Docker container.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-147" class="reveal-toggle">
+        <label for="reveal-147" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: C</strong></p>
+            <p><strong>Explanation:</strong> The AWSServerless Application Model Command Line Interface (AWS SAM CLI) is a command-line tool for local development and testing of Serverless applications3. The sam local generate event command of AWSSAMCLIgenerates sample events for automated tests3. The sam local invoke command is used to invoke Lambda functions3. Therefore, option C is correct.</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 148</h3>
+        <p>A developer wants to add request validation to a production environment Amazon API Gateway API. The developer needs to test the changes before the API is deployed to the production environment. For the test, the developer will send test requests to the API through a testing tool. Which solution will meet these requirements with the LEAST operational overhead?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Export the existing API to an OpenAPI file. Create a new API. Import the OpenAPI file. Modify the newAPI toaddrequest validation. Perform the tests. Modify the existing API to add request validation. Deploy the existing API to production.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Modify the existing API to add request validation. Deploy the updated API to a new API Gateway stage. Perform the tests. Deploy the updated API to the API Gateway production stage.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Create a new API. Add the necessary resources and methods, including new request validation. Perform the tests. Modify the existing API to add request validation. Deploy the existing API to production.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Clone the existing API. Modify the new API to add request validation. Perform the tests. Modify the existing API to add request validation. Deploy the existing API to production.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-148" class="reveal-toggle">
+        <label for="reveal-148" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: B</strong></p>
+            <p><strong>Explanation:</strong> Amazon API Gateway allows you to create, deploy, and manage a RESTful API to expose backend HTTP endpoints, AWS Lambda functions, or other AWS services1. You can use API Gateway to perform basic validation of an API request before proceeding with the integration request1. When the validation fails, API Gateway immediately fails the request, returns a 400 error response to the caller, and publishes the validation results in CloudWatch Logs1. To test changes before deploying to a production environment, you can modify the existing API to add request validation and deploy the updated API to a new API Gateway stage1. This allows you to perform tests without affecting the production environment. Once testing is complete and successful, you can then deploy the updated API to the API Gateway production stage1. This approach has the least operational overhead as it avoids unnecessary creation of new APIs or exporting and importing of APIs. It leverages the existing infrastructure and only requires changes in the configuration of the existing API1.</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 149</h3>
+        <p>A company has anexisting application that has hardcoded database credentials A developer needs to modify the existing application The application is deployed in two AWS Regions with an active passive failover configuration to meet company’s disaster recovery strategy The developer needs a solution to store the credentials outside the code. The solution must comply With the company's disaster recovery strategy Which solution Will meet these requirements in the MOST secure way?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Store the credentials in AWS Secrets Manager in the primary Region. Enable secret replication to the secondary Region Update the application to use the Amazon Resource Name (ARN) based on the Region.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Store credentials in AWS Systems Manager Parameter Store in the primary Region. Enable parameter replication to the secondary Region. Update the application to use the Amazon Resource Name(ARN) based onthe Region.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Store credentials in a config file. Upload the config file to an S3 bucket in me primary Region. Enable Cross-Region Replication (CRR) to an S3 bucket in the secondary region. Update the application to access the config file from the S3 bucket based on the Region.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Store credentials in a config file. Upload the config file to an Amazon Elastic File System (Amazon EFS) file system. Update the application to use the Amazon EFS file system Regional endpoints to access the config file in the primary and secondary Regions.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-149" class="reveal-toggle">
+        <label for="reveal-149" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: A</strong></p>
+            <p><strong>Explanation:</strong> AWSSecrets Manager is a service that allows you to store and manage secrets, such as database credentials, API keys, and passwords, in a secure and centralized way. It also provides features such as automatic secret rotation, auditing, and monitoring1. By using AWS Secrets Manager, you can avoid hardcoding credentials in your code, which is a bad security practice and makes it difficult to update them. You can also replicate your secrets to another Region, which is useful for disaster recovery purposes2. To access your secrets from your application, you can use the ARN of the secret, which is a unique identifier that includes the Region name. This way, your application can use the appropriate secret based on the Region where it is deployed3.</p>
+            <p><strong>Reference:</strong> AWSSecrets Manager, Replicating and sharing secrets, Using your own encryption keys</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 150</h3>
+        <p>A developer is creating an AWS Lambda function that searches for items from an Amazon DynamoDB table that contains customer contact information- The DynamoDB table items have the customer's email_address as the partition key and additional properties such as customer_type, name, and job_tltle. The Lambda function runs whenever a user types a new character into the customer_type text input The developer wants the search to return partial matches of all the email_address property of a particular customer_type The developer does not want to recreate the DynamoDB table. Whatshould the developer do to meet these requirements?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Add aglobal secondary index (GSI) to the DynamoDB table with customer_type as the partition key and email_address as the sort key Perform a query operation on the GSI by using the begvns_wth key condition expression With the emad_address property</label></div>
+            <div class="option"><input type="checkbox"><label>B. Add aglobal secondary index (GSI) to the DynamoDB table With ernail_address as the partition key and customer_type as the sort key Perform a query operation on the GSI by using the begins_wtth key condition expression With the emal_address property.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Add alocal secondary index (LSI) to the DynamoDB table With customer_type as the partition key and email_address as the sort key Perform a query operation on the LSI by using the begins_wlth key condition expression With the email_address property</label></div>
+            <div class="option"><input type="checkbox"><label>D. Add alocal secondary Index (LSI) to the DynamoDB table With job_tltle as the partition key and emad_address as the sort key Perform a query operation on the LSI by using the begins_wrth key condition expression With the email_address property</label></div>
+        </div>
+        <input type="checkbox" id="reveal-150" class="reveal-toggle">
+        <label for="reveal-150" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: A</strong></p>
+            <p><strong>Explanation:</strong> Understand the Problem: The existing DynamoDB table has email_address as the partition key. Searching by customer_type requires a different data access pattern. We need an efficient way to query for partial matches on email_address based on customer_type. WhyGlobal Secondary Index (GSI): GSIs allow you to define a different partition key and sort key from the main table, enabling new query patterns. In this case, having customer_type as the GSI's partition key lets you group all emails with the same customer type together. Using email_address as the sort key allows ordering within each customer type, facilitating the partial matching. Querying the GSI: You'll perform a query operation on the GSI, not the original table. Use the begins_with key condition expression on the GSI's sort key (email_address) to find partial matches as the user types in the customer_type field.</p>
+            <p><strong>Reference:</strong> DynamoDBGlobal Secondary Indexes: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html, DynamoDBQuery Operation: [invalid URL removed], Key Condition Expressions: [invalid URL removed]</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 151</h3>
+        <p>A developer is deploying a company's application to Amazon EC2 instances The application generates gigabytes of data files each day The files are rarely accessed but the files must be available to the application's users within minutes of a request during the first year of storage The company must retain the files for 7 years. Howcanthe developer implement the application to meet these requirements MOST cost effectively?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Store the files in an Amazon S3 bucket Use the S3 Glacier Instant Retrieval storage class Create an S3 Lifecycle policy to transition the files to the S3 Glacier Deep Archive storage class after 1 year</label></div>
+            <div class="option"><input type="checkbox"><label>B. Store the files in an Amazon S3 bucket. Use the S3 Standard storage class. Create an S3 Lifecycle policy to transition the files to the S3 Glacier Flexible Retrieval storage class after 1 year.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Store the files on an Amazon Elastic Block Store (Amazon EBS) volume Use Amazon Data Lifecycle Manager (Amazon DLM) to create snapshots of the EBS volumes and to store those snapshots in Amazon S3</label></div>
+            <div class="option"><input type="checkbox"><label>D. Store the files on an Amazon Elastic File System (Amazon EFS) mount. Configure EFS lifecycle management to transition the files to the EFS Standard-Infrequent Access (Standard-IA) storage class after 1 year.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-151" class="reveal-toggle">
+        <label for="reveal-151" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: A</strong></p>
+            <p><strong>Explanation:</strong> Amazon S3Glacier Instant Retrieval is an archive storage class that delivers the lowest-cost storage for long-lived data that is rarely accessed and requires retrieval in milliseconds. With S3 Glacier Instant Retrieval, you can save up to 68% on storage costs compared to using the S3 Standard Infrequent Access (S3 Standard-IA) storage class, when your data is accessed once per quarter. https://aws.amazon.com/s3/storage-classes/glacier/instant-retrieval/ Understanding Storage Requirements: Files are large and infrequently accessed, but need to be available within minutes when requested in the first year. Long-term (7-year) retention is required. Cost-effectiveness is a top priority. WhyS3Glacier Instant Retrieval: Matches the retrieval requirements (access within minutes). More cost-effective than S3 Standard for infrequently accessed data. Simpler to use than traditional Glacier where retrievals take hours. WhyS3Glacier Deep Archive: Most cost-effective S3 storage class for long term archival. Meets the 7-year retention requirement. S3 Lifecycle Policy: Automate the transition from Glacier Instant Retrieval to Glacier Deep Archive after one year. Optimize costs by matching storage classes to access patterns.</p>
+            <p><strong>Reference:</strong> Amazon S3Storage Classes: https://aws.amazon.com/s3/storage-classes/, S3 Glacier Instant Retrieval: [invalid URL removed], S3 Glacier Deep Archive: [invalid URL removed], S3 Lifecycle Policies: https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle mgmt.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 152</h3>
+        <p>A developer is creating a serverless application that uses an AWS Lambda function The developer will use AWS CloudFormation to deploy the application The application will write logs to Amazon CloudWatch Logs The developer has created a log group in a CloudFormation template for the application to use The developer needs to modify the CloudFormation template to make the name of the log group available to the application at runtime Which solution will meet this requirement?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Use the AWS:lnclude transform in CloudFormation to provide the log group's name to the application</label></div>
+            <div class="option"><input type="checkbox"><label>B. Pass the log group's name to the application in the user data section of the CloudFormation template.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Use the CloudFormation template's Mappings section to specify the log group's name for the application.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Pass the log group's Amazon Resource Name (ARN) as an environment variable to the Lambda function</label></div>
+        </div>
+        <input type="checkbox" id="reveal-152" class="reveal-toggle">
+        <label for="reveal-152" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: D</strong></p>
+            <p><strong>Explanation:</strong> CloudFormation and Lambda Environment Variables: CloudFormation is an excellent tool to manage infrastructure as code, including the log group resource. Lambda functions can access environment variables at runtime, making them a suitable way to pass configuration information like the log group ARN. CloudFormation Template Modification: In your CloudFormation template, define the log group resource. In the Lambda function resource, add an Environment section: YAML Environment: Variables: LOG_GROUP_ARN: !Ref LogGroupResourceName Use code with caution. content_copy The !Ref intrinsic function retrieves the log group's ARN, which CloudFormation generates during stack creation. Using the ARN in Your Lambda Function: Within your Lambda code, access the LOG_GROUP_ARN environment variable. Configure your logging library (e.g., Python's logging module) to send logs to the specified log group.</p>
+            <p><strong>Reference:</strong> AWSLambdaEnvironment Variables: https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html, CloudFormation !Ref Intrinsic Function: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function reference-ref.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 153</h3>
+        <p>A company has awebapplication that runs on Amazon EC2 instances with a custom Amazon Machine Image (AMI) The company uses AWS CloudFormation to provision the application The application runs in the us-east-1 Region, and the company needs to deploy the application to the us west-1 Region Anattempttocreate the AWS CloudFormation stack in us-west-1 fails. An error message states that the AMI ID does notexist. A developer must resolve this error with a solution that uses the least amount of operational overhead Which solution meets these requirements?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Change the AWSCloudFormation templates for us-east-1 and us-west-1 to use an AWS AMI. Relaunch the stack for both Regions.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Copy the custom AMI from us-east-1 to us-west-1. Update the AWS CloudFormation template for us-west-1 to refer to AMI ID for the copied AMI Relaunch the stack</label></div>
+            <div class="option"><input type="checkbox"><label>C. Build the custom AMI in us-west-1 Create a new AWS CloudFormation template to launch the stack in us-west-1 with the new AMI ID</label></div>
+            <div class="option"><input type="checkbox"><label>D. Manually deploy the application outside AWS CloudFormation in us-west-1.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-153" class="reveal-toggle">
+        <label for="reveal-153" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: B</strong></p>
+            <p><strong>Explanation:</strong> Problem: CloudFormation can't find the custom AMI in the target region (us-west-1) because AMIs are region-specific. Copying AMIs: AMIs can be copied across regions, maintaining their configuration. This approach minimizes operational overhead as the existing CloudFormation template can be reused with a minor update. Updating the Template: Modify the CloudFormation template in us-west-1 to reference the newly copied AMI's ID in that region.</p>
+            <p><strong>Reference:</strong> Copying AMIs: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html, CloudFormation Templates and AMIs: [invalid URL removed]</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 154</h3>
+        <p>A developer is working on a web application that uses Amazon DynamoDB as its data store The application has two DynamoDB tables one table that is named artists and one table that is named songs The artists table has artistName as the partition key. The songs table has songName as the partition key and artistName as the sort key The table usage patterns include the retrieval of multiple songs and artists in a single database operation from the webpage. The developer needs a way to retrieve this information with minimal network traffic and optimal application performance. Which solution will meet these requirements'?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Perform a BatchGetltem operation that returns items from the two tables. Use the list of songName artistName keys for the songs table and the list of artistName key for the artists table.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Create a local secondary index (LSI) on the songs table that uses artistName as the partition key Perform a query operation for each artistName on the songs table that filters by the list of songName Perform a query operation for each artistName on the artists table</label></div>
+            <div class="option"><input type="checkbox"><label>C. Perform a BatchGetltem operation on the songs table that uses the songName/artistName keys. Perform a BatchGetltem operation on the artists table that uses artistName as the key.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Perform a Scan operation on each table that filters by the list of songName/artistName for the songs table and the list of artistName in the artists table.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-154" class="reveal-toggle">
+        <label for="reveal-154" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: A</strong></p>
+            <p><strong>Explanation:</strong> Scenario: Application needs to fetch songs and artists efficiently in a single operation. BatchGetItem: This DynamoDB operation retrieves multiple items across different tables based on their primary keys in a single request. Optimized for Request Batching: This approach reduces network traffic compared to performing multiple queries individually. Data Modeling: The songs table is designed appropriately for this access pattern using artistName as the sort key.</p>
+            <p><strong>Reference:</strong> Amazon DynamoDB BatchGetItem: https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_BatchGetI tem.ht</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 155</h3>
+        <p>A data visualization company wants to strengthen the security of its core applications The applications are deployed on AWS across its development staging, pre-production, and production environments. The company needs to encrypt all of its stored sensitive credentials The sensitive credentials need to be automatically rotated Aversion of the sensitive credentials need to be stored for each environment Which solution will meet these requirements in the MOST operationally efficient way?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Configure AWS Secrets Manager versions to store different copies of the same credentials across multiple environments</label></div>
+            <div class="option"><input type="checkbox"><label>B. Create a new parameter version in AWS Systems Manager Parameter Store for each environment Store the environment-specific credentials in the parameter version.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Configure the environment variables in the application code Use different names for each environment type</label></div>
+            <div class="option"><input type="checkbox"><label>D. Configure AWS Secrets Manager to create a new secret for each environment type. Store the environment-specific credentials in the secret</label></div>
+        </div>
+        <input type="checkbox" id="reveal-155" class="reveal-toggle">
+        <label for="reveal-155" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: D</strong></p>
+            <p><strong>Explanation:</strong> Secrets Management: AWS Secrets Manager is designed specifically for storing and managing sensitive credentials. Environment Isolation: Creating separate secrets for each environment (development, staging, etc.) ensures clear separation and prevents accidental leaks. Automatic Rotation: Secrets Manager provides built-in rotation capabilities, enhancing security posture. Versioning: Tracking changes to secrets is essential for auditing and compliance.</p>
+            <p><strong>Reference:</strong> AWSSecrets Manager: https://aws.amazon.com/secrets-manager/, Secrets Manager Rotation: https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 156</h3>
+        <p>A company's developer has deployed an application in AWS by using AWS CloudFormation The CloudFormation stack includes parameters in AWS Systems Manager Parameter Store that the application uses as configuration settings. The application can modify the parameter values Whenthedeveloper updated the stack to create additional resources with tags, the developer noted that the parameter values were reset and that the values ignored the latest changes made by the application. The developer needs to change the way the company deploys the CloudFormation stack. The developer also needs to avoid resetting the parameter values outside the stack. Which solution will meet these requirements with the LEAST development effort?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Modify the CloudFormation stack to set the deletion policy to Retain for the Parameter Store parameters.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Create an Amazon DynamoDB table as a resource in the CloudFormation stack to hold configuration data for the application Migrate the parameters that the application is modifying from Parameter Store to the DynamoDB table</label></div>
+            <div class="option"><input type="checkbox"><label>C. Create an Amazon RDS DB instance as a resource in the CloudFormation stack. Create a table in the database for parameter configuration. Migrate the parameters that the application is modifying from Parameter Store to the configuration table</label></div>
+            <div class="option"><input type="checkbox"><label>D. Modify the CloudFormation stack policy to deny updates on Parameter Store parameters</label></div>
+        </div>
+        <input type="checkbox" id="reveal-156" class="reveal-toggle">
+        <label for="reveal-156" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: A</strong></p>
+            <p><strong>Explanation:</strong> Problem: CloudFormation updates reset Parameter Store parameters, disrupting application behavior. Deletion Policy: CloudFormation has a deletion policy that controls resource behavior when a stack is deleted or updated. The 'Retain' policy instructs CloudFormation to preserve a resource's current state. Least Development Effort: This solution involves a simple CloudFormation template modification, requiring minimal code changes.</p>
+            <p><strong>Reference:</strong> CloudFormation Deletion Policies: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute deletionpolicy.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 157</h3>
+        <p>A company has built an AWS Lambda function to convert large image files into output files that can be used in a third-party viewer application The company recently added a new module to the function to improve the output of the generated files However, the new module has increased the bundle size and has increased the time that is needed to deploy changes to the function code. Howcanadeveloper increase the speed of the Lambda function deployment?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Use AWSCodeDeploy to deploy the function code</label></div>
+            <div class="option"><input type="checkbox"><label>B. Use Lambda layers to package and load dependencies.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Increase the memory size of the function.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Use AmazonS3tohostthe function dependencies</label></div>
+        </div>
+        <input type="checkbox" id="reveal-157" class="reveal-toggle">
+        <label for="reveal-157" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: B</strong></p>
+            <p><strong>Explanation:</strong> Problem: Large bundle size increases Lambda deployment time. Lambda Layers: Layers let you package dependencies separately from your function code. This optimizes the deployment package, making updates faster. Modularization: Breaking down dependencies into layers improves code organization and reusability.</p>
+            <p><strong>Reference:</strong> AWSLambdaLayers: https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 158</h3>
+        <p>A developer creates a static website for their department The developer deploys the static assets for the website to an Amazon S3 bucket and serves the assets with Amazon CloudFront The developer uses origin access control (OAC) on the CloudFront distribution to access the S3 bucket The developer notices users can access the root URL and specific pages but cannot access directories without specifying a file name. For example, /products/index.html works, but /products returns an error The developer needs to enable accessing directories without specifying a file name without exposing the S3 bucket publicly. Which solution will meet these requirements'?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Update the CloudFront distribution's settings to index.html as the default root object is set</label></div>
+            <div class="option"><input type="checkbox"><label>B. Update the Amazon S3 bucket settings and enable static website hosting. Specify index html as the Index document Update the S3 bucket policy to enable access. Update the CloudFront distribution's origin to use the S3 website endpoint</label></div>
+            <div class="option"><input type="checkbox"><label>C. Create a CloudFront function that examines the request URL and appends index.html when directories are being accessed Add the function as a viewer request CloudFront function to the CloudFront distribution's behavior.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Create a custom error response on the CloudFront distribution with the HTTP error code set to the HTTP 404NotFound response code and the response page path to /index html Set the HTTP response code to the HTTP 200 OK response code</label></div>
+        </div>
+        <input type="checkbox" id="reveal-158" class="reveal-toggle">
+        <label for="reveal-158" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: B</strong></p>
+            <p><strong>Explanation:</strong> Problem: Directory access without file names fails. S3 Static Website Hosting: Configuring S3 as a static website enables automatic serving of index.html for directory requests. Bucket policies ensure correct access permissions. Updating the CloudFront origin simplifies routing. Avoiding Public Exposure: The S3 website endpoint allows CloudFront to access content without making the bucket public.</p>
+            <p><strong>Reference:</strong> S3 Static Website Hosting: https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 159</h3>
+        <p>A company needs todeploy all its cloud resources by using AWS CloudFormation templates A developer must create an Amazon Simple Notification Service (Amazon SNS) automatic notification to help enforce this rule. The developer creates an SNS topic and subscribes the email address of the company's security team to the SNS topic. The security team must receive a notification immediately if an 1AM role is created without the use of CloudFormation. Which solution will meet this requirement?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Create an AWS Lambda function to filter events from CloudTrail if a role was created without CloudFormation Configure the Lambda function to publish to the SNS topic. Create an Amazon EventBridge schedule to invoke the Lambda function every 15 minutes</label></div>
+            <div class="option"><input type="checkbox"><label>B. Create an AWS Fargate task in Amazon Elastic Container Service (Amazon ECS) to filter events from CloudTrail if a role was created without CloudFormation Configure the Fargate task to publish to the SNS topic Create an Amazon EventBridge schedule to run the Fargate task every 15 minutes</label></div>
+            <div class="option"><input type="checkbox"><label>C. Launch an Amazon EC2instance that includes a script to filter events from CloudTrail if a role was created without CloudFormation. Configure the script to publish to the SNS topic. Create a cron job to run the script on the EC2 instance every 15 minutes.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Create an Amazon EventBridge rule to filter events from CloudTrail if a role was created without CloudFormation Specify the SNS topic as the target of the EventBridge rule.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-159" class="reveal-toggle">
+        <label for="reveal-159" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: D</strong></p>
+            <p><strong>Explanation:</strong> EventBridge (formerly CloudWatch Events) is the ideal service for real-time event monitoring. CloudTrail logs IAM role creation. EventBridge rules can filter CloudTrail events and trigger SNS notifications instantly.</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 160</h3>
+        <p>A developer is investigating an issue in part of a company's application. In the application messages are sent to an Amazon Simple Queue Service (Amazon SQS) queue The AWS Lambda function polls messages from the SQS queue and sends email messages by using Amazon Simple Email Service (Amazon SES) Users have been receiving duplicate email messages during periods of high traffic. Which reasons could explain the duplicate email messages? (Select TWO.)</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Standard SQS queues support at-least-once message delivery</label></div>
+            <div class="option"><input type="checkbox"><label>B. Standard SQS queues support exactly-once processing, so the duplicate email messages are because of user error.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Amazon SES has the DomainKeys Identified Mail (DKIM) authentication incorrectly configured</label></div>
+            <div class="option"><input type="checkbox"><label>D. The SQS queue's visibility timeout is lower than or the same as the Lambda function's timeout.</label></div>
+            <div class="option"><input type="checkbox"><label>E. The Amazon SES bounce rate metric is too high.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-160" class="reveal-toggle">
+        <label for="reveal-160" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: A, D</strong></p>
+            <p><strong>Explanation:</strong> SQS Delivery Behavior: Standard SQS queues guarantee at-least-once delivery, meaning messages may beprocessed more than once. This can lead to duplicate emails in this scenario. Visibility Timeout: If the visibility timeout on the SQS queue is too short, a message might become visible for another consumer before the first Lambda function finishes processing it. This can also lead to duplicates.</p>
+            <p><strong>Reference:</strong> Amazon SQSDelivery Semantics: [invalid URL removed], Amazon SQSVisibility Timeout: https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs visibility-timeout.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 161</h3>
+        <p>A developer uses AWS CloudFormation to deploy an Amazon API Gateway API and an AWS Step Functions state machine The state machine must reference the API Gateway API after the CloudFormation template is deployed The developer needs a solution that uses the state machine to reference the API Gateway endpoint. Which solution will meet these requirements MOST cost-effectively?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Configure the CloudFormation template to reference the API endpoint in the DefinitionSubstitutions property for the AWS StepFunctions StateMachme resource.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Configure the CloudFormation template to store the API endpoint in an environment variable for the AWS::StepFunctions::StateMachine resourc Configure the state machine to reference the environment variable</label></div>
+            <div class="option"><input type="checkbox"><label>C. Configure the CloudFormation template to store the API endpoint in a standard AWS: SecretsManager Secret resource Configure the state machine to reference the resource</label></div>
+            <div class="option"><input type="checkbox"><label>D. Configure the CloudFormation template to store the API endpoint in a standard AWS::AppConfig;:ConfigurationProfile resource Configure the state machine to reference the resource.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-161" class="reveal-toggle">
+        <label for="reveal-161" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: A</strong></p>
+            <p><strong>Explanation:</strong> CloudFormation and Dynamic Reference: The DefinitionSubstitutions property in CloudFormation allows you to pass values into Step Functions state machines at runtime. Cost-Effectiveness: This solution is cost-effective as it leverages CloudFormation's built-in capabilities, avoiding the need for additional services like Secrets Manager or AppConfig.</p>
+            <p><strong>Reference:</strong> AWSStepFunctions State Machine: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource stepfunctions-statemachine.html, CloudFormation DefinitionSubstitutions: https://github.com/aws-cloudformation/aws cloudformation-resource-providers-stepfunctions/issues/14</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 162</h3>
+        <p>A developer created an AWS Lambda function that performs a series of operations that involve multiple AWS services. The function's duration time is higher than normal. To determine the cause of the issue, the developer must investigate traffic between the services without changing the function code Which solution will meet these requirements?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Enable AWS X-Ray active tracing in the Lambda function Review the logs in X-Ray</label></div>
+            <div class="option"><input type="checkbox"><label>B. Configure AWS CloudTrail View the trail logs that are associated with the Lambda function.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Review the AWS Config logs in Amazon Cloud Watch.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Review the Amazon CloudWatch logs that are associated with the Lambda function.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-162" class="reveal-toggle">
+        <label for="reveal-162" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: A</strong></p>
+            <p><strong>Explanation:</strong> Tracing Distributed Systems: AWS X-Ray is designed to trace requests across services, helping identify bottlenecks in distributed applications like this one. NoCodeChanges: Enabling X-Ray tracing often requires minimal code changes, meeting the requirement. Identifying Bottlenecks: Analyzing X-Ray traces and logs will reveal latency in communications between different AWS services, leading to the high duration time.</p>
+            <p><strong>Reference:</strong> AWSX-Ray: https://aws.amazon.com/xray/, X-Ray and Lambda: https://docs.aws.amazon.com/xray/latest/devguide/xray-services-lambda.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 163</h3>
+        <p>A developer designed an application on an Amazon EC2 instance The application makes API requests to objects in an Amazon S3 bucket Which combination of steps will ensure that the application makes the API requests in the MOST secure manner? (Select TWO.)</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Create an IAM user that has permissions to the S3 bucket. Add the user to an 1AM group</label></div>
+            <div class="option"><input type="checkbox"><label>B. Create an IAM role that has permissions to the S3 bucket</label></div>
+            <div class="option"><input type="checkbox"><label>C. Add the IAMrole to an instance profile. Attach the instance profile to the EC2 instance.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Create an 1AM role that has permissions to the S3 bucket Assign the role to an 1AM group</label></div>
+            <div class="option"><input type="checkbox"><label>E. Store the credentials of the IAM user in the environment variables on the EC2 instance</label></div>
+        </div>
+        <input type="checkbox" id="reveal-163" class="reveal-toggle">
+        <label for="reveal-163" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: B, C</strong></p>
+            <p><strong>Explanation:</strong> IAMRoles for EC2: IAM roles are the recommended way to provide AWS credentials to applications running on EC2 instances. Here's how this works: You create an IAM role with the necessary permissions to access the target S3 bucket. You create an instance profile and associate the IAM role with this profile. Whenlaunching the EC2 instance, you attach this instance profile. Temporary Security Credentials: When the application on the EC2 instance needs to access S3, it doesn't directly use access keys. Instead, the AWS SDK running on the instance retrieves temporary security credentials associated with the role. These are rotated automatically by AWS.</p>
+            <p><strong>Reference:</strong> IAMRoles for Amazon EC2: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html, Temporary Security Credentials: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 164</h3>
+        <p>A developer is working on an ecommerce website The developer wants to review server logs without logging in to each of the application servers individually. The website runs on multiple Amazon EC2 instances, is written in Python, and needs to be highly available Howcanthe developer update the application to meet these requirements with MINIMUM changes?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Rewrite the application to be cloud native and to run on AWS Lambda, where the logs can be reviewed in Amazon CloudWatch</label></div>
+            <div class="option"><input type="checkbox"><label>B. Set up centralized logging by using Amazon OpenSearch Service, Logstash, and OpenSearch Dashboards</label></div>
+            <div class="option"><input type="checkbox"><label>C. Scale down the application to one larger EC2 instance where only one instance is recording logs</label></div>
+            <div class="option"><input type="checkbox"><label>D. Install the unified Amazon CloudWatch agent on the EC2 instances Configure the agent to push the application logs to CloudWatch</label></div>
+        </div>
+        <input type="checkbox" id="reveal-164" class="reveal-toggle">
+        <label for="reveal-164" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: D</strong></p>
+            <p><strong>Explanation:</strong> Centralized Logging Benefits: Centralized logging is essential for operational visibility in scalable systems, especially those using multiple EC2 instances like our e-commerce website. CloudWatch provides this capability, along with other monitoring features. CloudWatch Agent: This is the best way to send custom application logs from EC2 instances to CloudWatch. Here's the process: Install the CloudWatch agent on each EC2 instance. Configure the agent with a configuration file, specifying: Which log files to collect. The format in which to send logs to CloudWatch (e.g., JSON). The specific CloudWatch Logs log group and log stream for these logs. Viewing and Analyzing Logs: Once the agent is pushing logs, use the CloudWatch Logs console or API: View and search the logs across all instances. Set up alarms based on log events. Use CloudWatch Logs Insights for sophisticated queries and analysis.</p>
+            <p><strong>Reference:</strong> Amazon CloudWatch Logs: https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html, Unified CloudWatch Agent: https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html, CloudWatch Logs Insights: https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 165</h3>
+        <p>A company runs a batch processing application by using AWS Lambda functions and Amazon API Gateway APIs with deployment stages for development, user acceptance testing and production A development team needs to configure the APIs in the deployment stages to connect to third-party service endpoints. Which solution will meet this requirement?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Store the third-party service endpoints in Lambda layers that correspond to the stage</label></div>
+            <div class="option"><input type="checkbox"><label>B. Store the third-party service endpoints in API Gateway stage variables that correspond to the stage</label></div>
+            <div class="option"><input type="checkbox"><label>C. Encode the third-party service endpoints as query parameters in the API Gateway request URL.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Store the third-party service endpoint for each environment in AWS AppConfig</label></div>
+        </div>
+        <input type="checkbox" id="reveal-165" class="reveal-toggle">
+        <label for="reveal-165" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: B</strong></p>
+            <p><strong>Explanation:</strong> API Gateway Stage Variables: These are designed for configuring dynamic values for your APIs in different deployment stages (dev, test, prod). Here's how to use them for third-party endpoints: In the API Gateway console, access the "Stages" section of your API. For each stage, create a stage variable named something like thirdPartyEndpoint. Set the value of this variable to the actual endpoint URL for that specific environment. Whenconfiguring API requests within your API Gateway method, reference this endpoint using ${stageVariables.thirdPartyEndpoint}. WhyStage Variables Excel Here: Environment Isolation: This approach keeps the endpoint configuration specific to each deployment stage, ensuring the right endpoints are used during development, testing, and production cycles. Ease of Management: You manage the endpoints directly through the API Gateway console without additional infrastructure.</p>
+            <p><strong>Reference:</strong> Amazon API Gateway Stage Variables: https://docs.aws.amazon.com/apigateway/latest/developerguide/stage-variables.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 166</h3>
+        <p>A company is creating an application that processes csv files from Amazon S3 A developer has created an S3 bucket The developer has also created an AWS Lambda function to process the csv files from the S3 bucket Which combination of steps will invoke the Lambda function when a csv file is uploaded to Amazon S3? (Select TWO.)</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Create an Amazon EventBridge rule Configure the rule with a pattern to match the S3 object created event</label></div>
+            <div class="option"><input type="checkbox"><label>B. Schedule an Amazon EventBridge rule to run a new Lambda function to scan the S3 bucket.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Add atrigger to the existing Lambda function. Set the trigger type to EventBridge Select the Amazon EventBridge rule.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Create a new Lambda function to scan the S3 bucket for recently added S3 objects</label></div>
+            <div class="option"><input type="checkbox"><label>E. Add S3 Lifecycle rules to invoke the existing Lambda function</label></div>
+        </div>
+        <input type="checkbox" id="reveal-166" class="reveal-toggle">
+        <label for="reveal-166" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: A, C</strong></p>
+            <p><strong>Explanation:</strong> Amazon EventBridge: A service that reacts to events from various AWS sources, including S3. Rules define which events trigger actions (like invoking Lambda functions). S3 Object Created Events: EventBridge can detect these, providing seamless integration for automated CSV processing. S3 Lifecycle Rules: Allow for actions based on object age or prefixes. These can directly trigger Lambda functions for file processing.</p>
+            <p><strong>Reference:</strong> Amazon EventBridge Documentation: https://docs.aws.amazon.com/eventbridge/, Working with S3 Event Notifications: https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventNotifications.html, S3 Lifecycle Configuration: https://docs.aws.amazon.com/AmazonS3/latest/userguide/object lifecycle-mgmt.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 167</h3>
+        <p>A developer is creating an AWS Lambda function in VPC mode An Amazon S3eventwill invoke the Lambda function when anobject is uploaded into an S3 bucket The Lambda function will process the object and produce some analytic results that will be recorded into a file Each processed object will also generate a log entry that will be recorded into a file. Other Lambda functions. AWS services, and on-premises resources must have access to the result f iles and log file. Each log entry must also be appended to the same shared log file. The developer needs a solution that can share files and append results into an existing file. Which solution should the developer use to meet these requirements?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Create an Amazon Elastic File System (Amazon EFS) file system. Mount the EFS file system in Lambda. Store the result files and log file in the mount point. Append the log entries to the log file.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Create an Amazon Elastic Block Store (Amazon EBS) Multi-Attach enabled volume Attach the EBS volume to all Lambda functions. Update the Lambda function code to download the log file, append the log entries, and upload the modified log file to Amazon EBS</label></div>
+            <div class="option"><input type="checkbox"><label>C. Create a reference to the /tmp local directory. Store the result files and log file by using the directory reference. Append the log entry to the log file.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Create a reference to the /opt storage directory Store the result files and log file by using the directory reference Append the log entry to the log file</label></div>
+        </div>
+        <input type="checkbox" id="reveal-167" class="reveal-toggle">
+        <label for="reveal-167" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: A</strong></p>
+            <p><strong>Explanation:</strong> Amazon EFS: A network file system (NFS) providing shared, scalable storage across multiple Lambda functions and other AWS resources. Lambda Mounting: EFS file systems can be mounted within Lambda functions to access a shared storage space. Log Appending: EFS supports appending data to existing files, making it ideal for the log file scenario.</p>
+            <p><strong>Reference:</strong> Amazon EFS Documentation: https://docs.aws.amazon.com/efs/, Using Amazon EFS with AWS Lambda: https://docs.aws.amazon.com/lambda/latest/dg/services efs.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 168</h3>
+        <p>A company hosts its application on AWS. The application runs on an Amazon Elastic Container Service (Amazon ECS) cluster that uses AWS Fargate. The cluster runs behind an Application Load Balancer The application stores data in an Amazon Aurora database A developer encrypts and manages database credentials inside the application The company wants to use a more secure credential storage method and implement periodic credential rotation. Which solution will meet these requirements with the LEAST operational overhead?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Migrate the secret credentials to Amazon RDS parameter groups. Encrypt the parameter by using an AWSKeyManagementService (AWS KMS) key Turn onsecretrotation. Use 1AM policies and roles to grant AWS KMSpermissions to access Amazon RDS.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Migrate the credentials to AWS Systems Manager Parameter Store. Encrypt the parameter by using an AWS Key ManagementService (AWS KMS) key. Turn on secret rotation. Use 1AM policies and roles to grant Amazon ECS Fargate permissions to access to AWS Secrets Manager</label></div>
+            <div class="option"><input type="checkbox"><label>C. Migrate the credentials to ECS Fargate environment variables. Encrypt the credentials by using an AWSKeyManagementService (AWS KMS) key Turn onsecret rotation. Use 1AM policies and roles to grant Amazon ECS Fargate permissions to access to AWS Secrets Manager.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Migrate the credentials to AWS Secrets Manager. Encrypt the credentials by using an AWS Key ManagementService (AWS KMS) key Turn on secret rotation Use 1AM policies and roles to grant Amazon ECSFargate permissions to access to AWS Secrets Manager by using keys.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-168" class="reveal-toggle">
+        <label for="reveal-168" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: D</strong></p>
+            <p><strong>Explanation:</strong> Secrets Management: AWS Secrets Manager is designed specifically for storing and managing sensitive credentials. Built-in Rotation: Secrets Manager provides automatic secret rotation functionality, enhancing security posture significantly. IAMIntegration: IAM policies and roles grant fine-grained access to ECS Fargate, ensuring the principle of least privilege. Reduced Overhead: This solution centralizes secrets management and automates rotation, reducing operational overhead compared to the other options.</p>
+            <p><strong>Reference:</strong> AWSSecrets Manager: https://aws.amazon.com/secrets-manager/, Secrets Manager Rotation: https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html, IAMfor Secrets Manager: https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth and-access_iam-policies.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 169</h3>
+        <p>A developer is testing a RESTful application that is deployed by using Amazon API Gateway and AWS Lambda Whenthedeveloper tests the user login by using credentials that are not valid, the developer receives an HTTP 405 METHOD_NOT_ALLOWED error The developer has verified that the test is sending the correct request for the resource Which HTTP error should the application return in response to the request?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. HTTP 401</label></div>
+            <div class="option"><input type="checkbox"><label>B. HTTP 404</label></div>
+            <div class="option"><input type="checkbox"><label>C. HTTP 503</label></div>
+            <div class="option"><input type="checkbox"><label>D. HTTP 505</label></div>
+        </div>
+        <input type="checkbox" id="reveal-169" class="reveal-toggle">
+        <label for="reveal-169" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: A</strong></p>
+            <p><strong>Explanation:</strong> HTTP Status Codes: Each HTTP status code has a specific meaning in RESTful APIs. HTTP 405(Method NotAllowed): Indicates that the request method (e.g., POST) is not supported for the specified resource. HTTP 401(Unauthorized): Represents a failure to authenticate, which is the appropriate response for invalid login credentials.</p>
+            <p><strong>Reference:</strong> HTTP Status Codes: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 170</h3>
+        <p>A company runs anapplication on AWS The application uses an AWS Lambda function thatis configured with an Amazon Simple Queue Service (Amazon SQS) queue called high priority queue as the event source A developer is updating the Lambda function with another SQS queue called low priority queue as the event source The Lambda function must always read up to 10 simultaneous messages from the high priority queue before processing messages from low priority queue. The Lambda function must be limited to 100 simultaneous invocations. Which solution will meet these requirements'?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Set the event source mapping batch size to 10 for the high priority queue and to 90 for the low priority queue</label></div>
+            <div class="option"><input type="checkbox"><label>B. Set the delivery delay to 0 seconds for the high priority queue and to 10 seconds for the low priority queue</label></div>
+            <div class="option"><input type="checkbox"><label>C. Set the event source mapping maximum concurrency to 10 for the high priority queue and to 90 for the low priority queue</label></div>
+            <div class="option"><input type="checkbox"><label>D. Set the event source mapping batch window to 10 for the high priority queue and to 90 for the low priority queue</label></div>
+        </div>
+        <input type="checkbox" id="reveal-170" class="reveal-toggle">
+        <label for="reveal-170" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: C</strong></p>
+            <p><strong>Explanation:</strong> Lambda Concurrency: The 'maximum concurrency' setting in event source mappings controls the maximum numberofsimultaneous invocations Lambda allows for that specific source. Prioritizing Queues: Setting a lower maximum concurrency for the 'high priority queue' ensures it's processed first while allowing more concurrent invocations from the 'low priority queue'. Batching: Batch size settings affect the number of messages Lambda retrieves from a queue per invocation, which is less relevant to the prioritization requirement.</p>
+            <p><strong>Reference:</strong> Lambda Event Source Mappings: https://docs.aws.amazon.com/lambda/latest/dg/invocation eventsourcemapping.html, Lambda Concurrency: https://docs.aws.amazon.com/lambda/latest/dg/configuration concurrency.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 171</h3>
+        <p>A developer deployed an application to an Amazon EC2 instance The application needs to know the public IPv4 address of the instance Howcanthe application find this information?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Query the instance metadata from http./M69.254.169.254. latestmeta-data/.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Query the instance user data from http '169 254.169 254. latest/user-data/</label></div>
+            <div class="option"><input type="checkbox"><label>C. Query the Amazon Machine Image (AMI) information from http://169.254.169.254/latest/meta data/ami/.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Check the hosts file of the operating system</label></div>
+        </div>
+        <input type="checkbox" id="reveal-171" class="reveal-toggle">
+        <label for="reveal-171" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: A</strong></p>
+            <p><strong>Explanation:</strong> Instance Metadata Service: EC2 instances have access to an internal metadata service. It provides instance-specific information like instance ID, security groups, and public IP address. Accessing Metadata: Make anHTTPGETrequestto the base URL: http://169.254.169.254/latest/meta-data/ You'll get a list of available categories. The public IPv4 address is under public-ipv4.</p>
+            <p><strong>Reference:</strong> Instance Metadata and User Data: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-data-retrieval.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 172</h3>
+        <p>A company has awebapplication that is hosted on Amazon EC2 instances The EC2 instances are configured to stream logs to Amazon CloudWatch Logs The company needs to receive an Amazon Simple Notification Service (Amazon SNS) notification when the number of application error messages exceeds a defined threshold within a 5-minute period Which solution will meet these requirements?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Rewrite the application code to stream application logs to Amazon SNS Configure an SNS topic to send a notification when the number oferrors exceeds the defined threshold within a 5-minute period</label></div>
+            <div class="option"><input type="checkbox"><label>B. Configure a subscription filter on the CloudWatch Logs log group. Configure the filter to send an SNS notification whenthe number oferrors exceeds the defined threshold within a 5-minute period.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Install and configure the Amazon Inspector agent on the EC2 instances to monitor for errors Configure Amazon Inspector to send an SNS notification when the number of errors exceeds the defined threshold within a 5-minute period</label></div>
+            <div class="option"><input type="checkbox"><label>D. Create a CloudWatch metric filter to match the application error pattern in the log data. Set up a CloudWatch alarm based on the new custom metric. Configure the alarm to send an SNS notification whenthe number oferrors exceeds the defined threshold within a 5-minute period.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-172" class="reveal-toggle">
+        <label for="reveal-172" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: D</strong></p>
+            <p><strong>Explanation:</strong> CloudWatch for Log Analysis: CloudWatch is the best fit here because logs are already centralized. Here's the process: Metric Filter: Create a metric filter on the CloudWatch Logs log group. Design a pattern to specifically identify application error messages. Custom Metric: This filter generates a new custom CloudWatch metric (e.g., ApplicationErrors). This metric tracks the error count. CloudWatch Alarm: Create an alarm on the ApplicationErrors metric. Configure the alarm with your desired threshold and a 5-minute evaluation period. SNS Action: Set the alarm to trigger an SNS notification when it enters the alarm state.</p>
+            <p><strong>Reference:</strong> CloudWatch Metric Filters: https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/MonitoringLogData.html, CloudWatch Alarms: https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmai l.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 173</h3>
+        <p>A developer is creating a service that uses an Amazon S3 bucket for image uploads. The service will use an AWSLambdafunctiontocreate a thumbnail of each image Each time an image is uploaded the service needs to send an email notification and create the thumbnail The developer needs to configure the image processing and email notifications setup. Which solution will meet these requirements?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Create an Amazon Simple Notification Service (Amazon SNS) topic Configure S3 event notifications with a destination of the SNS topic Subscribe the Lambda function to the SNS topic Create an email notification subscription to the SNS topic</label></div>
+            <div class="option"><input type="checkbox"><label>B. Create an Amazon Simple Notification Service (Amazon SNS) topic. Configure S3 event notifications with a destination of the SNS topic. Subscribe the Lambda function to the SNS topic. Create an Amazon Simple Queue Service (Amazon SQS) queue Subscribe the SQS queue to the SNS topic Create an email notification subscription to the SQS queue.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Create an Amazon Simple Queue Service (Amazon SQS) queue Configure S3 event notifications with a destination of the SQS queue Subscribe the Lambda function to the SQS queue Create an email notification subscription to the SQS queue.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Create an Amazon Simple Queue Service (Amazon SQS) queue. Send S3 event notifications to Amazon EventBridge. Create an EventBndge rule that runs the Lambda function when images are uploaded to the S3 bucket Create an EventBridge rule that sends notifications to the SQS queue Create an email notification subscription to the SQS queue</label></div>
+        </div>
+        <input type="checkbox" id="reveal-173" class="reveal-toggle">
+        <label for="reveal-173" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: A</strong></p>
+            <p><strong>Explanation:</strong> SNS as aFan-out Mechanism: SNS is perfect for triggering multiple actions from a single event (here, the image upload). Workflow: SNS Topic: Create an SNS topic that will be the central notification point. S3 Event Notification: Configure the S3 bucket to send 'Object Created' event notifications to the SNS topic. Lambda Subscription: Subscribe your thumbnail-creating Lambda function to the SNS topic. Email Subscription: Subscribe an email address to the SNS topic to trigger notifications.</p>
+            <p><strong>Reference:</strong> S3 Event Notifications: https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventNotifications.html, SNS Subscriptions: https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 174</h3>
+        <p>A developer is building a microservices-based application by using Python on AWS and several AWS services The developer must use AWS X-Ray The developer views the service map by using the console to view the service dependencies. During testing, the developer notices that some services are missing from the service map Whatcan the developer do to ensure that all services appear in the X-Ray service map?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Modify the X-Ray Python agent configuration in each service to increase the sampling rate</label></div>
+            <div class="option"><input type="checkbox"><label>B. Instrument the application by using the X-Ray SDK for Python. Install the X-Ray SDK for all the services that the application uses</label></div>
+            <div class="option"><input type="checkbox"><label>C. Enable X-Ray data aggregation in Amazon CloudWatch Logs for all the services that the application uses</label></div>
+            <div class="option"><input type="checkbox"><label>D. Increase the X-Ray service map timeout value in the X-Ray console</label></div>
+        </div>
+        <input type="checkbox" id="reveal-174" class="reveal-toggle">
+        <label for="reveal-174" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: B</strong></p>
+            <p><strong>Explanation:</strong> AWSX-Ray SDK: The primary way to enable X-Ray tracing within applications. The SDK sends data about requests and subsegments to the X-Ray daemon for service map generation. Instrumenting All Services: To visualize a complete microservice architecture on the service map, each relevant service must include the X-Ray SDK.</p>
+            <p><strong>Reference:</strong> AWSX-Ray Documentation: https://docs.aws.amazon.com/xray/, X-Ray SDK for Python: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-python.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 175</h3>
+        <p>A company has asocial media application that receives large amounts of traffic User posts and interactions are continuously updated in an Amazon RDS database The data changes frequently, and the data types can be complex The application must serve read requests with minimal latency The application's current architecture struggles to deliver these rapid data updates efficiently The company needs a solution to improve the application's performance. Which solution will meet these requirements'?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Use AmazonDynamoDBAccelerator (DAX) in front of the RDS database to provide a caching layer for the high volume of rapidly changing data</label></div>
+            <div class="option"><input type="checkbox"><label>B. Set up Amazon S3Transfer Acceleration on the RDS database to enhance the speed of data transfer from the databases to the application.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Add anAmazonCloudFront distribution in front of the RDS database to provide a caching layer for the high volume of rapidly changing data</label></div>
+            <div class="option"><input type="checkbox"><label>D. Create an Amazon ElastiCache for Redis cluster. Update the application code to use a write through caching strategy and read the data from Redis.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-175" class="reveal-toggle">
+        <label for="reveal-175" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: D</strong></p>
+            <p><strong>Explanation:</strong> Amazon ElastiCache for Redis: An in-memory data store known for extremely low latency, ideal for caching frequently accessed, complex data. Write-Through Caching: Ensures that data is always consistent between the cache and the database. Writes go to both Redis and RDS. Performance Gains: Redis handles reads with minimal latency, offloading the RDS database and improving the application's responsiveness.</p>
+            <p><strong>Reference:</strong> Amazon ElastiCache for Redis Documentation: https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/, Caching Strategies: https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Strategies.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 176</h3>
+        <p>A company runs a paymentapplication on Amazon EC2 instances behind an Application Load Balance The EC2 instances run in an Auto Scaling group across multiple Availability Zones The application needs to retrieve application secrets during the application startup and export the secrets as environment variables These secrets must be encrypted at rest and need to be rotated every month. Which solution will meet these requirements with the LEAST development effort?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Save the secrets in a text file and store the text file in Amazon S3 Provision a customer managed key Use the key for secret encryption in Amazon S3 Read the contents of the text file and read the export as environment variables Configure S3 Object Lambda to rotate the text file every month</label></div>
+            <div class="option"><input type="checkbox"><label>B. Save the secrets as strings in AWS Systems Manager Parameter Store and use the default AWS Key ManagementService (AWS KMS) key Configure an Amazon EC2user data script to retrieve the secrets during the startup and export as environment variables Configure an AWS Lambda function to rotate the secrets in Parameter Store every month.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Save the secrets as base64 encoded environment variables in the application properties. Retrieve the secrets during the application startup. Reference the secrets in the application code. Write a script to rotate the secrets saved as environment variables.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Store the secrets in AWS Secrets Manager Provision a new customer master key Use the key to encrypt the secrets Enable automatic rotation Configure an Amazon EC2 user data script to programmatically retrieve the secrets during the startup and export as environment variables</label></div>
+        </div>
+        <input type="checkbox" id="reveal-176" class="reveal-toggle">
+        <label for="reveal-176" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: D</strong></p>
+            <p><strong>Explanation:</strong> AWSSecrets Manager: Built for managing secrets, providing encryption, automatic rotation, and access control. Customer Master Key (CMK): Provides an extra layer of control over encryption through AWS KMS. Automatic Rotation: Enhances security by regularly changing the secret. User Data Script: Allows secrets retrieval at instance startup and sets them as environment variables for seamless use within the application.</p>
+            <p><strong>Reference:</strong> AWSSecrets Manager Documentation: https://docs.aws.amazon.com/secretsmanager/, AWSKMSDocumentation: https://docs.aws.amazon.com/kms/, User Data for EC2 Instances: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user data.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 177</h3>
+        <p>A company is using Amazon API Gateway to invoke a new AWS Lambda function The company has Lambda function versions in its PROD and DEV environments. In each environment, there is a Lambda function alias pointing to the corresponding Lambda function version API Gateway has one stage that is configured to point at the PROD alias The company wants to configure API Gateway to enable the PROD and DEV Lambda function versions to be simultaneously and distinctly available Which solution will meet these requirements?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Enable a Lambda authorizer for the Lambda function alias in API Gateway Republish PROD and create a new stage for DEV Create API Gateway stage variables for the PROD and DEV stages. Point each stage variable to the PROD Lambda authorizer to the DEV Lambda authorizer.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Set up a gateway response in API Gateway for the Lambda function alias. Republish PROD and create a new stage for DEV. Create gateway responses in API Gateway for PROD and DEV Lambda aliases</label></div>
+            <div class="option"><input type="checkbox"><label>C. Use an environment variable for the Lambda function alias in API Gateway. Republish PROD and create a new stage for development. Create API gateway environment variables for PROD and DEV stages. Point each stage variable to the PROD Lambda function alias to the DEV Lambda function alias.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Use an API Gateway stage variable to configure the Lambda function alias Republish PROD and create a new stage for development Create API Gateway stage variables for PROD and DEV stages Point each stage variable to the PROD Lambda function alias and to the DEV Lambda function alias</label></div>
+        </div>
+        <input type="checkbox" id="reveal-177" class="reveal-toggle">
+        <label for="reveal-177" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: D</strong></p>
+            <p><strong>Explanation:</strong> API Gateway Stages: Stages in API Gateway represent distinct environments (like PROD and DEV) allowing different configurations. Stage Variables: Stage variables store environment-specific information, including Lambda function aliases. Ease of Management: This solution offers a straightforward way to manage different Lambda function versions across environments.</p>
+            <p><strong>Reference:</strong> API Gateway Stages: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up stages.html, API Gateway Stage Variables: https://docs.aws.amazon.com/apigateway/latest/developerguide/stage-variables.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 178</h3>
+        <p>A developer is working on an ecommerce platform that communicates with several third-party payment processing APIs The third-party payment services do not provide a test environment. The developer needs to validate the ecommerce platform's integration with the third-party payment processing APIs. The developer must test the API integration code without invoking the third-party payment processing APIs. Which solution will meet these requirements'?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Set up an AmazonAPI Gateway RESTAPI with a gateway response configured for status code 200 Add response templates that contain sample responses captured from the real third-party API.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Set up an AWSAppSyncGraphQLAPI with a data source configured for each third-party API Specify an integration type of Mock Configure integration responses by using sample responses captured from the real third-party API.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Create an AWS Lambda function for each third-party API. Embed responses captured from the real third-party API. Configure Amazon Route 53 Resolver with an inbound endpoint for each Lambda function's Amazon Resource Name (ARN).</label></div>
+            <div class="option"><input type="checkbox"><label>D. Set up an AmazonAPI Gateway RESTAPI for each third-party API Specify an integration request type of Mock Configure integration responses by using sample responses captured from the real third-party API</label></div>
+        </div>
+        <input type="checkbox" id="reveal-178" class="reveal-toggle">
+        <label for="reveal-178" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: D</strong></p>
+            <p><strong>Explanation:</strong> Mocking API Responses: API Gateway's Mock integration type enables simulating API behavior without invoking backend services. Testing with Sample Data: Using captured responses from the real third-party API ensures realistic testing of the integration code. Focus on Integration Logic: This solution allows the developer to isolate and test the application's interaction with the payment APIs, even without a test environment from the third-party providers.</p>
+            <p><strong>Reference:</strong> Amazon API Gateway Mock Integrations: https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-mock integration.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 179</h3>
+        <p>A developer is creating a simple proof-of-concept demo by using AWS CloudFormation and AWS Lambda functions The demo will use a CloudFormation template to deploy an existing Lambda function The Lambda function uses deployment packages and dependencies stored in Amazon S3 The developer defined anAWS Lambda Function resource in a CloudFormation template. The developer needs to add the S3 bucket to the CloudFormation template. Whatshould the developer do to meet these requirements with the LEAST development effort?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Add the function code in the CloudFormation template inline as the code property</label></div>
+            <div class="option"><input type="checkbox"><label>B. Add the function code in the CloudFormation template as the ZipFile property.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Find the S3 key for the Lambda function Add the S3 key as the ZipFile property in the CloudFormation template.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Add the relevant key and bucket to the S3Bucket and S3Key properties in the CloudFormation template</label></div>
+        </div>
+        <input type="checkbox" id="reveal-179" class="reveal-toggle">
+        <label for="reveal-179" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: D</strong></p>
+            <p><strong>Explanation:</strong> S3Bucket and S3Key: These properties in a CloudFormation AWS::Lambda::Function resource specify the location of the function's code in S3. Least Development Effort: This solution minimizes code changes, relying on CloudFormation to reference the existing S3 deployment package.</p>
+            <p><strong>Reference:</strong> AWS::Lambda::Function Resource https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource lambda-function.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 180</h3>
+        <p>A company is planning to use AWS CodeDeploy to deploy an application to Amazon Elastic Container Service (Amazon ECS) During the deployment of a new version of the application, the company initially must expose only 10% of live traffic to the new version of the deployed application. Then, after 15 minutes elapse, the company must route all the remaining live traffic to the new version of the deployed application. Which CodeDeploy predefined configuration will meet these requirements?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. CodeDeployDefault ECSCanary10Percent15Minutes</label></div>
+            <div class="option"><input type="checkbox"><label>B. CodeDeployDefault LambdaCanary10Percent5Minutes</label></div>
+            <div class="option"><input type="checkbox"><label>C. CodeDeployDefault LambdaCanary10Percent15Minutes</label></div>
+            <div class="option"><input type="checkbox"><label>D. CodeDeployDefault ECSLinear10PercentEvery1 Minutes</label></div>
+        </div>
+        <input type="checkbox" id="reveal-180" class="reveal-toggle">
+        <label for="reveal-180" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: A</strong></p>
+            <p><strong>Explanation:</strong> CodeDeploy Predefined Configurations: CodeDeploy offers built-in deployment configurations for commonscenarios. Canary Deployment: Canary deployments gradually shift traffic to a new version, ideal for controlled rollouts like this requirement. CodeDeployDefault.ECSCanary10Percent15Minutes: This configuration matches the company's requirements, shifting 10% of traffic initially and then completing the rollout after 15 minutes.</p>
+            <p><strong>Reference:</strong> AWSCodeDeploy Deployment Configurations: https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment configurations-create.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 181</h3>
+        <p>A developer is using AWS Step Functions to automate a workflow The workflow defines each step as an AWSLambdafunctiontask The developer notices that runs of the Step Functions state machine fail in the GetResource task with either an UlegalArgumentException error or a TooManyRequestsException error The developer wants the state machine to stop running when the state machine encounters an UlegalArgumentException error. The state machine needs to retry the GetResource task one additional time after 10 seconds if the state machine encounters a TooManyRequestsException error. If the second attempt fails, the developer wants the state machine to stop running. Howcanthe developer implement the Lambda retry functionality without adding unnecessary complexity to the state machine'?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Add aDelay task after the GetResource task. Add a catcher to the GetResource task. Configure the catcher with an error type of TooManyRequestsException. Configure the next step to be the Delay task Configure the Delay task to wait for an interval of 10 seconds Configure the next step to be the GetResource task.</label></div>
+            <div class="option"><input type="checkbox"><label>B. Addacatcher to the GetResource task Configure the catcher with an error type of TooManyRequestsException. an interval of 10 seconds, and a maximum attempts value of 1. Configure the next step to be the GetResource task.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Add aretrier to the GetResource task Configure the retrier with an error type of TooManyRequestsException, an interval of 10 seconds, and a maximum attempts value of 1.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Duplicate the GetResource task Rename the new GetResource task to TryAgain Add a catcher to the original GetResource task Configure the catcher with an error type of TooManyRequestsException. Configure the next step to be TryAgain.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-181" class="reveal-toggle">
+        <label for="reveal-181" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: C</strong></p>
+            <p><strong>Explanation:</strong> Step Functions Retriers: Retriers provide a built-in way to gracefully handle transient errors within State Machines. Here's how to use them: Directly attach a retrier to the problematic 'GetResource' task. Configure the retrier: ErrorEquals: Set this to ['TooManyRequestsException'] to target the specific error. IntervalSeconds: Set to 10 for the desired retry delay. MaxAttempts: Set to 1, as you want only one retry attempt. Error Handling: Upon'TooManyRequestsException', the retrier triggers the task again after 10 seconds. Onasecond failure, Step Functions moves to the next state or fails the workflow, as per your design. 'IllegalArgumentException' causes error propagation as intended.</p>
+            <p><strong>Reference:</strong> Error Handling in Step Functions: https://docs.aws.amazon.com/step-functions/latest/dg/concepts error-handling.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 182</h3>
+        <p>AnAmazonSimple Queue Service (Amazon SQS) queue serves as an event source for an AWS Lambda function In the SQS queue, each item corresponds to a video file that the Lambda function must convert to a smaller resolution The Lambda function is timing out on longer video files, but the Lambda function's timeout is already configured to its maximum value Whatshould a developer do to avoid the timeouts without additional code changes'?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Increase the memory configuration of the Lambda function</label></div>
+            <div class="option"><input type="checkbox"><label>B. Increase the visibility timeout on the SQS queue</label></div>
+            <div class="option"><input type="checkbox"><label>C. Increase the instance size of the host that runs the Lambda function.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Use multi-threading for the conversion.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-182" class="reveal-toggle">
+        <label for="reveal-182" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: B</strong></p>
+            <p><strong>Explanation:</strong> Visibility Timeout: When an SQS message is processed by a consumer (here, the Lambda function), it's temporarily hidden from other consumers. Visibility timeout controls this duration. HowItHelps: Increase the visibility timeout beyond the maximum processing time your Lambda might typically take for long videos. This prevents the message from reappearing in the queue while Lambda is still working, avoiding premature timeouts.</p>
+            <p><strong>Reference:</strong> SQS Visibility Timeout: https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs visibility-timeout.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 183</h3>
+        <p>A developer is creating an Amazon DynamoDB table by using the AWS CLI The DynamoDB table must use server-side encryption with an AWS owned encryption key Howshould the developer create the DynamoDB table to meet these requirements?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Create an AWS Key ManagementService (AWS KMS) customer managed key. Provide the key's Amazon Resource Name (ARN) in the KMSMasterKeyld parameter during creation of the DynamoDB table</label></div>
+            <div class="option"><input type="checkbox"><label>B. Create an AWS Key ManagementService (AWS KMS) AWSmanagedkey Provide the key's Amazon Resource Name (ARN) in the KMSMasterKeyld parameter during creation of the DynamoDB table</label></div>
+            <div class="option"><input type="checkbox"><label>C. Create an AWS ownedkey Provide the key's Amazon Resource Name (ARN) in the KMSMasterKeyld parameter during creation of the DynamoDB table.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Create the DynamoDB table with the default encryption options</label></div>
+        </div>
+        <input type="checkbox" id="reveal-183" class="reveal-toggle">
+        <label for="reveal-183" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: D</strong></p>
+            <p><strong>Explanation:</strong> Default SSE in DynamoDB: DynamoDB tables are encrypted at rest by default using an AWS owned key (SSE-S3). NoAdditional Action Needed: Creating a table without explicitly specifying a KMS key will use this default encryption.</p>
+            <p><strong>Reference:</strong> DynamoDBServer-Side Encryption: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Encryption</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 184</h3>
+        <p>A developer is creating an AWS Lambda function. The Lambda function needs an external library to connect to a third-party solution The external library is a collection of files with a total size of 100 MB The developer needs to make the external library available to the Lambda execution environment and reduce the Lambda package space Which solution will meet these requirements with the LEAST operational overhead?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Create a Lambda layer to store the external library Configure the Lambda function to use the layer</label></div>
+            <div class="option"><input type="checkbox"><label>B. Create an Amazon S3 bucket Upload the external library into the S3 bucket. Mount the S3 bucket folder in the Lambda function Import the library by using the proper folder in the mount point.</label></div>
+            <div class="option"><input type="checkbox"><label>C. Load the external library to the Lambda function's /tmp directory during deployment of the Lambda package. Import the library from the /tmp directory.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Create an Amazon Elastic File System (Amazon EFS) volume. Upload the external library to the EFS volume Mountthe EFS volume in the Lambda function. Import the library by using the proper folder in the mount point.</label></div>
+        </div>
+        <input type="checkbox" id="reveal-184" class="reveal-toggle">
+        <label for="reveal-184" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: A</strong></p>
+            <p><strong>Explanation:</strong> Lambda Layers: These are designed to package dependencies that you can share across functions. HowtoUse: Create a layer, upload your 100MB library as a zip. Attach the layer to your function. In your function code, import the library from the standard layer path.</p>
+            <p><strong>Reference:</strong> Lambda Layers: https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 185</h3>
+        <p>A company built an online event platform For each event the company organizes quizzes and generates leaderboards that are based on the quiz scores. The company stores the leaderboard data in Amazon DynamoDB andretains the data for 30 days after an event is complete The company then uses a scheduled job to delete the old leaderboard data The DynamoDBtable is configured with a fixed write capacity. During the months when many events occur, the DynamoDB write API requests are throttled when the scheduled delete job runs. A developer must create a long-term solution that deletes the old leaderboard data and optimizes write throughput Which solution meets these requirements?</p>
+        <div class="options">
+            <div class="option"><input type="checkbox"><label>A. Configure a TTL attribute for the leaderboard data</label></div>
+            <div class="option"><input type="checkbox"><label>B. Use DynamoDB Streams to schedule and delete the leaderboard data</label></div>
+            <div class="option"><input type="checkbox"><label>C. Use AWSStepFunctions to schedule and delete the leaderboard data.</label></div>
+            <div class="option"><input type="checkbox"><label>D. Set a higher write capacity when the scheduled delete job runs</label></div>
+        </div>
+        <input type="checkbox" id="reveal-185" class="reveal-toggle">
+        <label for="reveal-185" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: A</strong></p>
+            <p><strong>Explanation:</strong> DynamoDBTTL(Time-to-Live): A native feature that automatically deletes items after a specified expiration time. Efficiency: Eliminates the need for scheduled deletion jobs, optimizing write throughput by avoiding potential throttling conflicts. Seamless Integration: TTL works directly within DynamoDB, requiring minimal development overhead.</p>
+            <p><strong>Reference:</strong> DynamoDBTTL Documentation: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html</p>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question: 186</h3>
+        <p>A developer must use multi-factor authentication (MFA) to access data in an Amazon S3 bucket that is in another AWS account. Which AWS Secur</p>
+        <div class="options">
+            <!-- Options were not provided in the source text -->
+        </div>
+        <input type="checkbox" id="reveal-186" class="reveal-toggle">
+        <label for="reveal-186" class="reveal-label">Reveal Answer</label>
+        <div class="answer-content">
+            <p><strong>Answer: Not provided</strong></p>
+            <p><strong>Explanation:</strong> The full question and options were not available in the provided text.</p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.options input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('click', (event) => {
+                const questionContainer = event.target.closest('.question-container');
+                if (questionContainer) {
+                    const revealCheckbox = questionContainer.querySelector('.reveal-toggle');
+                    if (revealCheckbox) {
+                        revealCheckbox.checked = true;
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
