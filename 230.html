@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AWS Questions</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    .question-container {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .question-title {
+      margin-top: 0;
+      color: #0056b3;
+    }
+    .options-list {
+      list-style-type: none;
+      padding: 0;
+    }
+    .options-list li {
+      margin-bottom: 10px;
+    }
+    .options-list label {
+      display: flex;
+      align-items: start;
+      cursor: pointer;
+    }
+    .options-list input {
+      margin-right: 10px;
+      margin-top: 5px;
+    }
+    .reveal-container {
+      margin-top: 15px;
+    }
+    .reveal-toggle {
+      display: none; /* Hide the actual checkbox */
+    }
+    .reveal-label {
+      display: inline-block;
+      background-color: #007bff;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .reveal-label:hover {
+      background-color: #0056b3;
+    }
+    .answer-content {
+      display: none;
+      margin-top: 15px;
+      padding: 15px;
+      background-color: #e9f5ff;
+      border: 1px solid #b3d7ff;
+      border-radius: 5px;
+    }
+    .reveal-toggle:checked ~ .answer-content {
+      display: block; /* Show content when checkbox is checked */
+    }
+    .answer-content h4 {
+      margin-top: 0;
+    }
+    .answer-content pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      background-color: #f8f9fa;
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+    }
+    .answer-content ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 186</h3>
+    <p>A developer must use multi-factor authentication (MFA) to access data in an Amazon S3 bucket that is in another AWS account. Which AWS Security Token Service (AWS STS) API operation should the developer use with the MFA information to meet this requirement?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: AssumeRoleWithWebidentity</label></li>
+      <li><label><input type="checkbox">B: GetFederationToken</label></li>
+      <li><label><input type="checkbox">C: AssumeRoleWithSAML</label></li>
+      <li><label><input type="checkbox">D: AssumeRole</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-186" class="reveal-toggle">
+      <label for="reveal-186" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: D</h4>
+        <pre>AWSSTSAssumeRole: The central operation for assuming temporary security credentials, commonly used for cross-account access.
+MFAIntegration: The AssumeRole call can include MFA information to enforce multi-factor authentication.
+Credentials for S3 Access: The returned temporary credentials would provide the necessary permissions to access the S3 bucket in the other account.</pre>
+        <h4>Reference:</h4>
+        <ul>
+          <li><a href="https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html" target="_blank" rel="noopener noreferrer">AWSSTSAssumeRole Documentation</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 187</h3>
+    <p>A company has ananalytics application that uses an AWS Lambda function to process transaction data asynchronously A developer notices that asynchronous invocations of the Lambda function sometimes fail When failed Lambda function invocations occur, the developer wants to invoke a second Lambda function to handle errors and log details. Which solution will meet these requirements?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Configure a Lambda function destination with a failure condition Specify Lambda function as the destination type Specify the error-handling Lambda function's Amazon Resource Name (ARN) as the resource</label></li>
+      <li><label><input type="checkbox">B: Enable AWS X-Ray active tracing on the initial Lambda function. Configure X-Ray to capture stack traces of the failed invocations. Invoke the error-handling Lambda function by including the stack traces in the event object.</label></li>
+      <li><label><input type="checkbox">C: Configure a Lambda function trigger with a failure condition Specify Lambda function as the destination type Specify the error-handling Lambda function's Amazon Resource Name (ARN) as the resource</label></li>
+      <li><label><input type="checkbox">D: Create a status check alarm on the initial Lambda function. Configure the alarm to invoke the error-handling Lambda function when the alarm is initiated. Ensure that the alarm passes the stack trace in the event object.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-187" class="reveal-toggle">
+      <label for="reveal-187" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: A</h4>
+        <pre>Lambda Destinations on Failure: Allow routing asynchronous function invocations to specified resources (like another Lambda function) upon failure.
+Error Handling: The error-handling Lambda receives details about the failure, enabling logging and custom actions.
+Direct Integration: This solution leverages native Lambda functionality for a simpler implementation.</pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 188</h3>
+    <p>A company is preparing to migrate an application to the company's first AWS environment Before this migration, a developer is creating a proof-of-concept application to validate a model for building and deploying container-based applications on AWS. Which combination of steps should the developer take to deploy the containerized proof-of-concept application with the LEAST operational effort? (Select TWO.)</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Package the application into a zip file by using a command line tool Upload the package to Amazon S3</label></li>
+      <li><label><input type="checkbox">B: Package the application into a container image by using the Docker CLI. Upload the image to Amazon Elastic Container Registry (Amazon ECR)</label></li>
+      <li><label><input type="checkbox">C: Deploy the application to an Amazon EC2 instance by using AWS CodeDeploy.</label></li>
+      <li><label><input type="checkbox">D: Deploy the application to Amazon Elastic Kubernetes Service (Amazon EKS) on AWS Fargate</label></li>
+      <li><label><input type="checkbox">E: Deploy the application to Amazon Elastic Container Service (Amazon ECS) on AWS Fargate</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-188" class="reveal-toggle">
+      <label for="reveal-188" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: BE</h4>
+        <pre>Containerization: Packaging the application as a container image promotes portability and standardization. Docker is the standard tool for containerization.
+Amazon ECR: ECR is a managed container registry designed to work seamlessly with AWS container services.
+Fargate: ECS Fargate provides serverless container orchestration, minimizing operational overhead for this proof-of-concept.</pre>
+        <h4>Reference:</h4>
+        <ul>
+          <li><a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer">Docker</a></li>
+          <li><a href="https://aws.amazon.com/ecr/" target="_blank" rel="noopener noreferrer">Amazon ECR</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 189</h3>
+    <p>A company runs anapplication on AWS The application stores data in an Amazon DynamoDB table Some queries are taking a long time to run These slow queries involve an attribute that is not the table's partition key or sort key The amountof data that the application stores in the DynamoDB table is expected to increase significantly. A developer must increase the performance of the queries. Which solution will meet these requirements'?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Increase the page size for each request by setting the Limit parameter to be higher than the default value Configure the application to retry any request that exceeds the provisioned throughput.</label></li>
+      <li><label><input type="checkbox">B: Create a global secondary index (GSI). Set query attribute to be the partition key of the index</label></li>
+      <li><label><input type="checkbox">C: Perform a parallel scan operation by issuing individual scan requests in the parameters specify the segment for the scan requests and the total number of segments for the parallel scan.</label></li>
+      <li><label><input type="checkbox">D: Turn on read capacity auto scaling for the DynamoDB table. Increase the maximum read capacity units (RCUs).</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-189" class="reveal-toggle">
+      <label for="reveal-189" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: B</h4>
+        <pre>Global Secondary Index (GSI): GSIs enable alternative query patterns on a DynamoDB table by using different partition and sort keys.
+Addressing Query Bottleneck: By making the slow-query attribute the GSI's partition key, you optimize queries on that attribute.
+Scalability: GSIs automatically scale to handle increasing data volumes.</pre>
+        <h4>Reference:</h4>
+        <ul>
+          <li><a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html" target="_blank" rel="noopener noreferrer">Amazon DynamoDBGlobal Secondary Indexes</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 190</h3>
+    <p>A developer maintains a critical business application that uses Amazon DynamoDB as the primary data store The DynamoDB table contains millions of documents and receives 30-60 requests each minute The developer needs to perform processing in near-real time on the documents when they are added or updated in the DynamoDB table Howcanthe developer implement this feature with the LEAST amount of change to the existing application code?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Set up a cron job on an Amazon EC2instance Run a script every hour to query the table for changes and process the documents</label></li>
+      <li><label><input type="checkbox">B: Enable a DynamoDB stream on the table Invoke an AWS Lambda function to process the documents.</label></li>
+      <li><label><input type="checkbox">C: Update the application to send a PutEvents request to Amazon EventBridge. Create an EventBridge rule to invoke an AWS Lambda function to process the documents.</label></li>
+      <li><label><input type="checkbox">D: Update the application to synchronously process the documents directly after the DynamoDB write</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-190" class="reveal-toggle">
+      <label for="reveal-190" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: B</h4>
+        <pre>DynamoDBStreams: Capture near real-time changes to DynamoDB tables, triggering downstream actions.
+Lambda for Processing: Lambda functions provide a serverless way to execute code in response to events like DynamoDB Stream updates.
+Minimal Code Changes: This solution requires the least modifications to the existing application.</pre>
+        <h4>Reference:</h4>
+        <ul>
+          <li><a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html" target="_blank" rel="noopener noreferrer">DynamoDB Streams</a></li>
+          <li><a href="https://aws.amazon.com/lambda/" target="_blank" rel="noopener noreferrer">AWSLambda</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 191</h3>
+    <p>A developer needs to build an AWS CloudFormation template that self-populates the AWS Region variable that deploys the CloudFormation template Whatis the MOSToperationally efficient way to determine the Region in which the template is being deployed?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Use the AWS:.Region pseudo parameter</label></li>
+      <li><label><input type="checkbox">B: Require the Region as a CloudFormation parameter</label></li>
+      <li><label><input type="checkbox">C: Find the Region from the AWS::Stackld pseudo parameter by using the Fn::Split intrinsic function</label></li>
+      <li><label><input type="checkbox">D: Dynamically import the Region by referencing the relevant parameter in AWS Systems Manager Parameter Store</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-191" class="reveal-toggle">
+      <label for="reveal-191" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: A</h4>
+        <pre>Pseudo Parameters: CloudFormation provides pseudo parameters that reference runtime context, including the current AWS Region.
+Operational Efficiency: The AWS::Region pseudo parameter offers the most direct and self-contained way to obtain the Region dynamically within the template.</pre>
+        <h4>Reference:</h4>
+        <ul>
+          <li><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/pseudo-parameter-reference.html" target="_blank" rel="noopener noreferrer">CloudFormation Pseudo Parameters</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 192</h3>
+    <p>A company has anapplication that runs across multiple AWS Regions. The application is experiencing performance issues at irregular intervals. A developer must use AWS X-Ray to implement distributed tracing for the application to troubleshoot the root cause of the performance issues. Whatshould the developer do to meet this requirement?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Use the X-Ray console to add annotations for AWS services and user-defined services</label></li>
+      <li><label><input type="checkbox">B: Use Region annotation that X-Ray adds automatically for AWS services Add Region annotation for user-defined services</label></li>
+      <li><label><input type="checkbox">C: Use the X-Ray daemon to add annotations for AWS services and user-defined services</label></li>
+      <li><label><input type="checkbox">D: Use Region annotation that X-Ray adds automatically for user-defined services Configure X-Ray to add Region annotation for AWS services</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-192" class="reveal-toggle">
+      <label for="reveal-192" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: B</h4>
+        <pre>Distributed Tracing with X-Ray: X-Ray helps visualize request paths and identify bottlenecks in applications distributed across Regions.
+Region Annotations (Automatic for AWS Services): X-Ray automatically adds a Region annotation to segments representing calls to AWS services. This aids in tracing cross-Region traffic.
+Region Annotations (Manual for User-Defined): For segments representing calls to user-defined services in different Regions, the developer needs to add the Region annotation manually to enable comprehensive tracing.</pre>
+        <h4>Reference:</h4>
+        <ul>
+          <li><a href="https://aws.amazon.com/xray/" target="_blank" rel="noopener noreferrer">AWSX-Ray</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 193</h3>
+    <p>A company is building a new application that runs on AWS and uses Amazon API Gateway to expose APIs Teams of developers are working on separate components of the application in parallel The company wants to publish an API without an integrated backend so that teams that depend on the application backend can continue the development work before the API backend development is complete. Which solution will meet these requirements?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Create API Gateway resources and set the integration type value to MOCK Configure the method integration request and integration response to associate a response with an HTTP status code Create an API Gateway stage and deploy the API.</label></li>
+      <li><label><input type="checkbox">B: Create an AWS Lambda function that returns mocked responses and various HTTP status codes. Create API Gateway resources and set the integration type value to AWS_PROXY Deploy the API.</label></li>
+      <li><label><input type="checkbox">C: Create an EC2 application that returns mocked HTTP responses Create API Gateway resources and set the integration type value to AWS Create an API Gateway stage and deploy the API.</label></li>
+      <li><label><input type="checkbox">D: Create API Gateway resources and set the integration type value set to HTTP_PROXY. Add mapping templates and deploy the API. Create an AWS Lambda layer that returns various HTTP status codes Associate the Lambda layer with the API deployment</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-193" class="reveal-toggle">
+      <label for="reveal-193" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: A</h4>
+        <pre>API Gateway Mocking: This feature is built for decoupling development dependencies. Here's the process:
+Create resources and methods in your API Gateway.
+Set the integration type to 'MOCK'.
+Define Integration Responses, mapping HTTP status codes to desired mocked responses (JSON, etc.).
+Deployment and Use:
+Create a deployment stage for the API.
+Frontend teams can call this API and get the mocked responses without a real backend.</pre>
+        <h4>Reference:</h4>
+        <ul>
+          <li><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-mock-integration.html" target="_blank" rel="noopener noreferrer">Mocking API Gateway APIs</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 194</h3>
+    <p>A company has anapplication that is hosted on Amazon EC2 instances The application stores objects in an Amazon S3bucket and allows users to download objects from the S3 bucket A developer turns on S3Block Public Access for the S3 bucket After this change, users report errors when they attempt to download objects The developer needs to implement a solution so that only users who are signed in to the application can access objects in the S3 bucket. Which combination of steps will meet these requirements in the MOST secure way? (Select TWO.)</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Create an EC2 instance profile and role with an appropriate policy Associate the role with the EC2 instances</label></li>
+      <li><label><input type="checkbox">B: Create an 1AM user with an appropriate policy. Store the access key ID and secret access key on the EC2 instances</label></li>
+      <li><label><input type="checkbox">C: Modify the application to use the S3 GeneratePresignedUrl API call</label></li>
+      <li><label><input type="checkbox">D: Modify the application to use the S3 GetObject API call and to return the object handle to the user</label></li>
+      <li><label><input type="checkbox">E: Modify the application to delegate requests to the S3 bucket.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-194" class="reveal-toggle">
+      <label for="reveal-194" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: AC</h4>
+        <pre>IAMRoles for EC2 (A): The most secure way to provide AWS permissions from EC2.
+Create a role with a policy allowing s3:GetObject on the specific bucket.
+Attach the role to an instance profile and associate that profile with your instances.
+Pre-signed URLs (C): Temporary, authenticated URLs for specific S3 actions.
+Modify the app to use the AWS SDK tocall GeneratePresignedUrl.
+Embedthese URLs whenauser is properly logged in, allowing download access.</pre>
+        <h4>Reference:</h4>
+        <ul>
+          <li><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html" target="_blank" rel="noopener noreferrer">IAMRoles for EC2</a></li>
+          <li><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/ShareObjectPreSignedURL.htm" target="_blank" rel="noopener noreferrer">Generating Presigned URLs</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 195</h3>
+    <p>AnAWSLambdafunctionrequires read access to an Amazon S3 bucket and requires read/write access to an Amazon DynamoDB table The correct 1AM policy already exists Whatis the MOSTsecure way to grant the Lambda function access to the S3 bucket and the DynamoDBtable?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Attach the existing 1AM policy to the Lambda function.</label></li>
+      <li><label><input type="checkbox">B: Create an 1AM role for the Lambda function Attach the existing 1AM policy to the role Attach the role to the Lambda function</label></li>
+      <li><label><input type="checkbox">C: Create an 1AM user with programmatic access Attach the existing 1AM policy to the user. Add the user access key ID and secret access key as environment variables in the Lambda function.</label></li>
+      <li><label><input type="checkbox">D: Add the AWSaccountroot user access key ID and secret access key as encrypted environment variables in the Lambda function</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-195" class="reveal-toggle">
+      <label for="reveal-195" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: B</h4>
+        <pre>Principle of Least Privilege: Granting specific permissions through an IAM role is more secure than directly attaching policies to a function or using root user credentials.
+IAMRoles for Lambda: Designed to provide temporary credentials to Lambda functions, enhancing security.
+Reusability: The existing IAM policy ensures the correct S3 and DynamoDB access is granted.</pre>
+        <h4>Reference:</h4>
+        <ul>
+          <li><a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html" target="_blank" rel="noopener noreferrer">IAMRoles for Lambda Documentation</a></li>
+          <li><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html" target="_blank" rel="noopener noreferrer">IAMBest Practices</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 196</h3>
+    <p>A developer is designing a serverless application for a game in which users register and log in through a web browser The application makes requests on behalf of users to a set of AWS Lambda functions that run behind an Amazon API Gateway HTTP API The developer needs to implement a solution to register and log in users on the application's sign-in page. The solution must minimize operational overhead and must minimize ongoing management of user identities. Which solution will meet these requirements'?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Create Amazon Cognito user pools for external social identity providers Configure 1AM roles for the identity pools.</label></li>
+      <li><label><input type="checkbox">B: Program the sign-in page to create users' 1AM groups with the 1AM roles attached to the groups</label></li>
+      <li><label><input type="checkbox">C: Create an Amazon RDS for SQL Server DB instance to store the users and manage the permissions to the backend resources in AWS</label></li>
+      <li><label><input type="checkbox">D: Configure the sign-in page to register and store the users and their passwords in an Amazon DynamoDBtable with an attached IAM policy.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-196" class="reveal-toggle">
+      <label for="reveal-196" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: A</h4>
+        <pre>Amazon Cognito User Pools: A managed user directory service, simplifying user registration and login.
+Social Identity Providers: Cognito supports integration with external providers (e.g., Google, Facebook), reducing development effort.
+IAMRoles for Authorization: Cognito-managed IAM roles grant fine-grained access to AWS resources (like Lambda functions).
+Operational Overhead: Cognito minimizes the need to manage user identities and credentials independently.</pre>
+        <h4>Reference:</h4>
+        <ul>
+          <li><a href="https://docs.aws.amazon.com/cognito/" target="_blank" rel="noopener noreferrer">Amazon Cognito Documentation</a></li>
+          <li><a href="https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-app-integration.html" target="_blank" rel="noopener noreferrer">Cognito User Pools for Web Applications</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 197</h3>
+    <p>A developer supports an application that accesses data in an Amazon DynamoDB table. One of the item attributes is expirationDate in the timestamp format. The application uses this attribute to find items, archive them, and remove them from the table based on the timestamp value The application will be decommissioned soon, and the developer must find another way to implement this functionality. The developer needs a solution that will require the least amount of code to write. Which solution will meet these requirements?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Enable TTL on the expirationDate attribute in the table. Create a DynamoDB stream. Create an AWSLambdafunctiontoprocess the deleted items. Create a DynamoDB trigger for the Lambda function.</label></li>
+      <li><label><input type="checkbox">B: Create two AWS Lambda functions one to delete the items and one to process the items Create a DynamoDBstream Use the Deleteltem API operation to delete the items based on the expirationDate attribute Use the GetRecords API operation to get the items from the DynamoDB stream and process them</label></li>
+      <li><label><input type="checkbox">C: Create two AWS Lambda functions, one to delete the items and one to process the items. Create an AmazonEventBndge scheduled rule to invoke the Lambda Functions Use the Deleteltem API operation to delete the items based on the expirationDate attribute. Use the GetRecords API operation to get the items from the DynamoDB table and process them.</label></li>
+      <li><label><input type="checkbox">D: Enable TTL on the expirationDate attribute in the table Specify an Amazon Simple Queue Service (Amazon SQS> dead-letter queue as the target to delete the items Create an AWS Lambda function to process the items</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-197" class="reveal-toggle">
+      <label for="reveal-197" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: A</h4>
+        <pre>TTL for Automatic Deletion: DynamoDB's Time-to-Live effortlessly deletes expired items without manual intervention.
+DynamoDBStream: Captures changes to the table, including deletions of expired items, triggering downstream actions.
+Lambda for Processing: A Lambda function connected to the stream provides custom logic for handling the deleted items.
+Code Efficiency: This solution leverages native DynamoDB features and stream-based processing, minimizing the need for custom code.</pre>
+        <h4>Reference:</h4>
+        <ul>
+          <li><a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html" target="_blank" rel="noopener noreferrer">DynamoDBTTL Documentation</a></li>
+          <li><a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html" target="_blank" rel="noopener noreferrer">DynamoDBStreams Documentation</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 198</h3>
+    <p>A developer is building an ecommerce application that uses multiple AWS Lambda functions. Each function performs a specific step in a customer order workflow, such as order processing and inventory management. The developer must ensure that the Lambda functions run in a specific order. Which solution will meet this requirement with the LEAST operational overhead?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Configure an Amazon Simple Queue Service (Amazon SQS) queue to contain messages about each step a function must perform. Configure the Lambda functions to run sequentially based on the order of messages in the SQS queue.</label></li>
+      <li><label><input type="checkbox">B: Configure an Amazon Simple Notification Service (Amazon SNS) topic to contain notifications about each step a function must perform. Subscribe the Lambda functions to the SNS topic. Use subscription filters based on the step each function must perform.</label></li>
+      <li><label><input type="checkbox">C: Configure an AWS Step Functions state machine to invoke the Lambda functions in a specific order.</label></li>
+      <li><label><input type="checkbox">D: Configure Amazon EventBridge Scheduler schedules to invoke the Lambda functions in a specific order.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-198" class="reveal-toggle">
+      <label for="reveal-198" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: C</h4>
+        <pre>The requirement here is to ensure that Lambda functions are executed in a specific order. AWS Step Functions is a low-code workflow orchestration service that enables you to sequence AWS services, such as AWSLambda, into workflows. It is purpose-built for situations like this, where different steps need to be executed in a strict sequence.
+AWSStepFunctions: Step Functions allows developers to design workflows as state machines, where each state corresponds to a particular function. In this case, the developer can create a Step Functions state machine where each step (order processing, inventory management, etc.) is represented by a Lambda function.
+Operational Overhead: Step Functions have very low operational overhead because it natively handles retries, error handling, and function sequencing.
+Alternatives:
+Amazon SQS(OptionA):While SQS can manage message ordering, it requires more manual handling of each step and the logic to sequentially invoke the Lambda functions.
+Amazon SNS(OptionB):SNS is a pub/sub service and is not designed to handle sequences of Lambda executions.
+EventBridge (Option D): EventBridge Scheduler allows you to invoke Lambda functions based on scheduled times, but it doesn’t directly support sequencing based on workflow logic.
+Therefore, AWS Step Functions is the most appropriate solution due to its native orchestration capabilities and minimal operational complexity.</pre>
+        <h4>Reference:</h4>
+        <ul>
+          <li>AWSStepFunctions documentation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 199</h3>
+    <p>A company runs a new application on AWSElasticBeanstalk. The company needs to deploy updates to the application. The updates must not cause any downtime for application users. The deployment must forward a specified percentage of incoming client traffic to a new application version during an evaluation period. Which deployment type will meet these requirements?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Rolling</label></li>
+      <li><label><input type="checkbox">B: Traffic-splitting</label></li>
+      <li><label><input type="checkbox">C: In-place</label></li>
+      <li><label><input type="checkbox">D: Immutable</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-199" class="reveal-toggle">
+      <label for="reveal-199" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: B</h4>
+        <pre>AWSElastic Beanstalk supports several deployment policies, and in this case, the requirement is to forward a specific percentage of traffic to the new version without causing downtime. The Traffic-splitting deployment policy is the most appropriate choice.
+Traffic-splitting Deployment: This deployment method allows you to gradually shift a specified percentage of incoming traffic from the old environment version to the new one. During the evaluation period, if any issues are detected, the traffic can be redirected back to the old version.
+NoDowntime:This methodensures no downtime since both versions of the application run concurrently, and traffic is split between them.
+Alternatives:
+Rolling deployments (Option A): These gradually replace instances but may result in partial downtimeif some instances fail during deployment.
+In-place deployments (Option C): In-place deployments replace instances without creating new ones, which can lead to downtime.
+Immutable deployments (Option D): While this ensures no downtime by creating entirely new instances, it doesn't provide traffic splitting during the evaluation phase.</pre>
+        <h4>Reference:</h4>
+        <ul>
+          <li>Elastic Beanstalk Deployment Policies</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 200</h3>
+    <p>A developer needs to retrieve all data from an Amazon DynamoDB table that matches a particular partition key. Which solutions will meet this requirement in the MOST operationally efficient way? (Select TWO.)</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Use the Scan API and a filter expression to match on the key.</label></li>
+      <li><label><input type="checkbox">B: Use the GetItem API with a request parameter for key that contains the partition key name and specific key value.</label></li>
+      <li><label><input type="checkbox">C: Use the ExecuteStatement API and a filter expression to match on the key.</label></li>
+      <li><label><input type="checkbox">D: Use the GetItem API and a PartiQL statement to match on the key.</label></li>
+      <li><label><input type="checkbox">E: Use the ExecuteStatement API and a PartiQL statement to match on the key.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-200" class="reveal-toggle">
+      <label for="reveal-200" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: B, E</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 201</h3>
+    <p>A company has awebapplication that contains an Amazon API Gateway REST API. A developer has created an AWS CloudFormation template for the initial deployment of the application. The developer has deployed the application successfully as part of an AWS CodePipeline continuous integration and continuous delivery (CI/CD) process. All resources and methods are available through the deployed stage endpoint. The CloudFormation template contains the following resource types: • AWS::ApiGateway::RestApi • AWS::ApiGateway::Resource • AWS::ApiGateway::Method • AWS:ApiGateway::Stage • AWS::ApiGateway:;Deployment The developer adds a new resource to the REST API with additional methods and redeploys the template. CloudFormation reports that the deployment is successful and that the stack is in the UPDATE_COMPLETE state. However, calls to all new methods are returning 404 (Not Found) errors. Whatshould the developer do to make the new methods available?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Specify the disable-rollback option during the update-stack operation.</label></li>
+      <li><label><input type="checkbox">B: Unset the Cloud Forma lion stack failure options.</label></li>
+      <li><label><input type="checkbox">C: Add anAWSCodeBuild stage lo CodePipeline to run the aws apigateway create-deployment AWS CLI command.</label></li>
+      <li><label><input type="checkbox">D: Add anaction toCodePipeline to run the aws cloudfront create-invalidation AWS CLI command.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-201" class="reveal-toggle">
+      <label for="reveal-201" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: C</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 202</h3>
+    <p>A company is developing an application that will be accessed through the Amazon API Gateway REST API. Registered users should be the only ones who can access certain resources of this API. The token being used should expire automatically and needs to be refreshed periodically. Howcanadeveloper meetthese requirements?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Create an Amazon Cognito identity pool, configure the Amazon Cognito Authorizer in API Gateway, and use the temporary credentials generated by the identity pool.</label></li>
+      <li><label><input type="checkbox">B: Create and maintain a database record for each user with a corresponding token and use an AWS Lambda authorizer in API Gateway.</label></li>
+      <li><label><input type="checkbox">C: Create an Amazon Cognito user pool, configure the Cognito Authorizer in API Gateway, and use the identity or access token.</label></li>
+      <li><label><input type="checkbox">D: Create an 1AM user for each API user, attach an invoke permissions policy to the API. and use an I AMauthorizer in API Gateway.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-202" class="reveal-toggle">
+      <label for="reveal-202" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: C</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 203</h3>
+    <p>A developer manages a website that distributes its content by using Amazon CloudFront. The website's static artifacts are stored in an Amazon S3 bucket. The developer deploys some changes and can see the new artifacts in the S3 bucket. However, the changes do not appear on the webpage that the CloudFront distribution delivers. Howshould the developer resolve this issue?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Configure S3 Object Lock to update to the latest version of the files every time an S3 object is updated.</label></li>
+      <li><label><input type="checkbox">B: Configure the S3 bucket to clear all old objects from the bucket before new artifacts are uploaded.</label></li>
+      <li><label><input type="checkbox">C: Set CloudFront to invalidate the cache after the artifacts have been deployed to Amazon S3.</label></li>
+      <li><label><input type="checkbox">D: Set CloudFront to modify the distribution origin after the artifacts have been deployed to Amazon S3.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-203" class="reveal-toggle">
+      <label for="reveal-203" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: C</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 204</h3>
+    <p>A company hadanAmazonRDSforMySQLDBinstance thatwas namedmysql-db. The DB instance was deleted within the past 90 days. A developer needs to find which 1AM user or role deleted the DBinstance in the AWS environment. Which solution will provide this information?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Retrieve the AWS CloudTrail events for the resource mysql-db where the event name is DeleteDBInstance. Inspect each event.</label></li>
+      <li><label><input type="checkbox">B: Retrieve the Amazon CloudWatch log events from the most recent log stream within the rds/mysql-db log group. Inspect the log events.</label></li>
+      <li><label><input type="checkbox">C: Retrieve the AWS X-Ray trace summaries. Filter by services with the name mysql-db. Inspect the ErrorRootCauses values within each summary.</label></li>
+      <li><label><input type="checkbox">D: Retrieve the AWS Systems Manager deletions inventory Filter the inventory by deletions that have a TypeName value of RDS. Inspect the deletion details.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-204" class="reveal-toggle">
+      <label for="reveal-204" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: A</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 205</h3>
+    <p>A company is using an Amazon API Gateway RESTAPI endpoint as a webhook to publish events from an on-premises source control management (SCM) system to Amazon EventBridge. The company has configured an EventBridge rule to listen for the events and to control application deployment in a central AWS account. The company needs to receive the same events across multiple receiver AWS accounts. Howcanadeveloper meetthese requirements without changing the configuration of the SCM system?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Deploy the API Gateway REST API to all the required AWS accounts. Use the same custom domain namefor all the gateway endpoints so that a single SCM webhook can be used for all events from all accounts.</label></li>
+      <li><label><input type="checkbox">B: Deploy the API Gateway REST API to all the receiver AWS accounts. Create as many SCM webhooks as the number of AWSaccounts.</label></li>
+      <li><label><input type="checkbox">C: Grant permission to the central AWS account for EventBridge to access the receiver AWS accounts. Add anEventBridge event bus on the receiver AWS accounts as the targets to the existing EventBridge rule.</label></li>
+      <li><label><input type="checkbox">D: Convert the API Gateway type from REST API to HTTP API.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-205" class="reveal-toggle">
+      <label for="reveal-205" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: C</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 206</h3>
+    <p>A developer is creating AWS CloudFormation templates to manage an application's deployment in Amazon Elastic Container Service (Amazon ECS) through AWS CodeDeploy. The developer wants to automatically deploy new versions of the application to a percentage of users before the new version becomes available for all users. Howshould the developer manage the deployment of the new version?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Modify the CloudFormation template to include a Transform section and the AWS::CodeDeploy::BlueGreen hook.</label></li>
+      <li><label><input type="checkbox">B: Deploy the new version in a new CloudFormation stack. After testing is complete, update the application's DNS records for the new stack.</label></li>
+      <li><label><input type="checkbox">C: Run CloudFormation stack updates on the application stack to deploy new application versions whenthey are available.</label></li>
+      <li><label><input type="checkbox">D: Create a nested stack for the new version. Include a Transform section and the AWS::CodeDeploy::BlueGreen hook.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-206" class="reveal-toggle">
+      <label for="reveal-206" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: A</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 207</h3>
+    <p>A developer is building a highly secure healthcare application using serverless components. This application requires writing temporary data to /Imp storage on an AWS Lambda function. Howshould the developer encrypt this data?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Enable Amazon EBS volume encryption with an AWS KMS key in the Lambda function configuration so that all storage attached to the Lambda function is encrypted.</label></li>
+      <li><label><input type="checkbox">B: Set up the Lambda function with a role and key policy to access an AWS KMS key. Use the key to generate a data key used to encrypt all data prior to writing to Amp storage.</label></li>
+      <li><label><input type="checkbox">C: Use OpenSSL to generate a symmetric encryption key on Lambda startup. Use this key to encrypt the data prior to writing to /tmp.</label></li>
+      <li><label><input type="checkbox">D: Use an on-premises hardware security module (HSM) to generate keys, where the Lambda function requests a data key from the HSM and uses that to encrypt data on all requests to the function.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-207" class="reveal-toggle">
+      <label for="reveal-207" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: B</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 208</h3>
+    <p>A developer is creating an AWS Serverless Application Model (AWS SAM) template. The AWS SAM template contains the definition of multiple AWS Lambda functions, an Amazon S3 bucket, and an Amazon CtoudFront distribution. One of the Lambda functions runs on Lambda@Edge in the CloudFront distribution. The S3 bucket is configured as an origin for the CloudFront distribution. Whenthedeveloper deploys the AWS SAM template in the eu-west-1 Region, the creation of the stack fails. Which of the following could be the reason for this issue?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: CloudFront distributions can be created only in the us-east-1 Region.</label></li>
+      <li><label><input type="checkbox">B: Lambda@Edge functions can be created only in the us-east-1 Region.</label></li>
+      <li><label><input type="checkbox">C: A single AWS SAMtemplate cannot contain multiple Lambda functions.</label></li>
+      <li><label><input type="checkbox">D: The CloudFront distribution and the S3 bucket cannot be created in the same Region.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-208" class="reveal-toggle">
+      <label for="reveal-208" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: B</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 209</h3>
+    <p>A developer has written a distributed application that uses micro services. The microservices are running on Amazon EC2 instances. Because of message volume, the developer is unable to match log output from each microservice to a specific transaction. The developer needs to analyze the message f lowtodebug the application. Which combination of steps should the developer take to meet this requirement? (Select TWO.)</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Download the AWSX-Ray daemon. Install the daemon on an EC2 instance. Ensure that the EC2 instance allows UDP traffic on port 2000.</label></li>
+      <li><label><input type="checkbox">B: Configure an interface VPC endpoint to allow traffic to reach the global AWS X-Ray daemon on TCP port 2000.</label></li>
+      <li><label><input type="checkbox">C: Enable AWS X-Ray. Configure Amazon CloudWatch to push logs to X-Ray.</label></li>
+      <li><label><input type="checkbox">D: Add the AWSX-Ray software development kit (SDK) to the microservices. Use X-Ray to trace requests that each microservice makes.</label></li>
+      <li><label><input type="checkbox">E: Set up Amazon CloudWatch metric streams to collect streaming data from the microservices.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-209" class="reveal-toggle">
+      <label for="reveal-209" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: A, D</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 210</h3>
+    <p>A developer is building an application that uses Amazon DynamoDB. The developer wants to retrieve multiple specific items from the database with a single API call. Which DynamoDB API call will meet these requirements with the MINIMUM impact on the database?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: BatchGetltem</label></li>
+      <li><label><input type="checkbox">B: Getltem</label></li>
+      <li><label><input type="checkbox">C: Scan</label></li>
+      <li><label><input type="checkbox">D: Query</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-210" class="reveal-toggle">
+      <label for="reveal-210" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: A</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 211</h3>
+    <p>Anapplication stores user data in Amazon S3 buckets in multiple AWS Regions. A developer needs to implement a solution that analyzes the user data in the S3 buckets to find sensitive information. The analysis findings from all the S3 buckets must be available in the eu-west-2 Region. Which solution will meet these requirements with the LEAST development effort?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Create an AWS Lambda function to generate findings. Program the Lambda function to send the f indings to another S3 bucket in eu-west-2.</label></li>
+      <li><label><input type="checkbox">B: Configure Amazon Made togenerate findings. Use Amazon EventBridge to create rules that copy the findings to eu-west-2.</label></li>
+      <li><label><input type="checkbox">C: Configure Amazon Inspector to generate findings. Use Amazon EventBridge to create rules that copy the findings to eu-west-2.</label></li>
+      <li><label><input type="checkbox">D: Configure Amazon Macie to generate findings and to publish the findings to AWS CloudTrail. Use a CloudTrail trail to copy the results to eu-west-2.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-211" class="reveal-toggle">
+      <label for="reveal-211" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: B</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 212</h3>
+    <p>A company uses AmazonDynamoDBasadatastore for its order management system. The company frontend application stores orders in a DynamoDB table. The DynamoDB table is configured to send change events to a DynamoDB stream. The company uses an AWS Lambda function to log and process the incoming orders based on data from the DynamoDB stream. Anoperational review reveals that the order quantity of incoming orders is sometimes set to 0. A developer needs to create a dashboard that will show how many unique customers this problem affects each day. Whatshould the developer do to implement the dashboard?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Grant the Lambda function's execution role permissions to upload logs to Amazon CloudWatch Logs. Implement a CloudWatch Logs Insights query that selects the number of unique customers for orders with order quantity equal to 0 and groups the results in 1-day periods. Add the CloudWatch Logs Insights query to a CloudWatch dashboard.</label></li>
+      <li><label><input type="checkbox">B: Use Amazon Athena to query AWSCtoudTrail API logs for API calls. Implement an Athena query that selects the number of unique customers for orders with order quantity equal to 0 and groups the results in 1-day periods. Add the Athena query to an Amazon CloudWatch dashboard.</label></li>
+      <li><label><input type="checkbox">C: Configure the Lambda function to send events to Amazon EventBridge. Create an EventBridge rule that groups the number of unique customers for orders with order quantity equal to 0 in 1-day periods. Add a CloudWatch dashboard as the target of the rule.</label></li>
+      <li><label><input type="checkbox">D: Turn on custom Amazon CloudWatch metrics for the DynamoDB stream of the DynamoOB table. Create a CloudWatch alarm that groups the number of unique customers for orders with order quantity equal to 0 in 1-day periods. Add the CloudWatch alarm to a CloudWatch dashboard.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-212" class="reveal-toggle">
+      <label for="reveal-212" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: A</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 213</h3>
+    <p>A developer has created an AWS Lambda function to provide notification through Amazon Simple Notification Service (Amazon SNS) whenever a file is uploaded to Amazon S3 that is larger than 50 MB. The developer has deployed and tested the Lambda function by using the CLI. However, when the event notification is added to the S3 bucket and a 3.000 MB file is uploaded, the Lambda function does not launch. Which of the following Is a possible reason for the Lambda function's inability to launch?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: The S3 event notification does not activate for files that are larger than 1.000 MB.</label></li>
+      <li><label><input type="checkbox">B: The resource-based policy for the Lambda function does not have the required permissions to be invoked by Amazon S3.</label></li>
+      <li><label><input type="checkbox">C: Lambda functions cannot be invoked directly from an S3 event.</label></li>
+      <li><label><input type="checkbox">D: The S3 bucket needs to be made public.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-213" class="reveal-toggle">
+      <label for="reveal-213" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: B</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 214</h3>
+    <p>A developer is creating an application that must transfer expired items from Amazon DynamoDB to Amazon S3. The developer sets up the DynamoDB table to automatically delete items after a specific TTL. The application must process the items in DynamoDB and then must store the expired items in Amazon S3. The entire process, including item processing and storage in Amazon S3, will take 5 minutes. Which solution will meet these requirements with the LEAST operational overhead?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Configure DynamoDB Accelerator (DAX) lo query for expired items based on the TTL Save the results to Amazon S3.</label></li>
+      <li><label><input type="checkbox">B: Configure DynamoDB Streams to invoke an AWS Lambda function. Program the Lambda function to process the items and to store the expired items in Amazon S3.</label></li>
+      <li><label><input type="checkbox">C: Deploy a custom application on an Amazon Elastic Container Service (Amazon ECS) cluster on Amazon EC2instances. Program the custom application to process the items and to store the expired items in Amazon S3.</label></li>
+      <li><label><input type="checkbox">D: Create an Amazon EventBridge rule to invoke an AWS Lambda function. Program the Lambda function to process The items and to store the expired items in Amazon S3.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-214" class="reveal-toggle">
+      <label for="reveal-214" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: B</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 215</h3>
+    <p>Anapplication ingests data from an Amazon Kinesis data stream. The shards in the data stream are set for normal traffic. During tests for peak traffic, the application ingests data slowly. A developer needs to adjust the data stream to handle the peak traffic. Whatshould the developer do to meet this requirement MOST cost-effectively?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Install the Kinesis Producer Library {KPL) to ingest data into the data stream.</label></li>
+      <li><label><input type="checkbox">B: Switch to on-demand capacity mode for the data stream. Specify a partition key when writing data to the data stream.</label></li>
+      <li><label><input type="checkbox">C: Decrease the amount of time that data is kept in the data stream by using the DecreaseStreamRetention Period API operation.</label></li>
+      <li><label><input type="checkbox">D: Increase the shard count in the data stream by using the UpdateShardCount API operation.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-215" class="reveal-toggle">
+      <label for="reveal-215" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: D</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 216</h3>
+    <p>A company has anapplication that is deployed on AWS Elastic Beanstalk. The application generates user-specific PDFs and stores the PDFs in an Amazon S3 bucket. The application then uses Amazon Simple Email Service (Amazon SES) to send the PDFs by email to subscribers. Users no longer access the PDFs 90 days after the PDFs are generated. The S3 bucket is not versioned and contains many obsolete PDFs. A developer must reduce the number of files in the S3 bucket by removing PDFs that are older than 90 days. Which solution will meet this requirement with the LEAST development effort?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Update the application code. In the code, add a rule to scan all the objects in the S3 bucket every day and to delete objects after 90 days.</label></li>
+      <li><label><input type="checkbox">B: Create an AWS Lambda function. Program the Lambda function to scan all the objects in the S3 bucket every day and to delete objects after 90 days.</label></li>
+      <li><label><input type="checkbox">C: Create an S3 Lifecycle rule for the S3 bucket to expire objects after 90 days.</label></li>
+      <li><label><input type="checkbox">D: Partition the S3 objects with a <year>/<month>/<day> key prefix. Create an AWS Lambda function to remove objects that have prefixes that have reached the expiration date.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-216" class="reveal-toggle">
+      <label for="reveal-216" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: C</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 217</h3>
+    <p>A company runs anecommerce application on AWS. The application stores data in an Amazon Aurora database. A developer is adding a caching layer to the application. The caching strategy must ensure that the application always uses the most recent value for each data item. Which caching strategy will meet these requirements?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Implement a TTL strategy for every item that is saved in the cache.</label></li>
+      <li><label><input type="checkbox">B: Implement a write-through strategy for every item that is created and updated.</label></li>
+      <li><label><input type="checkbox">C: Implement a lazy loading strategy for every item that is loaded.</label></li>
+      <li><label><input type="checkbox">D: Implement a read-through strategy for every item that is loaded.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-217" class="reveal-toggle">
+      <label for="reveal-217" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: B</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 218</h3>
+    <p>A developer is monitoring an application that runs on an Amazon EC2 Instance. The developer has configured a custom Amazon CloudWatch metric with data granularity of 1 second. It any issues occur, the developer wants to be notified within 30 seconds by Amazon Simple Notification Service (Amazon SNS). Whatshould the developer do to meet this requirement?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Configure a high-resolution CloudWatch alarm.</label></li>
+      <li><label><input type="checkbox">B: Set up a custom CloudWatch dashboard.</label></li>
+      <li><label><input type="checkbox">C: Use Amazon CloudWatch Logs Insights.</label></li>
+      <li><label><input type="checkbox">D: Change to a default CloudWatch metric.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-218" class="reveal-toggle">
+      <label for="reveal-218" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: A</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 219</h3>
+    <p>A company is developing a serverless application that requires storage of sensitive API keys as environment variables for various services. The application requires the automatic rotation of the encryption keys every year. Which solution will meet these requirements with no development effort?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Encrypt the environment variables by using AWS Secrets Manager. Set up automatic rotation in Secrets Manager.</label></li>
+      <li><label><input type="checkbox">B: Encrypt the environment variables by using AWS Key Management Service (AWS KMS) customer managed keys. Enable automatic key rotation.</label></li>
+      <li><label><input type="checkbox">C: Encrypt the environment variables by using AWS Key Management Service (AWS KMS) AWS managed keys. Configure a custom AWS Lambda function to automate key rotation.</label></li>
+      <li><label><input type="checkbox">D: Encrypt the environment variables by using AWS Systems Manager Parameter Store. Set up automatic rotation in Parameter Store.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-219" class="reveal-toggle">
+      <label for="reveal-219" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: A</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 220</h3>
+    <p>A developer needs to use a code template to create an automated deployment of an application onto Amazon EC2instances. The template must be configured to repeat deployment, installation, and updates of resources for the application. The template must be able to create identical environments and roll back to previous versions. Which solution will meet these requirements?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Use AWSAmplify for automatic deployment templates. Use a traffic-splitting deployment to copy any deployments. Modify any resources created by Amplify, if necessary.</label></li>
+      <li><label><input type="checkbox">B: Use AWSCodeBuild for automatic deployment. Upload the required AppSpec file template. Save the appspec.yml file in the root directory folder of the revision. Specify the deployment group that includes the EC2 instances for the deployment.</label></li>
+      <li><label><input type="checkbox">C: Use AWSCloudFormation to create an infrastructure template in JSON format to deploy the EC2 instances. Use Cloud Formation helper scripts to install the necessary software and to start the application. Call the scripts directly from the template.</label></li>
+      <li><label><input type="checkbox">D: Use AWSAppSynctodeploy the application. Upload the template as a GraphQL schema. Specify the EC2 instances for deployment of the application. Use resolvers as a version control mechanism and to make any updates to the deployments.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-220" class="reveal-toggle">
+      <label for="reveal-220" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: C</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 221</h3>
+    <p>A company uses AWSX-Ray tomonitor a serverless application. The components of the application have different request rates. The user interactions and transactions are important to trace, but they are low in volume. The background processes such as application health checks, polling, and connection maintenance generate high volumes of read-only requests. Currently, the default X-Ray sampling rules are universal for all requests. Only the first request per second and some additional requests are recorded. This setup is not helping the company review the requests based on service or request type. A developer must configure rules to trace requests based on service or request properties. The developer must trace the user interactions and transactions without wasting effort recording minor background tasks. Which solution will meet these requirements?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Disable sampling for high-volume read-only requests. Sample at a lower rate for all requests that handle user interactions or transactions.</label></li>
+      <li><label><input type="checkbox">B: Disable sampling and trace all requests for requests that handle user interactions or transactions. Sample high-volume read-only requests at a higher rate.</label></li>
+      <li><label><input type="checkbox">C: Disable sampling and trace all requests for requests that handle user interactions or transactions. Sample high-volume read-only requests at a lower rate.</label></li>
+      <li><label><input type="checkbox">D: Disable sampling for high-volume read-only requests. Sample at a higher rate for all requests that handle user interactions or transactions.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-221" class="reveal-toggle">
+      <label for="reveal-221" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: C</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 222</h3>
+    <p>A company has aserverless application that uses Amazon API Gateway backed by AWS Lambda proxy integration. The company is developing several backend APIs. The company needs a landing page to provide an overview of navigation to the APIs. A developer creates a new /LandingPage resource and a new GET method that uses mock integration. Whatshould the developer do next to meet these requirements?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Configure the integration request mapping template with Content-Type of text/html and statusCode of 200. Configure the integration response mapping template with Content-Type of application/json. In the integration response mapping template, include the LandingPage HTML code that references the APIs.</label></li>
+      <li><label><input type="checkbox">B: Configure the Integration request mapping template with Content-Type of application/json. In the integration request mapping template, include the LandingPage HMTL code that references the APIs. Configure the integration response mapping template with Content-Type of text/html and statusCode of 200.</label></li>
+      <li><label><input type="checkbox">C: Configure the integration request mapping template with Content-Type of application/json and statusCode of 200. Configure the integration response mapping template with Content-Type of text/html. In the integration response mapping template, include the LandingPage HTML code that references the APIs.</label></li>
+      <li><label><input type="checkbox">D: Configure the integration request mapping template with Content-Type of text/html. In the integration request mapping template, include the LandingPage HTML code that references the APIs. Configure the integration response mapping template with Content-Type of application/json and statusCode of 200.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-222" class="reveal-toggle">
+      <label for="reveal-222" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: C</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 223</h3>
+    <p>A developer is setting up infrastructure by using AWS Cloud Formation. If an error occurs when the resources described in the CloudFormation template are provisioned, successfully provisioned resources must be preserved. The developer must provision and update the CloudFormation stack by using the AWS CLI. Which solution will meet these requirements?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Add an--enable-terminal ion-protection command line option to the create-stack command and the update-stack command.</label></li>
+      <li><label><input type="checkbox">B: Add a-disable-roll back command line option to the create-stack command and the update-stack command</label></li>
+      <li><label><input type="checkbox">C: Add a—parameters ParameterKey=P reserve Resources. ParameterVaIue=True command line option to the create-stack command and the update-stack command.</label></li>
+      <li><label><input type="checkbox">D: Add a-tags Key=PreserveResources.VaIue=True command line option to the create-stack commandandthe update-stack command.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-223" class="reveal-toggle">
+      <label for="reveal-223" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: B</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 224</h3>
+    <p>A developer is receiving HTTP 400: ThrottlingException errors intermittently when calling the Amazon CloudWatch API. When a call fails, no data is retrieved. Whatbest practice should first be applied to address this issue?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Contact AWS Support for a limit increase.</label></li>
+      <li><label><input type="checkbox">B: Use the AWSCLI to getthe metrics.</label></li>
+      <li><label><input type="checkbox">C: Analyze the applications and remove the API call.</label></li>
+      <li><label><input type="checkbox">D: Retry the call with exponential backoff.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-224" class="reveal-toggle">
+      <label for="reveal-224" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: D</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 225</h3>
+    <p>A developer needs to troubleshoot an AWS Lambda function in a development environment. The Lambda function is configured in VPC mode and needs to connect to an existing Amazon RDS for SOL Server DB instance. The DB instance is deployed in a private subnet and accepts connections by using port 1433. Whenthedeveloper tests the function, the function reports an error when it tries to connect to the database. Which combination of steps should the developer take to diagnose this issue? (Select TWO.)</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Check that the function's security group has outbound access on port 1433 to the DB instance's security group. Check that the DB instance's security group has inbound access on port 1433 from the function's security group.</label></li>
+      <li><label><input type="checkbox">B: Check that the function's security group has Inbound access on port 1433 from the DB Instance's security group. Check that the DB instance's security group has outbound access on port 1433 to the function's security group.</label></li>
+      <li><label><input type="checkbox">C: Check that the VPC is set up for a NAT gateway. Check that the DB instance has the public access option turned on.</label></li>
+      <li><label><input type="checkbox">D: Check that the function's execution role permissions include rds:DescribeDBInstances, rds: ModifyDB Instance, and rds:DescribeDBSecurityGroups for the DB instance.</label></li>
+      <li><label><input type="checkbox">E: Check that the function's execution rote permissions include ec2: CreateNetworklnterface. ec2: DescribeNetworklnterfaces. and ec2: DeleteNetworklnterface.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-225" class="reveal-toggle">
+      <label for="reveal-225" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: A, E</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 226</h3>
+    <p>A developer is building an application on AWS. The application has an Amazon API Gateway API that sends requests to an AWS Lambda function. The API is experiencing increased latency because the Lambda function has limited available CPU to fulfill the requests. Before the developer deploys the API into production, the developer must configure the Lambda function to have more CPU. Which solution will meet this requirement?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Increase the virtual CPU (vCPU) cores quota of the Lambda function.</label></li>
+      <li><label><input type="checkbox">B: Increase the amount of memory that is allocated to the Lambda function.</label></li>
+      <li><label><input type="checkbox">C: Increase the ephemeral storage size of the Lambda function.</label></li>
+      <li><label><input type="checkbox">D: Increase the timeout value of the Lambda function.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-226" class="reveal-toggle">
+      <label for="reveal-226" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: B</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 227</h3>
+    <p>A company caches session information for a web application in an Amazon DynamoDB table. The company wants an automated way to delete old items from the table. Whatis the simplest way to do this?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Write a script that deletes old records; schedule the script as a cron job on an Amazon EC2 instance.</label></li>
+      <li><label><input type="checkbox">B: Add anattribute with the expiration time; enable the Time To Live feature based on that attribute.</label></li>
+      <li><label><input type="checkbox">C: Each day, create a new table to hold session data; delete the previous day's table.</label></li>
+      <li><label><input type="checkbox">D: Add anattribute with the expiration time; name the attribute ItemExpiration.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-227" class="reveal-toggle">
+      <label for="reveal-227" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: B</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 228</h3>
+    <p>A company requires that all applications running on Amazon EC2 use 1AM roles to gam access to AWSservices. A developer is modifying an application that currently relies on 1AM user access keys stored in environment variables to access Amazon DynamoDB tables using boto, the AWS SDK for Python. The developer associated a role with the same permissions as the 1AM user to the EC2 instance, then deleted the 1AM user. When the application was restarted, the AWS Access Denied Exception messages started appearing in the application logs. The developer was able to use their personal account on the server to run DynamoDB API commands using the AWS CLI. Whatis the MOSTlikely cause of the exception?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: 1AMpolicies might take a few minutes to propagate to resources.</label></li>
+      <li><label><input type="checkbox">B: Disabled environment variable credentials are still being used by the application.</label></li>
+      <li><label><input type="checkbox">C: The AWSSDKdoesnotsupportcredentials obtained using an instance role.</label></li>
+      <li><label><input type="checkbox">D: The instance's security group does not allow access to http://169.254.169.254.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-228" class="reveal-toggle">
+      <label for="reveal-228" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: B</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 229</h3>
+    <p>A developer wants the ability to roll back to a previous version of an AWS Lambda function in the event of errors caused by a new deployment. How can the developer achieve this with MINIMAL impact on users?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Change the application to use an alias that points to the current version. Deploy the new version of the code Update the alias to use the newly deployed version. If too many errors are encountered, point the alias back to the previous version.</label></li>
+      <li><label><input type="checkbox">B: Change the application to use an alias that points to the current version. Deploy the new version of the code. Update the alias to direct 10% of users to the newly deployed version. If too many errors are encountered, send 100% of traffic to the previous version</label></li>
+      <li><label><input type="checkbox">C: Do notmake any changes to the application. Deploy the new version of the code. If too many errors are encountered, point the application back to the previous version using the version number in the Amazon Resource Name (ARN).</label></li>
+      <li><label><input type="checkbox">D: Create three aliases: new, existing, and router. Point the existing alias to the current version. Have the router alias direct 100% of users to the existing alias. Update the application to use the router alias. Deploy the new version of the code. Point the new alias to this version. Update the router alias to direct 10% of users to the new alias. If too many errors are encountered, send 100% of traffic to the existing alias.</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-229" class="reveal-toggle">
+      <label for="reveal-229" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: A</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="question-container">
+    <h3 class="question-title">Question 230</h3>
+    <p>A company has anonline web application that includes a product catalog. The catalog is stored in an Amazon S3bucket that is named DOC-EXAMPLE-BUCKET. The application must be able to list the objects in the S3 bucket and must be able to download objects through an 1AM policy. Which policy allows MINIMUM access to meet these requirements?</p>
+    <ul class="options-list">
+      <li><label><input type="checkbox">A: Option A</label></li>
+      <li><label><input type="checkbox">B: Option B</label></li>
+      <li><label><input type="checkbox">C: Option C</label></li>
+      <li><label><input type="checkbox">D: Option D</label></li>
+    </ul>
+    <div class="reveal-container">
+      <input type="checkbox" id="reveal-230" class="reveal-toggle">
+      <label for="reveal-230" class="reveal-label">Reveal Answer</label>
+      <div class="answer-content">
+        <h4>Answer: A</h4>
+        <pre></pre>
+        
+      </div>
+    </div>
+  </div>
+
+</body>
+</html></ul>

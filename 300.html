@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AWS Questions</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+      line-height: 1.6;
+      color: #333;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    .question-container {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .question-container h3 {
+      margin-top: 0;
+      color: #0056b3;
+    }
+    .answers .answer-option {
+      margin-bottom: 10px;
+    }
+    .answers label {
+      margin-left: 8px;
+      cursor: pointer;
+    }
+    .correct-answer-reveal {
+      display: none;
+      margin-top: 15px;
+      padding: 10px;
+      background-color: #e9f7ef;
+      border: 1px solid #5cb85c;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .answer-option label.correct {
+      color: #2b9348;
+      font-weight: bold;
+    }
+    .answer-option label.incorrect {
+      color: #d9534f;
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>AWS Developer Associate Questions</h1>
+
+  <div class="question-container" data-correct-answer="D">
+    <h3>Question 231</h3>
+    <p>A developer is building an application that uses an AWS Lambda function to process data. The application requires minimum latency. The Lambda function must have predictable function start times. All setup activities for the execution environment must happen before invocation of the Lambda function. Which solution will meet these requirements?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q231_a" value="A"><label for="q231_a">A: Increase the memory of the Lambda function to the maximum amount. Configure an Amazon EventBridge rule to schedule invocations of the Lambda function every minute to keep the execution environment active.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q231_b" value="B"><label for="q231_b">B: Optimize the static initialization code that runs when a new execution environment is prepared for the first time. Decrease and compress the size of the Lambda function package and the imported libraries and dependencies.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q231_c" value="C"><label for="q231_c">C: Increase the reserved concurrency of the Lambda function to the maximum value for unreserved account concurrency. Run any setup activities manually before the initial invocation of the Lambda function.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q231_d" value="D"><label for="q231_d">D: Publish a new version of the Lambda function. Configure provisioned concurrency for the Lambda function with the required minimum number of execution environments.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: D</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="B">
+    <h3>Question 232</h3>
+    <p>A company uses anAWSLambdafunctiontotransfer files from an Amazon S3 bucket to the company's SFTP server. The Lambda function connects to the SFTP server by using credentials such as username and password. The company uses Lambda environment variables to store these credentials. A developer needs to implement encrypted username and password credentials. Which solution will meet these requirements?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q232_a" value="A"><label for="q232_a">A: Remove the user credentials from the Lambda environment. Implement 1AM database authentication.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q232_b" value="B"><label for="q232_b">B: Move the user credentials from Lambda environment variables to AWS Systems Manager Parameter Store.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q232_c" value="C"><label for="q232_c">C: Move the user credentials from Lambda environment variables to AWS Key Management Service (AWS KMS).</label></div>
+    <div class="answer-option"><input type="checkbox" id="q232_d" value="D"><label for="q232_d">D: Move the user credentials from the Lambda environment to an encrypted .txt file. Store the file in an S3bucket.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: B</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="A">
+    <h3>Question 233</h3>
+    <p>A developer is building a microservice that uses AWS Lambda to process messages from an Amazon Simple Queue Service (Amazon SQS) standard queue. The Lambda function calls external APIs to enrich the SOS message data before loading the data into an Amazon Redshift data warehouse. The SOS queue musthandle a maximum of1.000 messages per second. During initial testing, the Lambda function repeatedly inserted duplicate data into the Amazon Redshift table. The duplicate data led to a problem with data analysis. All duplicate messages were submitted to the queue within 1 minute of each other. Howshould the developer resolve this issue?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q233_a" value="A"><label for="q233_a">A: Create an SOS FIFO queue. Enable message deduplication on the SOS FIFO queue.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q233_b" value="B"><label for="q233_b">B: Reduce the maximum Lambda concurrency that the SOS queue can invoke.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q233_c" value="C"><label for="q233_c">C: Use Lambda's temporary storage to keep track of processed message identifiers.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q233_d" value="D"><label for="q233_d">D: Configure a message group ID for every sent message. Enable message deduplication on the SQS standard queue.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: A</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="A,E">
+    <h3>Question 234</h3>
+    <p>A company launched an online portal to announce a new product that the company will release in 6 months. The portal requests that users enter an email address to receive communications about the product. The company needs to create a REST API that will store the email addresses in Amazon DynamoDB. A developer has created an AWS Lambda function that can store the email addresses. The developer will deploy the Lambda function by using the AWS Serverless Application Model (AWS SAM). The developer must provide access to the Lambda function over HTTP. Which solutions will meet these requirements with the LEAST additional configuration? (Select TWO.)</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q234_a" value="A"><label for="q234_a">A: Expose the Lambda function by using function URLs.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q234_b" value="B"><label for="q234_b">B: Expose the Lambda function by using a Gateway Load Balancer.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q234_c" value="C"><label for="q234_c">C: Expose the Lambda function by using a Network Load Balancer.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q234_d" value="D"><label for="q234_d">D: Expose the Lambda function by using AWS Global Accelerator</label></div>
+    <div class="answer-option"><input type="checkbox" id="q234_e" value="E"><label for="q234_e">E: Expose the Lambda function by using Amazon API Gateway.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: A, E</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="C,E">
+    <h3>Question 235</h3>
+    <p>A developer has created a large AWS Lambda function. Deployment of the function Is failing because of an InvalidParameterValueException error. The error message indicates that the unzipped size of the function exceeds the maximum supported value. Which actions can the developer take to resolve this error? (Select TWO.)</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q235_a" value="A"><label for="q235_a">A: Submit a quota increase request to AWS Support to increase the function to the required size.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q235_b" value="B"><label for="q235_b">B: Use a compression algorithm that is more efficient than ZIP.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q235_c" value="C"><label for="q235_c">C: Break up the function into multiple smaller functions.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q235_d" value="D"><label for="q235_d">D: Zip the .zip file twice to compress the file more.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q235_e" value="E"><label for="q235_e">E: Move commonlibraries, function dependencies, and custom runtimes into Lambda layers.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: C, E</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="A">
+    <h3>Question 236</h3>
+    <p>A developer is creating a new batch application that will run on an Amazon EC2 instance. The application requires read access to an Amazon S3 bucket. The developer needs to follow security best practices to grant S3 read access to the application. Which solution meets these requirements?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q236_a" value="A"><label for="q236_a">A: Add the permissions to an 1AM policy. Attach the policy to a role. Attach the role to the EC2 instance profile.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q236_b" value="B"><label for="q236_b">B: Add the permissions inline to an 1AM group. Attach the group to the EC2 instance profile.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q236_c" value="C"><label for="q236_c">C: Add the permissions to an 1AM policy. Attach the policy to a user. Attach the user to the EC2 instance profile.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q236_d" value="D"><label for="q236_d">D: Add the permissions to an 1AM policy. Use 1AM web identity federation to access the S3 bucket with the policy.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: A</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="D">
+    <h3>Question 237</h3>
+    <p>An1AMrole is attached to an Amazon EC2instance that explicitly denies access to all Amazon S3 API actions. The EC2 instance credentials file specifies the 1AM access key and secret access key, which allow full administrative access. Given that multiple modes of 1AM access are present for this EC2 instance, which of the following is correct?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q237_a" value="A"><label for="q237_a">A: The EC2 instance will only be able to list the S3 buckets.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q237_b" value="B"><label for="q237_b">B: The EC2 instance will only be able to list the contents of one S3 bucket at a time.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q237_c" value="C"><label for="q237_c">C: The EC2 instance will be able to perform all actions on any S3 bucket.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q237_d" value="D"><label for="q237_d">D: The EC2 instance will not be able to perform any S3 action on any S3 bucket.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: D</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="C">
+    <h3>Question 238</h3>
+    <p>A developer is writing unit tests tor a new application that will be deployed on AWS. The developer wants to validate all pull requests with unit tests and merge the code with the main branch only whenall tests pass The developer stores the code in AWS CodeCommit and sets up AWS CodeBuild to run the unit tests. The developer creates an AWS Lambda function to start the CodeBuild task. The developer needs to identify the CodeCommit events in an Amazon EventBridge event that can invoke the Lambda function when a pull request is created or updated. Which CodeCommit event will meet these requirements?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q238_a" value="A"><label for="q238_a">A: Option A</label></div>
+    <div class="answer-option"><input type="checkbox" id="q238_b" value="B"><label for="q238_b">B: Option B</label></div>
+    <div class="answer-option"><input type="checkbox" id="q238_c" value="C"><label for="q238_c">C: Option C</label></div>
+    <div class="answer-option"><input type="checkbox" id="q238_d" value="D"><label for="q238_d">D: Option D</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: C</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="B">
+    <h3>Question 239</h3>
+    <p>A company has awebsite that displays a daily newsletter. When a user visits the website, an AWS Lambda function processes the browser's request and queries the company's on-premises database to obtain the current newsletter. The newsletters are stored in English. The Lambda function uses the Amazon Translate TranslateText API operation to translate the newsletters, and the translation is displayed to the user. Due to anincrease in popularity, the website's response time has slowed. The database is overloaded. The company cannot change the database and needs a solution that improves the response time of the Lambda function. Which solution meets these requirements?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q239_a" value="A"><label for="q239_a">A: Change to asynchronous Lambda function invocation.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q239_b" value="B"><label for="q239_b">B: Cache the translated newsletters in the Lambda /tmp directory.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q239_c" value="C"><label for="q239_c">C: Enable TranslateText API caching.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q239_d" value="D"><label for="q239_d">D: Change the Lambda function to use parallel processing.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: B</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="C">
+    <h3>Question 240</h3>
+    <p>A developer creates an AWS Lambda function that is written in Java. During testing, the Lambda function does not work how the developer expected. The developer wants to use tracing capabilities to troubleshoot the problem. Which AWSservice should the developer use to accomplish this goal?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q240_a" value="A"><label for="q240_a">A: AWSTrusted Advisor</label></div>
+    <div class="answer-option"><input type="checkbox" id="q240_b" value="B"><label for="q240_b">B: Amazon CloudWatch</label></div>
+    <div class="answer-option"><input type="checkbox" id="q240_c" value="C"><label for="q240_c">C: AWSX-Ray</label></div>
+    <div class="answer-option"><input type="checkbox" id="q240_d" value="D"><label for="q240_d">D: AWSCloudTrail</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: C</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="C">
+    <h3>Question 241</h3>
+    <p>A developer is designing a fault-tolerant environment where client sessions will be saved. Howcanthe developer ensure that no sessions are lost if an Amazon EC2 instance fails?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q241_a" value="A"><label for="q241_a">A: Use sticky sessions with an Elastic Load Balancer target group.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q241_b" value="B"><label for="q241_b">B: Use Amazon SOStosave session data.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q241_c" value="C"><label for="q241_c">C: Use Amazon DynamoDBtoperform scalable session handling.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q241_d" value="D"><label for="q241_d">D: Use Elastic Load Balancer connection draining to stop sending requests to failing instances.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: C</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="B,D">
+    <h3>Question 242</h3>
+    <p>A software company is launching a multimedia application. The application will allow guest users to access sample content before the users decide if they want to create an account to gain full access. The company wants to implement an authentication process that can identify users who have already created an account. The company also needs to keep track of the number of guest users who eventually create an account. Which combination of steps will meet these requirements? {Select TWO.)</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q242_a" value="A"><label for="q242_a">A: Create an Amazon Cognito user pool. Configure the user pool to allow unauthenticated users. Exchange user tokens for temporary credentials that allow authenticated users to assume a role.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q242_b" value="B"><label for="q242_b">B: Create an Amazon Cognito identity pool. Configure the identity pool to allow unauthenticated users. Exchange unique identity for temporary credentials that allow all users to assume a role.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q242_c" value="C"><label for="q242_c">C: Create an Amazon CloudFront distribution. Configure the distribution to allow unauthenticated users. Exchange user tokens for temporary credentials that allow all users to assume a role.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q242_d" value="D"><label for="q242_d">D: Create a role for authenticated users that allows access to all content. Create a role for unauthenticated users that allows access to only the sample content.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q242_e" value="E"><label for="q242_e">E: Allow all users to access the sample content by default. Create a role for authenticated users that allows access to the other content.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: B, D</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="C">
+    <h3>Question 243</h3>
+    <p>A developer received the following error message during an AWS CloudFormation deployment. Which action should the developer take to resolve this error?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q243_a" value="A"><label for="q243_a">A: Contact AWS Support to report an issue with the Auto Scaling Groups (ASG> service.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q243_b" value="B"><label for="q243_b">B: Add aDependsOn attribute to the ASGInstanceRole12345678 resource in the CloudFormation template. Then delete the stack.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q243_c" value="C"><label for="q243_c">C: Modify the CloudFormation template to retain the ASGInstanceRolet 2345678 resource. Then manually delete the resource after deployment.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q243_d" value="D"><label for="q243_d">D: Add aforce parameter when calling CloudFormation with the role-am of ASGInstanceRole12345678.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: C</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="B">
+    <h3>Question 244</h3>
+    <p>A company has implemented a pipeline in AWS CodePipeline. The company Is using a single AWS account and does not use AWS Organizations. The company needs to test its AWS CloudFormation templates in its primary AWS Region and a disaster recovery Region. Which solution will meet these requirements with the MOST operational efficiency?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q244_a" value="A"><label for="q244_a">A: In the CodePipeline pipeline, implement an AWS CodeDeploy action for each Region to deploy and test the Cloud Formation templates. Update CodePipeline and AWS CodeBuild with appropriate permissions.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q244_b" value="B"><label for="q244_b">B: Configure CodePipeline to deploy and test the Cloud Formation templates. Use CloudFormation StackSets to start deployment across both Regions.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q244_c" value="C"><label for="q244_c">C: Configure CodePipeline to invoke AWS CodeBuild to deploy and test the CloudFormation templates in each Region. Update CodeBuild and CloudFormation with appropriate permissions.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q244_d" value="D"><label for="q244_d">D: Use the Snyk action in CodePipeline to deploy and test the CloudFormation templates in each Region.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: B</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="A">
+    <h3>Question 245</h3>
+    <p>A developer needs to modify an application architecture to meet new functional requirements. Application data is stored in Amazon DynamoDB and processed tor analysis in a nightly batch. The system analysts do not want to wait until the next day to view the processed data and have asked to have it available in near-real time. Which application architecture pattern would enable the data to be processed as it is received?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q245_a" value="A"><label for="q245_a">A: Event driven</label></div>
+    <div class="answer-option"><input type="checkbox" id="q245_b" value="B"><label for="q245_b">B: Client-server d riven</label></div>
+    <div class="answer-option"><input type="checkbox" id="q245_c" value="C"><label for="q245_c">C: Fan-out driven</label></div>
+    <div class="answer-option"><input type="checkbox" id="q245_d" value="D"><label for="q245_d">D: Schedule driven</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: A</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="B">
+    <h3>Question 246</h3>
+    <p>A company is working on a new serverless application. A developer needs to find an automated way to deploy AWS Lambda functions and the dependent Infrastructure with minimum coding effort. The application also needs to be reliable. Which method will meet these requirements with the LEAST operational overhead?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q246_a" value="A"><label for="q246_a">A: Build the application by using shell scripts to create .zip files for each Lambda function. Manually upload the .zip files to the AWS Management Console.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q246_b" value="B"><label for="q246_b">B: Build the application by using the AWS Serverless Application Model (AWS SAM). Use a continuous integration and continuous delivery (CI/CD) pipeline and the SAM CLI to deploy the Lambda functions.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q246_c" value="C"><label for="q246_c">C: Build the application by using shell scripts to create .zip files for each Lambda function. Upload the .zip files. Deploy the .zip files as Lambda functions by using the AWS CLI in a continuous integration and continuous delivery (CI/CD) pipeline.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q246_d" value="D"><label for="q246_d">D: Build a container for each Lambda function. Store the container images in AWS CodeArtifact. Deploy the containers as Lambda functions by using the AWS CLI in a continuous integration and continuous delivery (CI/CD) pipeline.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: B</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="D">
+    <h3>Question 247</h3>
+    <p>A company maintains a REST service using Amazon API Gateway and the API Gateway native API key validation. The company recently launched a new registration page, which allows users to sign up for the service. The registration page creates a new API key using CreateApiKey and sends the new key to the user. When the user attempts to call the API using this key. the user receives a 403 Forbidden error. Existing users are unaffected and can still call the API. Whatcode updates will grant these new users access to the API?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q247_a" value="A"><label for="q247_a">A: The createDeploymer.t method must be called so the API can be redeployed to include the newly created API key.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q247_b" value="B"><label for="q247_b">B: The updateAuthorizer method must be called to update the API's authorizer to include the newly created API key</label></div>
+    <div class="answer-option"><input type="checkbox" id="q247_c" value="C"><label for="q247_c">C: The importApiKeys method must be called to import all newly created API keys into the current stage of the API.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q247_d" value="D"><label for="q247_d">D: The createUsagePlanKey method must be called to associate the newly created API key with the correct usage plan.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: D</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="D">
+    <h3>Question 248</h3>
+    <p>A webapplication is using Amazon Kinesis Data Streams for clickstream data that may not be consumed for up to 12 hours. Howcanthe developer implement encryption at rest for data within the Kinesis Data Streams?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q248_a" value="A"><label for="q248_a">A: Enable SSL connections to Kinesis.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q248_b" value="B"><label for="q248_b">B: Use Amazon Kinesis Consumer Library.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q248_c" value="C"><label for="q248_c">C: Encrypt the data once it is at rest with a Lambda function.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q248_d" value="D"><label for="q248_d">D: Enable server-side encryption in Kinesis Data Streams.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: D</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="A">
+    <h3>Question 249</h3>
+    <p>A developer created an AWS Lambda function that accesses resources in a VPC. The Lambda function polls an Amazon Simple Queue Service (Amazon SOS) queue for new messages through a VPC endpoint. Then the function calculates a rolling average of the numeric values that are contained in the messages. After initial tests of the Lambda function, the developer found that the value of the rolling average that the function returned was not accurate. Howcanthe developer ensure that the function calculates an accurate rolling average?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q249_a" value="A"><label for="q249_a">A: Set the function's reserved concurrency to 1. Calculate the rolling average in the function. Store the calculated rolling average in Amazon ElastiCache.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q249_b" value="B"><label for="q249_b">B: Modify the function to store the values in Amazon ElastiCache. When the function initializes, use the previous values from the cache to calculate the rolling average.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q249_c" value="C"><label for="q249_c">C: Set the function's provisioned concurrency to 1. Calculate the rolling average in the function. Store the calculated rolling average in Amazon ElastiCache.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q249_d" value="D"><label for="q249_d">D: Modify the function to store the values in the function's layers. When the function initializes, use the previously stored values to calculate the rolling average.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: A</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="C">
+    <h3>Question 250</h3>
+    <p>A company wants to migrate applications from its on-premises servers to AWS. As a first step, the company is modifying and migrating a non-critical application to a single Amazon EC2 instance. The application will store information in an Amazon S3 bucket. The company needs to follow security best practices when deploying the application on AWS. Which approach should the company take to allow the application to interact with Amazon S3?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q250_a" value="A"><label for="q250_a">A: Create an 1AM role that has administrative access to AWS. Attach the role to the EC2 instance.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q250_b" value="B"><label for="q250_b">B: Create an 1AM user. Attach the AdministratorAccess policy. Copy the generated access key and secret key. Within the application code, use the access key and secret key along with the AWS SDK to communicate with Amazon S3.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q250_c" value="C"><label for="q250_c">C: Create an 1AM role that has the necessary access to Amazon S3. Attach the role to the EC2 instance.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q250_d" value="D"><label for="q250_d">D: Create an 1AM user. Attach a policy that provides the necessary access to Amazon S3. Copy the generated access key and secret key. Within the application code, use the access key and secret key along with the AWS SDK to communicate with Amazon S3.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: C</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="B">
+    <h3>Question 251</h3>
+    <p>A developer is creating an AWS Lambda function that will connect to an Amazon RDS for MySQL instance. The developer wants to store the database credentials. The database credentials need to be encrypted and the database password needs to be automatically rotated. Which solution will meet these requirements?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q251_a" value="A"><label for="q251_a">A: Store the database credentials as environment variables for the Lambda function. Set the environment variables to rotate automatically.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q251_b" value="B"><label for="q251_b">B: Store the database credentials in AWS Secrets Manager. Set up managed rotation on the database credentials.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q251_c" value="C"><label for="q251_c">C: Store the database credentials in AWS Systems Manager Parameter Store as secure string parameters. Set up managed rotation on the parameters.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q251_d" value="D"><label for="q251_d">D: Store the database credentials in the X-Amz-Security-Token parameter. Set up managed rotation on the parameter.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: B</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="B">
+    <h3>Question 252</h3>
+    <p>A company is building an application to accept data from customers. The data must be encrypted at rest and in transit. The application uses an Amazon API Gateway API that resolves to AWS Lambda functions. The Lambda functions store the data in an Amazon Aurora MySQL DB cluster. The application worked properly during testing. A developer configured an Amazon CloudFront distribution with field-level encryption that uses an AWSKeyManagementService (AWS KMS) key. After the configuration of the distribution, the application behaved unexpectedly. All the data in the database changed from plaintext to ciphertext. The developer must ensure that the data is not stored in the database as the ciphertext from the CloudFront field-level encryption. Which solution will meet this requirement?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q252_a" value="A"><label for="q252_a">A: Change the CloudFront Viewer protocol policy from "HTTP and HTTPS" to "HTTPS only."</label></div>
+    <div class="answer-option"><input type="checkbox" id="q252_b" value="B"><label for="q252_b">B: Add aLambdafunction that uses the KMS key to decrypt the data fields before saving the data to the database.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q252_c" value="C"><label for="q252_c">C: Enable encryption on the DB cluster by using the same KMS key that is used in CloudFront.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q252_d" value="D"><label for="q252_d">D: Request and deploy a new SSL certificate to use with the CloudFront distribution.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: B</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="D">
+    <h3>Question 253</h3>
+    <p>A developer is writing an application to analyze the traffic to a fleet of Amazon EC2 instances. The EC2 instances run behind a public Application Load Balancer (ALB). An HTTP server runs on each of the EC2 instances, logging all requests to a log file. The developer wants to capture the client public IP addresses. The developer analyzes the log files and notices only the IP address of the ALB. Whatmustthe developer do to capture the client public IP addresses in the log file?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q253_a" value="A"><label for="q253_a">A: Add aHostheader to the HTTP server log configuration file.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q253_b" value="B"><label for="q253_b">B: Install the Amazon CloudWatch Logs agent on each EC2 instance. Configure the agent to write to the log file.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q253_c" value="C"><label for="q253_c">C: Install the AWS X-Ray daemon on each EC2 instance. Configure the daemon to write to the log file.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q253_d" value="D"><label for="q253_d">D: Add anX-Forwarded-For header to the HTTP server log configuration file.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: D</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="B,E">
+    <h3>Question 254</h3>
+    <p>A developer is creating an application that uses an AWS Lambda function to transform and load data from an AmazonS3bucket. When the developer tests the application, the developer finds that some invocations of the Lambda function are slower than others. The developer needs to update the Lambda function to have predictable invocation durations that run with low latency. Any initialization activities, such as loading libraries and instantiating clients, must run during allocation time rather than during actual function invocations. Which combination of steps will meet these requirements? (Select TWO.)</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q254_a" value="A"><label for="q254_a">A: Create a schedule group in Amazon EventBridge Scheduler to invoke the Lambda function.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q254_b" value="B"><label for="q254_b">B: Configure provisioned concurrency for the Lambda function to have the necessary number of execution environments.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q254_c" value="C"><label for="q254_c">C: Use the SLATEST version of the Lambda function.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q254_d" value="D"><label for="q254_d">D: Configure reserved concurrency for the Lambda function to have the necessary number of execution environments.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q254_e" value="E"><label for="q254_e">E: Deploy changes, and publish a new version of the Lambda function.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: B, E</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="B">
+    <h3>Question 255</h3>
+    <p>A developer is writing a web application that must share secure documents with end users. The documents are stored in a private Amazon S3 bucket. The application must allow only authenticated users to download specific documents when requested, and only for a duration of 15 minutes. Howcanthe developer meet these requirements?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q255_a" value="A"><label for="q255_a">A: Copy the documents to a separate S3 bucket that has a lifecycle policy for deletion after 15 minutes.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q255_b" value="B"><label for="q255_b">B: Create a presigned S3 URL using the AWS SDK with an expiration time of 15 minutes.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q255_c" value="C"><label for="q255_c">C: Use server-side encryption with AWS KMS managed keys (SSE-KMS) and download the documents using HTTPS.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q255_d" value="D"><label for="q255_d">D: Modify the S3 bucket policy to only allow specific users to download the documents. Revert the change after 15 minutes.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: B</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="B">
+    <h3>Question 256</h3>
+    <p>A developer is implementing a serverless application by using AWS CloudFormation to provision Amazon S3webhosting. AmazonAPI Gateway, and AWSLambda functions. The Lambda function source code is zipped and uploaded to an S3 bucket. The S3 object key of the zipped source code is specified in the Lambda resource in the CloudFormation template. The developer notices that there are no changes in the Lambda function every time the CloudFormation stack is updated. Howcanthe developer resolve this issue?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q256_a" value="A"><label for="q256_a">A: Create a new Lambda function alias before updating the CloudFormation stack.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q256_b" value="B"><label for="q256_b">B: Change the S3 object key or the S3 version in the CloudFormation template before updating the CloudFormation stack.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q256_c" value="C"><label for="q256_c">C: Upload the zipped source code to another S3 bucket before updating the CloudFormation stack.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q256_d" value="D"><label for="q256_d">D: Associate a code signing configuration with the Lambda function before updating the CloudFormation stack.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: B</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="A">
+    <h3>Question 257</h3>
+    <p>Anapplication interacts with Amazon Aurora to store and track customer information. The primary database is set up with multiple read replicas for improving the performance of the read queries. However, one of the Aurora replicas is receiving most or all of the traffic, while the other Aurora replica remains idle. Howcanthis issue be resolved?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q257_a" value="A"><label for="q257_a">A: Disable application-level DNS caching.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q257_b" value="B"><label for="q257_b">B: Enable application-level DNS caching.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q257_c" value="C"><label for="q257_c">C: Enable application pooling.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q257_d" value="D"><label for="q257_d">D: Disable application pooling.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: A</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="B">
+    <h3>Question 258</h3>
+    <p>A company runs continuous integration/continuous delivery (CI/CD) pipelines for its application on AWSCodePipeline. A developer must write unit tests and run them as part of the pipelines before staging the artifacts for testing. Howshould the developer incorporate unit tests as part of CI/CD pipelines?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q258_a" value="A"><label for="q258_a">A: Create a separate CodePipeline pipeline to run unit tests.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q258_b" value="B"><label for="q258_b">B: Update the AWS CodeBuild build specification to include a phase for running unit tests.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q258_c" value="C"><label for="q258_c">C: Install the AWS CodeDeploy agent on an Amazon EC2 instance to run unit tests.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q258_d" value="D"><label for="q258_d">D: Create a testing branch in a git repository for the pipelines to run unit tests.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: B</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="A">
+    <h3>Question 259</h3>
+    <p>A developer has designed an application to store incoming data as JSON files in Amazon S3 objects. Custom business logic in an AWS Lambda function then transforms the objects, and the Lambda function loads the data into an Amazon DynamoDB table. Recently, the workload has experienced sudden and significant changes in traffic. The flow of data to the DynamoDB table is becoming throttled. The developer needs to implement a solution to eliminate the throttling and load the data into the DynamoDBtable more consistently. Which solution will meet these requirements?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q259_a" value="A"><label for="q259_a">A: Refactor the Lambda function into two functions. Configure one function to transform the data and one function to load the data into the DynamoDB table. Create an Amazon Simple Queue Service (Amazon SQS) queue in between the functions to hold the items as messages and to invoke the second function.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q259_b" value="B"><label for="q259_b">B: Turn on auto scaling for the DynamoDB table. Use Amazon CloudWatch to monitor the table's read and write capacity metrics and to track consumed capacity.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q259_c" value="C"><label for="q259_c">C: Create an alias for the Lambda function. Configure provisioned concurrency for the application to use.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q259_d" value="D"><label for="q259_d">D: Refactor the Lambda function into two functions. Configure one function to store the data in the DynamoDBtable. Configure the second function to process the data and update the items after the data is stored in DynamoDB. Create a DynamoDB stream to invoke the second function after the data is stored.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: A</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="A,D">
+    <h3>Question 260</h3>
+    <p>A developer compiles an AWS Lambda function and packages the result as a .zip file. The developer uses the Functions page on the Lambda console to attempt to upload the local packaged .zip file. Whenpushing the package to Lambda, the console returns an error indicating the file is too large. Which solutions can the developer use to publish the code? (Select TWO.)</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q260_a" value="A"><label for="q260_a">A: Upload the package to Amazon S3. Use the Functions page on the Lambda console to upload the package from the S3 location.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q260_b" value="B"><label for="q260_b">B: Create an AWS Support ticket to increase the maximum package size.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q260_c" value="C"><label for="q260_c">C: Use the update-function-code AWS CLI command. Pass the-publish parameter.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q260_d" value="D"><label for="q260_d">D: Repackage the Lambda function as a Docker container image. Upload the image to Amazon Elastic Container Registry {Amazon ECR). Create a new Lambda function by using the Lambda console. Reference the image that is deployed to Amazon ECR.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q260_e" value="E"><label for="q260_e">E: Sign the .zip file digitally. Create a new Lambda function by using the Lambda console. Update the configuration of the new Lambda function to include the Amazon Resource Name (ARN) of the code signing configuration.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: A, D</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="A">
+    <h3>Question 261</h3>
+    <p>A developer is creating an application that uses an Amazon DynamoDB table. The developer needs to develop code that reads all records that were added to the table during the previous day. creates HTMLreports, and pushes the reports into third-party storage. The item size varies from 1 KB to 4 KB, and the index structure is defined with the date. The developer needs to minimize the read capacity that the application requires from the DynamoDB table. Which DynamoDB API operation should the developer use in the code to meet these requirements?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q261_a" value="A"><label for="q261_a">A: Query</label></div>
+    <div class="answer-option"><input type="checkbox" id="q261_b" value="B"><label for="q261_b">B: Scan</label></div>
+    <div class="answer-option"><input type="checkbox" id="q261_c" value="C"><label for="q261_c">C: BatchGetltem</label></div>
+    <div class="answer-option"><input type="checkbox" id="q261_d" value="D"><label for="q261_d">D: Getltem</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: A</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="C">
+    <h3>Question 262</h3>
+    <p>A developer needs to write an AWS CloudFormation template on a local machine and deploy a CloudFormation stack to AWS. Whatmustthe developer do to complete these tasks?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q262_a" value="A"><label for="q262_a">A: Install the AWS CLI. Configure the AWS CLI by using an I AM user name and password.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q262_b" value="B"><label for="q262_b">B: Install the AWS CLI. Configure the AWS CLI by using an SSH key.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q262_c" value="C"><label for="q262_c">C: Install the AWS CLI. Configure the AWS CLI by using an 1AM user access key and secret key.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q262_d" value="D"><label for="q262_d">D: Install an AWS software development kit (SDK). Configure the SDK by using an X.509 certificate.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: C</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="C">
+    <h3>Question 263</h3>
+    <p>A developer is building an application that includes an AWS Lambda function that is written in .NET Core. The Lambda function's code needs to interact with Amazon DynamoDB tables and Amazon S3 buckets. The developer must minimize the Lambda function's deployment time and invocation duration. Which solution will meet these requirements?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q263_a" value="A"><label for="q263_a">A: Increase the Lambda function's memory.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q263_b" value="B"><label for="q263_b">B: Include the entire AWS SDK for .NET in the Lambda function's deployment package.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q263_c" value="C"><label for="q263_c">C: Include only the AWS SDK for .NET modules for DynamoDB and Amazon S3 in the Lambda function's deployment package.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q263_d" value="D"><label for="q263_d">D: Configure the Lambda function to download the AWS SDK for .NET from an S3 bucket atruntime.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: C</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="C">
+    <h3>Question 264</h3>
+    <p>A developer is setting up a deployment pipeline. The pipeline includes an AWS CodeBuild build stage that requires access to a database to run integration tests. The developer is using a buildspec.yml file to configure the database connection. Company policy requires automatic rotation of all database credentials. Which solution will handle the database credentials MOST securely?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q264_a" value="A"><label for="q264_a">A: Retrieve the credentials from variables that are hardcoded in the buildspec.yml file. Configure an AWSLambdafunctiontorotate the credentials.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q264_b" value="B"><label for="q264_b">B: Retrieve the credentials from an environment variable that is linked to a SecureString parameter in AWSSystems Manager Parameter Store. Configure Parameter Store for automatic rotation.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q264_c" value="C"><label for="q264_c">C: Retrieve the credentials from an environment variable that is linked to an AWS Secrets Manager secret. Configure Secrets Manager for automatic rotation.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q264_d" value="D"><label for="q264_d">D: Retrieve the credentials from an environment variable that contains the connection string in plaintext. Configure an Amazon EventBridge event to rotate the credentials.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: C</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="C,D">
+    <h3>Question 265</h3>
+    <p>A developer is troubleshooting a three-tier application, which is deployed on Amazon EC2 instances. There is a connectivity problem between the application servers and the database servers. Which AWSservices or tools should be used to identify the faulty component? (Select TWO.)</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q265_a" value="A"><label for="q265_a">A: AWSCloudTrail</label></div>
+    <div class="answer-option"><input type="checkbox" id="q265_b" value="B"><label for="q265_b">B: AWSTrusted Advisor</label></div>
+    <div class="answer-option"><input type="checkbox" id="q265_c" value="C"><label for="q265_c">C: Amazon VPC Flow Logs</label></div>
+    <div class="answer-option"><input type="checkbox" id="q265_d" value="D"><label for="q265_d">D: Network access control lists</label></div>
+    <div class="answer-option"><input type="checkbox" id="q265_e" value="E"><label for="q265_e">E: AWSConfig rules</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: C, D</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="D">
+    <h3>Question 266</h3>
+    <p>In a move toward using microservices, a company's management team has asked all development teams to build their services so that API requests depend only on that service's data store. One team is building a Payments service which has its own database; the service needs data that originates in the Accounts database. Both are using Amazon DynamoDB. Whatapproach will result in the simplest, decoupled, and reliable method to get near-real time updates from the Accounts database?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q266_a" value="A"><label for="q266_a">A: Use AWSGlue toperform frequent ETL updates from the Accounts database to the Payments database.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q266_b" value="B"><label for="q266_b">B: Use Amazon ElastiCache in Payments, with the cache updated by triggers in the Accounts database.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q266_c" value="C"><label for="q266_c">C: Use Amazon Data Firehose to deliver all changes from the Accounts database to the Payments database.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q266_d" value="D"><label for="q266_d">D: Use AmazonDynamoDBStreams todeliver all changes from the Accounts database to the Payments database.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: D</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="D">
+    <h3>Question 267</h3>
+    <p>A company is developing a serverless application by using AWS Lambda functions. One of the Lambda functions needs to access an Amazon RDS DB instance. The DB instance is in a private subnet inside a VPC. The company creates a role that includes the necessary permissions to access the DB instance. The company then assigns the role to the Lambda function. A developer must take additional action to give the Lambda function access to the DB instance. Whatshould the developer do to meet these requirements?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q267_a" value="A"><label for="q267_a">A: Assign a public IP address to the DB instance. Modify the security group of the DB instance to allow inbound traffic from the IP address of the Lambda function.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q267_b" value="B"><label for="q267_b">B: Set up an AWSDirect Connect connection between the Lambda function and the DB instance.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q267_c" value="C"><label for="q267_c">C: Configure an Amazon CloudFront distribution to create a secure connection between the Lambda function and the DB instance.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q267_d" value="D"><label for="q267_d">D: Configure the Lambda function to connect to the private subnets in the VPC. Add security group rules to allow traffic to the DB instance from the Lambda function.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: D</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="A">
+    <h3>Question 268</h3>
+    <p>A company is planning to deploy an application on AWS behind an Elastic Load Balancing (ELB) load balancer. The application uses an HTTP/HTTPS listener and must access the client IP addresses. Which load-balancing solution meets these requirements?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q268_a" value="A"><label for="q268_a">A: Use an Application Load Balancer and the X-Forwarded-For headers.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q268_b" value="B"><label for="q268_b">B: Use a Network Load Balancer (NLB). Enable proxy protocol support on the NLB and the target application.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q268_c" value="C"><label for="q268_c">C: Use an Application Load Balancer. Register the targets by the instance ID.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q268_d" value="D"><label for="q268_d">D: Use a Network Load Balancer and the X-Forwarded-For headers.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: A</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="D">
+    <h3>Question 269</h3>
+    <p>A developer is designing an event-driven architecture. An AWS Lambda function that processes data needs to push processed data to a subset of four consumer Lambda functions. The data must be routed based on the value of one field in the data. Which solution will meet these requirements with the LEAST operational overhead?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q269_a" value="A"><label for="q269_a">A: Create an Amazon Simple Queue Service {Amazon SQS) queue and even! source mapping for each consumer Lambda function. Add message routing logic to the data-processing Lambda function.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q269_b" value="B"><label for="q269_b">B: Create an Amazon Simple Notification Service (Amazon SNS) topic. Subscribe the four consumer Lambda functions to the topic. Add message filtering logic to each consumer Lambda function. Subscribe the data-processing Lambda function to the SNS topic.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q269_c" value="C"><label for="q269_c">C: Create a separate Amazon Simple Notification Service (Amazon SNS) topic and subscription for each consumer Lambda function. Add message routing logic to the data-processing Lambda function to publish to the appropriate topic.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q269_d" value="D"><label for="q269_d">D: Create a single Amazon Simple Notification Service {Amazon SNS) topic. Subscribe the four consumer Lambda functions to the topic. Add SNS subscription filter policies to each subscription. Configure the data-processing Lambda function to publish to the topic.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: D</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="D">
+    <h3>Question 270</h3>
+    <p>A developer is building an application that processes a stream of user-supplied data. The data stream must be consumed by multiple Amazon EC2 based processing applications in parallel and in real time. Each processor must be able to resume without losing data if there is a service interruption. The application architect plans to add other processors in the near future, and wants to minimize the amount of data duplication involved. Which solution will satisfy these requirements?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q270_a" value="A"><label for="q270_a">A: Publish the data to Amazon Simple Queue Service (Amazon SQS).</label></div>
+    <div class="answer-option"><input type="checkbox" id="q270_b" value="B"><label for="q270_b">B: Publish the data to Amazon Data Firehose.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q270_c" value="C"><label for="q270_c">C: Publish the data to Amazon EventBridge.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q270_d" value="D"><label for="q270_d">D: Publish the data to Amazon Kinesis Data Streams.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: D</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="A">
+    <h3>Question 271</h3>
+    <p>A large company has its application components distributed across multiple AWS accounts. The company needs to collect and visualize trace data across these accounts. Whatshould be used to meetthese requirements?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q271_a" value="A"><label for="q271_a">A: AWSX-Ray</label></div>
+    <div class="answer-option"><input type="checkbox" id="q271_b" value="B"><label for="q271_b">B: Amazon CloudWatch</label></div>
+    <div class="answer-option"><input type="checkbox" id="q271_c" value="C"><label for="q271_c">C: Amazon VPC flowlogs</label></div>
+    <div class="answer-option"><input type="checkbox" id="q271_d" value="D"><label for="q271_d">D: Amazon OpenSearch Service</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: A</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="B">
+    <h3>Question 272</h3>
+    <p>A developer must cache dependent artifacts from Maven Central, a public package repository, as part of an application's build pipeline. The build pipeline has an AWS CodeArtifact repository where artifacts of the build are published. The developer needs a solution that requires minimum changes to the build pipeline. Which solution meets these requirements?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q272_a" value="A"><label for="q272_a">A: Modify the existing CodeArtifact repository to associate an upstream repository with the public package repository.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q272_b" value="B"><label for="q272_b">B: Create a new CodeArtifact repository that has an external connection to the public package repository.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q272_c" value="C"><label for="q272_c">C: Create a new CodeArtifact domain that contains a new repository that has an external connection to the public package repository.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q272_d" value="D"><label for="q272_d">D: Modify the CodeArtifact repository resource policy to allow artifacts to be fetched from the public package repository.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: B</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="A">
+    <h3>Question 273</h3>
+    <p>A company is providing read access to objects in an Amazon S3 bucket for different customers. The company uses 1AMpermissions to restrict access to the S3 bucket. The customers can access only their own files. Due to aregulation requirement, the company needs to enforce encryption in transit for interactions with Amazon S3. Which solution will meet these requirements?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q273_a" value="A"><label for="q273_a">A: Add abucket policy to the S3 bucket to deny S3 actions when the aws:SecureTransport condition is equal to false.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q273_b" value="B"><label for="q273_b">B: Add abucket policy to the S3 bucket to deny S3 actions when the s3:x-amz-acl condition is equal to public-read.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q273_c" value="C"><label for="q273_c">C: Add an1AMpolicy to the 1AMusers to enforce the usage of the AWS SDK.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q273_d" value="D"><label for="q273_d">D: Add an1AMpolicy to the 1AMusers that allows S3 actions when the s3:x-amz-acl condition is equal to bucket-owner-read.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: A</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="A,B">
+    <h3>Question 274</h3>
+    <p>A team is developing an application that is deployed on Amazon EC2 instances. During testing, the team receives an error. The EC2 instances are unable to access an Amazon S3 bucket. Which steps should the team take to troubleshoot this issue? (Select TWO.)</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q274_a" value="A"><label for="q274_a">A: Check whether the policy that is assigned to the JAM role that is attached to the EC2 instances grants access to Amazon S3.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q274_b" value="B"><label for="q274_b">B: Check the S3 bucket policy to validate the access permissions for the S3 bucket.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q274_c" value="C"><label for="q274_c">C: Check whether the policy that is assigned to the 1AM user that is attached to the EC2 instances grants access to Amazon S3.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q274_d" value="D"><label for="q274_d">D: Check the S3 Lifecycle policy to validate the permissions that are assigned to the S3 bucket.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q274_e" value="E"><label for="q274_e">E: Check the security groups that are assigned to the EC2 instances. Make sure that a rule is not blocking the access to Amazon S3.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: A, B</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="A">
+    <h3>Question 275</h3>
+    <p>A developer created several AWS Lambda functions that write data to a single Amazon S3 bucket. The developer configured all the Lambda functions to send logs and metrics to Amazon CloudWatch. The developer receives reports that one of the Lambda functions writes data to the bucket very slowly. The developer needs to measure the latency between the problematic Lambda function and the S3 bucket. Which solution will meet this requirement?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q275_a" value="A"><label for="q275_a">A: Enable AWS X-Ray on the Lambda function. In the generated trace map. select the line between Lambda and AmazonS3.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q275_b" value="B"><label for="q275_b">B: Query the Lambda function's log file in Amazon CloudWatch Logs Insights. Return the average of the auto-discovered ©duration field.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q275_c" value="C"><label for="q275_c">C: Enable CloudWatch Lambda Insights on the function. View the latency graph that CloudWatch Lambda Insights provides.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q275_d" value="D"><label for="q275_d">D: Enable AWS X-Ray on the Lambda function. Select Amazon S3 in the latency graph to view the latency histogram.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: A</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="D">
+    <h3>Question 276</h3>
+    <p>A developer is integrating Amazon ElastiCache in an application. The cache will store data from a database. The cached data must populate real-time dashboards. Which caching strategy will meet these requirements?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q276_a" value="A"><label for="q276_a">A: A read-through cache</label></div>
+    <div class="answer-option"><input type="checkbox" id="q276_b" value="B"><label for="q276_b">B: A write-behind cache</label></div>
+    <div class="answer-option"><input type="checkbox" id="q276_c" value="C"><label for="q276_c">C: A lazy-loading cache</label></div>
+    <div class="answer-option"><input type="checkbox" id="q276_d" value="D"><label for="q276_d">D: A write-through cache</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: D</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="C">
+    <h3>Question 277</h3>
+    <p>A company's application has an AWS Lambda function that processes messages from loT devices. The company wants to monitor the Lambda function to ensure that the Lambda function is meeting its required service level agreement (SLA). A developer must implement a solution to determine the application's throughput in near real time. The throughput must be based on the number of messages that the Lambda function receives and processes in a given time period. The Lambda function performs initialization and post-processing steps that must not factor into the throughput measurement. Whatshould the developer do to meet these requirements?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q277_a" value="A"><label for="q277_a">A: Use the Lambda function's ConcurrentExecutions metric in Amazon CloudWatch to measure the throughput.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q277_b" value="B"><label for="q277_b">B: Modify the application to log the calculated throughput to Amazon CloudWatch Logs. Use Amazon EventBridge to invoke a separate Lambda function to process the logs on a schedule.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q277_c" value="C"><label for="q277_c">C: Modify the application to publish custom Amazon CloudWatch metrics when the Lambda function receives and processes each message. Use the metrics to calculate the throughput.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q277_d" value="D"><label for="q277_d">D: Use the Lambda function's Invocations metric and Duration metric to calculate the throughput in Amazon CloudWatch.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: C</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="C">
+    <h3>Question 278</h3>
+    <p>A developer is using AWS CodeDeploy to launch an application onto Amazon EC2 instances. The application deployment fails during testing. The developer notices an IAM_ROLE_PERMISSIONS error code in Amazon CloudWatch logs. Whatshould the developer do to resolve the error?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q278_a" value="A"><label for="q278_a">A: Ensure that the deployment group is using the correct role name for the CodeDeploy service role.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q278_b" value="B"><label for="q278_b">B: Attach the AWSCodeDeployRoleECS policy to the CodeDeploy service role.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q278_c" value="C"><label for="q278_c">C: Attach the AWSCodeDeployRole policy to the CodeDeploy service role.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q278_d" value="D"><label for="q278_d">D: Ensure the CodeDeploy agent is installed and running on all instances in the deployment group.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: C</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="B">
+    <h3>Question 279</h3>
+    <p>A company is building a serverless application that uses AWS Lambda functions. The company needs to create a set of test events to test Lambda functions in a development environment. The test events will be created once and then will be used by all the developers in an 1AM developer group. The test events must be editable by any of the 1AM users in the 1AM developer group. Which solution will meet these requirements?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q279_a" value="A"><label for="q279_a">A: Create and store the test events in Amazon S3 as JSON objects. Allow S3 bucket access to all 1AM users.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q279_b" value="B"><label for="q279_b">B: Create the test events. Configure the event sharing settings to make the test events shareable.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q279_c" value="C"><label for="q279_c">C: Create and store the test events in Amazon DynamoDB. Allow access to DynamoDB by using 1AM roles.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q279_d" value="D"><label for="q279_d">D: Create the test events. Configure the event sharing settings to make the test events private.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: B</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="C">
+    <h3>Question 280</h3>
+    <p>A developer has deployed an AWS Lambda function that is subscribed to an Amazon Simple Notification Service {Amazon SNS) topic. The developer must implement a solution to add a record of each Lambda function invocation to an Amazon Simple Queue Service {Amazon SQS) queue. Which solution will meet this requirement?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q280_a" value="A"><label for="q280_a">A: Configure the SQS queue as a dead-letter queue for the Lambda function.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q280_b" value="B"><label for="q280_b">B: Create code that uses the AWS SDK to call the SQS SendMessage operation to add the invocation details to the SQS queue. Add the code to the end of the Lambda function.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q280_c" value="C"><label for="q280_c">C: Add twoasynchronous invocation destinations to the Lambda function: one destination for successful invocations and one destination for failed invocations. Configure the SQS queue as the destination for each type. Create an Amazon CloudWatch alarm based on the DestinationDeliveryFailures metric to catch any message that cannot be delivered.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q280_d" value="D"><label for="q280_d">D: Add asingle asynchronous invocation destination to the Lambda function to capture successful invocations. Configure the SQS queue as the destination. Create an Amazon CloudWatch alarm based on the DestinationDeliveryFailures metric to catch any message that cannot be delivered.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: C</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="D">
+    <h3>Question 281</h3>
+    <p>A development learn has an Amazon API Gateway REST API that is backed by an AWS Lambda function. Users have reported performance issues for the Lambda function. The development team identified the source of the issues as a cold start of the Lambda function. The development team needs to reduce the time needed for the Lambda function to initialize. Which solution will meet this requirement?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q281_a" value="A"><label for="q281_a">A: Change the Lambda concurrency lo reserved concurrency.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q281_b" value="B"><label for="q281_b">B: Increase the timeout of the Lambda function.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q281_c" value="C"><label for="q281_c">C: Increase the memory allocation of the Lambda function.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q281_d" value="D"><label for="q281_d">D: Configure provisioned concurrency for the Lambda function.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: D</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="D">
+    <h3>Question 282</h3>
+    <p>A developer is creating a stock trading application. The developer needs a solution to send text messages to application users to confirmation when a trade has been completed. The solution must deliver messages in the order a user makes stock trades. The solution must not send duplicate messages. Which solution will meet these requirements?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q282_a" value="A"><label for="q282_a">A: Configure the application to publish messages to an Amazon Data Firehose delivery stream. Configure the delivery stream to have a destination of each user's mobile phone number that is passed in the trade confirmation message.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q282_b" value="B"><label for="q282_b">B: Create an Amazon Simple Queue Service (Amazon SQS) FIFO queue. Use the SendMessageln API call to send the trade confirmation messages to the queue. Use the SendMessageOut API to send the messages to users by using the information provided in the trade confirmation message.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q282_c" value="C"><label for="q282_c">C: Configure a pipe in Amazon EventBridge Pipes. Connect the application to the pipe as a source. Configure the pipe to use each user's mobile phone number as a target. Configure the pipe to send incoming events to the users.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q282_d" value="D"><label for="q282_d">D: Create an Amazon Simple Notification Service (SNS) FIFO topic. Configure the application to use the AWSSDKtopublish notifications to the SNS topic to send SMS messages to the users.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: D</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="B">
+    <h3>Question 283</h3>
+    <p>A company offers a business-to-business software service that runs on dedicated infrastructure deployed in each customer's AWS account. Before a feature release, the company needs to run integration tests on real AWS test infrastructure. The test infrastructure consists of Amazon EC2 instances and an Amazon RDS database. A developer must set up a continuous delivery process that will provision the test infrastructure across the different AWS accounts. The developer then must run the integration tests. Which solution will meet these requirements with the LEAST administrative effort?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q283_a" value="A"><label for="q283_a">A: Use AWSCodeDeploy with AWSCloudFormation StackSets to deploy the infrastructure. Use Amazon CodeGuru to run the tests.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q283_b" value="B"><label for="q283_b">B: Use AWSCodePipeline with AWS CloudFormation StackSets to deploy the infrastructure. Use AWS CodeBuild to run the tests.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q283_c" value="C"><label for="q283_c">C: Use AWSCodePipeline with AWS CloudFormation change sets to deploy the infrastructure. Use a CloudFormation custom resource to run the tests.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q283_d" value="D"><label for="q283_d">D: Use AWSServerless Application Model (AWS SAM) templates with AWS CloudFormation change sets to deploy the infrastructure. Use AWS CodeDeploy to run the tests.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: B</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="A,D">
+    <h3>Question 284</h3>
+    <p>A developer is making changes to a custom application that uses AWS Elastic Beanstalk. Which solutions will update the Elastic Beanstalk environment with the new application version after the developer completes the changes? (Select TWO.)</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q284_a" value="A"><label for="q284_a">A: Package the application code into a .zip file. Use the AWS Management Console to upload the .zip file and deploy the packaged application.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q284_b" value="B"><label for="q284_b">B: Package the application code into a .tar file. Use the AWS Management Console to create a new application version from the .tar file. Update the environment by using the AWS CLI.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q284_c" value="C"><label for="q284_c">C: Package the application code into a .tar file. Use the AWS Management Console to upload the .tar file and deploy the packaged application.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q284_d" value="D"><label for="q284_d">D: Package the application code into a .zip file. Use the AWS CLI to create a new application version from the .zip file and to update the environment.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q284_e" value="E"><label for="q284_e">E: Package the application code into a .zip file. Use the AWS Management Console to create a new application version from the .zip file. Rebuild the environment by using the AWS CLI.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: A, D</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="A">
+    <h3>Question 285</h3>
+    <p>A company has anAWSStepFunctions state machine named myStateMachine. The company configured a service role for Step Functions. The developer must ensure that only the myStateMachine state machine can assume the service role.</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q285_a" value="A"><label for="q285_a">A: "Condition": { "ArnLike": { "aws:SourceArn":"arn:aws:states:ap-south-1:111111111111:stateMachine:myStateMachine" } }</label></div>
+    <div class="answer-option"><input type="checkbox" id="q285_b" value="B"><label for="q285_b">B: "Condition": { "ArnLike": { "aws:SourceArn":"arn:aws:states:ap-south-1:*:stateMachine:myStateMachine" } }</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: A</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="B">
+    <h3>Question 286</h3>
+    <p>A company stores customer credit reports in an Amazon S3 bucket. An analytics service uses standard Amazon S3GETrequests to access the reports. A developer must implement a solution to redact personally identifiable information (PII) from the reports before the reports reach the analytics service.</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q286_a" value="A"><label for="q286_a">A: Load the S3 objects into Amazon Redshift by using a COPY command. Implement dynamic data masking. Refactor the analytics service to read from Amazon Redshift.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q286_b" value="B"><label for="q286_b">B: Set up an S3 Object Lambda function. Attach the function to an S3 Object Lambda Access Point. Program the function to call a PII redaction API.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q286_c" value="C"><label for="q286_c">C: Use AWSKeyManagementService (AWS KMS) toimplementencryption in the S3 bucket. Re-upload all the existing S3 objects. Give the kms permission to the analytics service.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q286_d" value="D"><label for="q286_d">D: Create an Amazon Simple Notification Service (Amazon SNS) topic. Implement message data protection. Refactor the analytics service to publish data access requests to the SNS topic.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: B</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="D">
+    <h3>Question 287</h3>
+    <p>A company is using the AWS Serverless Application Model (AWS SAM) to develop a social media application. A developer needs a quick way to test AWS Lambda functions locally by using test event payloads. The developer needs the structure of these test event payloads to match the actual events that AWS services create.</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q287_a" value="A"><label for="q287_a">A: Create shareable test Lambda events. Use these test Lambda events for local testing.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q287_b" value="B"><label for="q287_b">B: Store manually created test event payloads locally. Use the sam local invoke command with the file path to the payloads.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q287_c" value="C"><label for="q287_c">C: Store manually created test event payloads in an Amazon S3 bucket. Use the sam local invoke commandwith the S3path to the payloads.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q287_d" value="D"><label for="q287_d">D: Use the sam local generate-event command to create test payloads for local testing.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: D</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="D">
+    <h3>Question 288</h3>
+    <p>A developer is updating an Amazon API Gateway REST API to have a mock endpoint. The developer wants to update the integration request mapping template so the endpoint will respond to mock integration requests with specific HTTP status codes based on various conditions.</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q288_a" value="A"><label for="q288_a">A: { if( $input.params(‘integration’) == "mock" ) "statusCode": 404 else "statusCode": 500 end }</label></div>
+    <div class="answer-option"><input type="checkbox" id="q288_b" value="B"><label for="q288_b">B: { if( $input.params('scope') == "internal" ) "statusCode": 200 else "statusCode": 500 end }</label></div>
+    <div class="answer-option"><input type="checkbox" id="q288_c" value="C"><label for="q288_c">C: { if( $input.path("integration") ) "statusCode": 200 else "statusCode":404 end }</label></div>
+    <div class="answer-option"><input type="checkbox" id="q288_d" value="D"><label for="q288_d">D: { if( $context.integration.status ) "statusCode": 200 else "statusCode": 500 end }</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: D</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="A">
+    <h3>Question 289</h3>
+    <p>A developer is creating an AWS Lambda function that needs network access to private resources in a VPC.</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q289_a" value="A"><label for="q289_a">A: Attach the Lambda function to the VPC through private subnets. Create a security group that allows network access to the private resources. Associate the security group with the Lambda function.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q289_b" value="B"><label for="q289_b">B: Configure the Lambda function to route traffic through a VPN connection. Create a security group that allows network access to the private resources. Associate the security group with the Lambda function.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q289_c" value="C"><label for="q289_c">C: Configure a VPC endpoint connection for the Lambda function. Set up the VPC endpoint to route traffic through a NAT gateway.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q289_d" value="D"><label for="q289_d">D: Configure an AWSPrivateLink endpoint for the private resources. Configure the Lambda function to reference the PrivateLink endpoint.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: A</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="C">
+    <h3>Question 290</h3>
+    <p>A company hosts a batch processing application on AWS Elastic Beanstalk with instances that run the most recent version of Amazon Linux. The application sorts and processes large datasets. In recent weeks, the application's performance has decreased significantly during a peak period for traffic. A developer suspects that the application issues are related to the memory usage. The developer checks the Elastic Beanstalk console and notices that memory usage is not being tracked. Howshould the developer gather more information about the application performance issues?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q290_a" value="A"><label for="q290_a">A: Configure the Amazon CloudWatch agent to push logs to Amazon CloudWatch Logs by using port 443.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q290_b" value="B"><label for="q290_b">B: Configure the Elastic Beanstalk .ebextensions directory to track the memory usage of the instances.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q290_c" value="C"><label for="q290_c">C: Configure the Amazon CloudWatch agent to track the memory usage of the instances.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q290_d" value="D"><label for="q290_d">D: Configure an Amazon CloudWatch dashboard to track the memory usage of the instances.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: C</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="B">
+    <h3>Question 291</h3>
+    <p>A company is creating a new application that gives users the ability to upload and share short video files. The average size of the video files is 10 MB. After a user uploads a file, a message needs to be placed into an Amazon Simple Queue Service (Amazon SQS) queue so the file can be processed. The files need to be accessible for processing within 5 minutes. Which solution will meet these requirements MOST cost-effectively?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q291_a" value="A"><label for="q291_a">A: Write the files to Amazon S3 Glacier Deep Archive. Add the S3 location of the files to the SQS queue.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q291_b" value="B"><label for="q291_b">B: Write the files to Amazon S3 Standard. Add the S3 location of the files to the SQS queue.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q291_c" value="C"><label for="q291_c">C: Write the files to an Amazon Elastic Block Store (Amazon EBS) General Purpose SSD volume. Add the EBS location of the files to the SQS queue.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q291_d" value="D"><label for="q291_d">D: Write messages that contain the contents of the uploaded files to the SQS queue.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: B</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="C">
+    <h3>Question 292</h3>
+    <p>A developer is building a three-tier web application that should be able to handle a minimum of 5000 requests per minute. Requirements state that the web tier should be completely stateless while the application maintains session state for the users. Howcansession data be externalized, keeping latency at the LOWEST possible value?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q292_a" value="A"><label for="q292_a">A: Create an Amazon RDS instance, then implement session handling at the application level to leverage a database inside the RDS database instance for session data storage.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q292_b" value="B"><label for="q292_b">B: Implement a shared file system solution across the underlying Amazon EC2 instances, then implement session handling at the application level to leverage the shared file system for session data storage.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q292_c" value="C"><label for="q292_c">C: Create an Amazon ElastiCache (Memcached) cluster, then implement session handling at the application level to leverage the cluster for session data storage.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q292_d" value="D"><label for="q292_d">D: Create an Amazon DynamoDB table, then implement session handling at the application level to leverage the table for session data storage.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: C</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="A">
+    <h3>Question 293</h3>
+    <p>A company has anAWSStepFunctions state machine named myStateMachine. The company configured a service role for Step Functions. The developer must ensure that only the myStateMachine state machine can assume the service role. Which statement should the developer add to the trust policy to meet this requirement?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q293_a" value="A"><label for="q293_a">A: "Condition": { "ArnLike": { "aws:SourceArn":"urn:aws:states:ap-south-1:111111111111:stateMachine:myStateMachine" } }</label></div>
+    <div class="answer-option"><input type="checkbox" id="q293_b" value="B"><label for="q293_b">B: "Condition": { "ArnLike": { "aws:SourceArn":"arn:aws:states:ap-south-1:*:stateMachine:myStateMachine" } }</label></div>
+    <div class="answer-option"><input type="checkbox" id="q293_c" value="C"><label for="q293_c">C: "Condition": { "StringEquals": { "aws:SourceAccount": "111111111111" } }</label></div>
+    <div class="answer-option"><input type="checkbox" id="q293_d" value="D"><label for="q293_d">D: "Condition": { "StringNotEquals": { "aws:SourceArn":"arn:aws:states:ap-south-1:111111111111:stateMachine:myStateMachine" } }</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: A</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="A">
+    <h3>Question 294</h3>
+    <p>A company runs a webapplication on Amazon EC2instances behind an Application Load Balancer. The application uses Amazon DynamoDB as its database. The company wants to ensure high performance for reads and writes. Which solution will meet these requirements MOST cost-effectively?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q294_a" value="A"><label for="q294_a">A: Configure auto-scaling for the DynamoDB table with a target utilization of 70%. Set the minimum and maximum capacity units based on the expected workload.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q294_b" value="B"><label for="q294_b">B: Use DynamoDB on-demandcapacity mode for the table. Specify a maximum throughput higher than the expected peak read and write capacity units.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q294_c" value="C"><label for="q294_c">C: Use DynamoDB provisioned throughput mode for the table. Create an Amazon CloudWatch alarm on the ThrottledRequests metric. Invoke an AWS Lambda function to increase provisioned capacity.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q294_d" value="D"><label for="q294_d">D: Create an Amazon DynamoDB Accelerator (DAX) cluster. Configure the application to use the DAX endpoint.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: A</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="A">
+    <h3>Question 295</h3>
+    <p>A company regularly receives route status updates from its delivery trucks as events in Amazon EventBridge. The company is building an API-based application in a VPC that will consume and process the events to create a delivery status dashboard. The API application must not be available by using public IP addresses because of security and compliance requirements. Howshould the company send events from EventBridge to the API application?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q295_a" value="A"><label for="q295_a">A: Create an AWS Lambda function that runs in the same VPC as the API application. Configure the function as an EventBridge target. Use the function to send events to the API.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q295_b" value="B"><label for="q295_b">B: Create an internet-facing Application Load Balancer (ALB) in front of the API application. Associate a security group with rules that block access from all external sources except for EventBridge. Configure the ALB as an EventBridge target.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q295_c" value="C"><label for="q295_c">C: Create an internet-facing Network Load Balancer (NLB) in front of the API application. Associate a security group with rules that block access from all external sources except for EventBridge. Configure the NLB as an EventBridge target.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q295_d" value="D"><label for="q295_d">D: Use the application API endpoint in the VPC as a target for EventBridge. Send events directly to the application API endpoint from EventBridge.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: A</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="A">
+    <h3>Question 296</h3>
+    <p>A company has alarge amountof data in an Amazon DynamoDB table. A large batch of data is appended to the table once each day. The company wants a solution that will make all the existing and future data in DynamoDB available for analytics on a long-term basis. Which solution meets these requirements with the LEAST operational overhead?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q296_a" value="A"><label for="q296_a">A: Configure DynamoDB incremental exports to Amazon S3.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q296_b" value="B"><label for="q296_b">B: Configure Amazon DynamoDB Streams to write records to Amazon S3.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q296_c" value="C"><label for="q296_c">C: Configure Amazon EMR tocopy DynamoDB data toAmazonS3.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q296_d" value="D"><label for="q296_d">D: Configure Amazon EMR tocopy DynamoDB data toHadoopDistributed File System (HDFS).</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: A</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="C">
+    <h3>Question 297</h3>
+    <p>Anecommerce company is planning to migrate an on-premises Microsoft SQL Server database to the AWSCloud. The company needs to migrate the database to SQL Server Always On availability groups. The cloud-based solution must be highly available. Which solution will meet these requirements?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q297_a" value="A"><label for="q297_a">A: Deploy three Amazon EC2 instances with SQL Server across three Availability Zones. Attach one Amazon Elastic Block Store (Amazon EBS) volume to the EC2 instances.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q297_b" value="B"><label for="q297_b">B: Migrate the database to Amazon RDS for SQL Server. Configure a Multi-AZ deployment and read replicas.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q297_c" value="C"><label for="q297_c">C: Deploy three Amazon EC2 instances with SQL Server across three Availability Zones. Use Amazon FSx for Windows File Server as the storage tier.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q297_d" value="D"><label for="q297_d">D: Deploy three Amazon EC2 instances with SQL Server across three Availability Zones. Use Amazon S3 as the storage tier.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: C</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="B">
+    <h3>Question 298</h3>
+    <p>A social media application is experiencing high volumes of new user requests after a recent marketing campaign. The application is served by an Amazon RDS for MySQL instance. A solutions architect examines the database performance and notices high CPU usage and many "too many connections" errors that lead to failed requests on the database. The solutions architect needs to address the failed requests. Which solution will meet this requirement?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q298_a" value="A"><label for="q298_a">A: Deploy an Amazon DynamoDB Accelerator (DAX) cluster. Configure the application to use the DAX cluster.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q298_b" value="B"><label for="q298_b">B: Deploy an RDS Proxy. Configure the application to use the RDS Proxy.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q298_c" value="C"><label for="q298_c">C: Migrate the database to an Amazon RDS for PostgreSQL instance.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q298_d" value="D"><label for="q298_d">D: Deploy an Amazon ElastiCache (Redis OSS) cluster. Configure the application to use the ElastiCache cluster.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: B</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="B">
+    <h3>Question 299</h3>
+    <p>A company hosts a stateless web application with low data storage in a single AWS Region. The company wants to increase the resiliency of the application to include a multi-Region presence. The company wants to set the recovery time objective (RTO) and recovery point objective (RPO) to hours. The company needs a low-cost and low-complexity disaster recovery (DR) strategy. Which DRstrategy should the company use?</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q299_a" value="A"><label for="q299_a">A: Warmstandby</label></div>
+    <div class="answer-option"><input type="checkbox" id="q299_b" value="B"><label for="q299_b">B: Pilot light</label></div>
+    <div class="answer-option"><input type="checkbox" id="q299_c" value="C"><label for="q299_c">C: Backup and restore</label></div>
+    <div class="answer-option"><input type="checkbox" id="q299_d" value="D"><label for="q299_d">D: Multi-site active-active</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: B</div>
+  </div>
+  
+  <div class="question-container" data-correct-answer="B">
+    <h3>Question 300</h3>
+    <p>A developer is building an application that uses an Amazon RDS for PostgreSQL database. To meet security requirements, the developer needs to ensure that data is encrypted at rest. The developer must be able to rotate the encryption keys on demand.</p>
+    <div class="answers">
+    <div class="answer-option"><input type="checkbox" id="q300_a" value="A"><label for="q300_a">A: Use an AWSKMSmanagedencryptionkey toencryptthe database.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q300_b" value="B"><label for="q300_b">B: Create a symmetric customer managed AWS KMS key. Use the key to encrypt the database.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q300_c" value="C"><label for="q300_c">C: Create a 256-bit AES-GCM encryption key. Store the key in AWS Secrets Manager, and enable managed rotation. Use the key to encrypt the database.</label></div>
+    <div class="answer-option"><input type="checkbox" id="q300_d" value="D"><label for="q300_d">D: Create a 256-bit AES-GCM encryption key. Store the key in AWS Secrets Manager. Configure an AWSLambdafunctiontoperform key rotation. Use the key to encrypt the database.</label></div>
+    </div>
+    <div class="correct-answer-reveal">Correct Answer: B</div>
+  </div>
+  
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const questionContainers = document.querySelectorAll('.question-container');
+
+      questionContainers.forEach(container => {
+        const checkboxes = container.querySelectorAll('.answers input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+          checkbox.addEventListener('click', function(event) {
+            revealAnswer(event.target);
+          });
+        });
+      });
+
+      function revealAnswer(clickedCheckbox) {
+        const container = clickedCheckbox.closest('.question-container');
+        const correctAnswers = container.dataset.correctAnswer.split(',');
+        const answerRevealDiv = container.querySelector('.correct-answer-reveal');
+        const allCheckboxes = container.querySelectorAll('.answers input[type="checkbox"]');
+        
+        // Show the correct answer text
+        answerRevealDiv.style.display = 'block';
+
+        allCheckboxes.forEach(cb => {
+          const label = cb.nextElementSibling;
+          const isCorrect = correctAnswers.includes(cb.value);
+
+          if (isCorrect) {
+            label.classList.add('correct');
+          } else if (cb.checked) {
+            label.classList.add('incorrect');
+          }
+          
+          // Disable all checkboxes for this question after one is clicked
+          cb.disabled = true;
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
